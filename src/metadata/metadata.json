@@ -1,0 +1,4010 @@
+{
+  "package": "Marvel",
+  "tagline": "Marvel API",
+  "description": "Marvel",
+  "image": "http:\/\/logo.clearbit.com\/marvel.com",
+  "repo": "https:\/\/github.com\/RapidSoftwareSolutions\/Marketplace-Marvel-Package",
+  "keywords": [
+  ],
+  "accounts": {
+    "domain": "marvel.com",
+    "credentials": [
+      "publicKey",
+      "privateKey"
+    ]
+  },
+  "blocks": [
+    {
+      "name": "getCharacters",
+      "description": "Fetches lists of comic characters with optional filters. ",
+      "args": [
+        {
+          "name": "publicKey",
+          "type": "credentials",
+          "info": "Public api key obtained from Marvel",
+          "required": true
+        },
+        {
+          "name": "privateKey",
+          "type": "credentials",
+          "info": "Private api key obtained from Marvel",
+          "required": true
+        },
+        {
+          "name": "name",
+          "type": "String",
+          "info": "Return only characters matching the specified full character name (e.g. Spider-Man).",
+          "required": false
+        },
+        {
+          "name": "nameStartsWith",
+          "type": "String",
+          "info": "Return characters with names that begin with the specified string (e.g. Sp).",
+          "required": false
+        },
+        {
+          "name": "modifiedSince",
+          "type": "String",
+          "info": "Return only characters which have been modified since the specified date.",
+          "required": false
+        },
+        {
+          "name": "comics",
+          "type": "String",
+          "info": "Return only characters which appear in the specified comics (accepts a comma-separated list of ids).",
+          "required": false
+        },
+        {
+          "name": "series",
+          "type": "String",
+          "info": "Return only characters which appear the specified series (accepts a comma-separated list of ids).",
+          "required": false
+        },
+        {
+          "name": "events",
+          "type": "String",
+          "info": "Return only characters which appear the specified events (accepts a comma-separated list of ids).",
+          "required": false
+        },
+        {
+          "name": "stories",
+          "type": "String",
+          "info": "Return only characters which appear the specified stories (accepts a comma-separated list of ids).",
+          "required": false
+        },
+        {
+          "name": "orderBy",
+          "type": "String",
+          "info": "Order the result set by a field or fields. Add a \"-\" to the value sort in descending order. Multiple values are given priority in the order in which they are passed. Values: name, modified",
+          "required": false
+        },
+        {
+          "name": "limit",
+          "type": "Number",
+          "info": "Limit the result set to the specified number of resources.",
+          "required": false
+        },
+        {
+          "name": "offset",
+          "type": "Number",
+          "info": "Skip the specified number of resources in the result set.",
+          "required": false
+        }
+      ],
+      "callbacks": [
+        {
+          "name": "error",
+          "info": "Error"
+        },
+        {
+          "name": "success",
+          "info": "Success"
+        }
+      ]
+    },
+    {
+      "name": "getSingleCharacter",
+      "description": "This method fetches a single character resource. It is the canonical URI for any character resource provided by the API.",
+      "args": [
+        {
+          "name": "publicKey",
+          "type": "credentials",
+          "info": "Public api key obtained from Marvel",
+          "required": true
+        },
+        {
+          "name": "privateKey",
+          "type": "credentials",
+          "info": "Private api key obtained from Marvel",
+          "required": true
+        },
+        {
+          "name": "characterId",
+          "type": "Number",
+          "info": "A single character id.",
+          "required": true
+        }
+      ],
+      "callbacks": [
+        {
+          "name": "error",
+          "info": "Error"
+        },
+        {
+          "name": "success",
+          "info": "Success"
+        }
+      ]
+    },
+    {
+      "name": "getComicsByCharacter",
+      "description": "Fetches lists of comics containing a specific character, with optional filters.",
+      "args": [
+        {
+          "name": "publicKey",
+          "type": "credentials",
+          "info": "Public api key obtained from Marvel",
+          "required": true
+        },
+        {
+          "name": "privateKey",
+          "type": "credentials",
+          "info": "Private api key obtained from Marvel",
+          "required": true
+        },
+        {
+          "name": "characterId",
+          "type": "Number",
+          "info": "A single character id.",
+          "required": true
+        },
+        {
+          "name": "format",
+          "type": "String",
+          "info": "Filter by the issue format (e.g. comic, digital comic, hardcover, magazine, trade paperback, digest, graphic novel, infinite comic).",
+          "required": false
+        },
+        {
+          "name": "formatType",
+          "type": "String",
+          "info": "Filter by the issue format type (comic or collection).",
+          "required": false
+        },
+        {
+          "name": "noVariants",
+          "type": "Boolean",
+          "info": "Exclude variant comics from the result set.",
+          "required": false
+        },
+        {
+          "name": "dateDescriptor",
+          "type": "String",
+          "info": "Return comics within a predefined date range. Values: lastWeek, thisWeek, nextWeek, thisMonth",
+          "required": false
+        },
+        {
+          "name": "dateRange",
+          "type": "String",
+          "info": "Return comics within a predefined date range. Dates must be specified as date1,date2 (e.g. 2013-01-01,2013-01-02). Dates are preferably formatted as YYYY-MM-DD but may be sent as any common date format.",
+          "required": false
+        },
+        {
+          "name": "title",
+          "type": "String",
+          "info": "Return only issues in series whose title matches the input.",
+          "required": false
+        },
+        {
+          "name": "titleStartsWith",
+          "type": "String",
+          "info": "Return only issues in series whose title starts with the input.",
+          "required": false
+        },
+        {
+          "name": "startYear",
+          "type": "String",
+          "info": "Return only issues in series whose start year matches the input.",
+          "required": false
+        },
+        {
+          "name": "issueNumber",
+          "type": "String",
+          "info": "Return only issues in series whose issue number matches the input.",
+          "required": false
+        },
+        {
+          "name": "diamondCode",
+          "type": "String",
+          "info": "Filter by diamond code.",
+          "required": false
+        },
+        {
+          "name": "digitalId",
+          "type": "Number",
+          "info": "Filter by digital comic id.",
+          "required": false
+        },
+        {
+          "name": "upc",
+          "type": "String",
+          "info": "Filter by UPC.",
+          "required": false
+        },
+        {
+          "name": "isbn",
+          "type": "String",
+          "info": "Filter by ISBN.",
+          "required": false
+        },
+        {
+          "name": "ean",
+          "type": "String",
+          "info": "Filter by EAN.",
+          "required": false
+        },
+        {
+          "name": "issn",
+          "type": "String",
+          "info": "Filter by ISSN.",
+          "required": false
+        },
+        {
+          "name": "hasDigitalIssue",
+          "type": "Boolean",
+          "info": "Include only results which are available digitally.",
+          "required": false
+        },
+        {
+          "name": "modifiedSince",
+          "type": "String",
+          "info": "Return only comics which have been modified since the specified date.",
+          "required": false
+        },
+        {
+          "name": "creators",
+          "type": "String",
+          "info": "Return only comics which feature work by the specified creators (accepts a comma-separated list of ids).",
+          "required": false
+        },
+        {
+          "name": "series",
+          "type": "String",
+          "info": "Return only comics which are part of the specified series (accepts a comma-separated list of ids).",
+          "required": false
+        },
+        {
+          "name": "events",
+          "type": "String",
+          "info": "Return only comics which take place in the specified events (accepts a comma-separated list of ids).",
+          "required": false
+        },
+        {
+          "name": "stories",
+          "type": "String",
+          "info": "Return only comics which contain the specified stories (accepts a comma-separated list of ids).",
+          "required": false
+        },
+        {
+          "name": "sharedAppearances",
+          "type": "String",
+          "info": "Return only comics in which the specified characters appear together (for example in which BOTH Spider-Man and Wolverine appear).",
+          "required": false
+        },
+        {
+          "name": "collaborators",
+          "type": "String",
+          "info": "Return only comics in which the specified creators worked together (for example in which BOTH Stan Lee and Jack Kirby did work).",
+          "required": false
+        },
+        {
+          "name": "orderBy",
+          "type": "String",
+          "info": "Order the result set by a field or fields. Add a \"-\" to the value sort in descending order. Multiple values are given priority in the order in which they are passed. Values: focDate, onsaleDate, title, issueNumber, modified",
+          "required": false
+        },
+        {
+          "name": "limit",
+          "type": "Number",
+          "info": "Limit the result set to the specified number of resources.",
+          "required": false
+        },
+        {
+          "name": "offset",
+          "type": "Number",
+          "info": "Skip the specified number of resources in the result set.",
+          "required": false
+        }
+      ],
+      "callbacks": [
+        {
+          "name": "error",
+          "info": "Error"
+        },
+        {
+          "name": "success",
+          "info": "Success"
+        }
+      ]
+    },
+    {
+      "name": "getEventsByCharacter",
+      "description": "Fetches lists of events containing a specific character, with optional filters.",
+      "args": [
+        {
+          "name": "publicKey",
+          "type": "credentials",
+          "info": "Public api key obtained from Marvel",
+          "required": true
+        },
+        {
+          "name": "privateKey",
+          "type": "credentials",
+          "info": "Private api key obtained from Marvel",
+          "required": true
+        },
+        {
+          "name": "characterId",
+          "type": "Number",
+          "info": "A single character id.",
+          "required": true
+        },
+        {
+          "name": "name",
+          "type": "String",
+          "info": "Filter the event list by name.",
+          "required": false
+        },
+        {
+          "name": "nameStartsWith",
+          "type": "String",
+          "info": "Return events with names that begin with the specified string (e.g. Sp).",
+          "required": false
+        },
+        {
+          "name": "modifiedSince",
+          "type": "String",
+          "info": "Return only events which have been modified since the specified date.",
+          "required": false
+        },
+        {
+          "name": "creators",
+          "type": "String",
+          "info": "Return only events which feature work by the specified creators (accepts a comma-separated list of ids).",
+          "required": false
+        },
+        {
+          "name": "series",
+          "type": "String",
+          "info": "Return only events which are part of the specified series (accepts a comma-separated list of ids).",
+          "required": false
+        },
+        {
+          "name": "comics",
+          "type": "String",
+          "info": "Return only events which take place in the specified comics (accepts a comma-separated list of ids).",
+          "required": false
+        },
+        {
+          "name": "stories",
+          "type": "String",
+          "info": "Return only events which contain the specified stories (accepts a comma-separated list of ids).",
+          "required": false
+        },
+        {
+          "name": "orderBy",
+          "type": "String",
+          "info": "Order the result set by a field or fields. Add a \"-\" to the value sort in descending order. Multiple values are given priority in the order in which they are passed. Values: name, startDate modified",
+          "required": false
+        },
+        {
+          "name": "limit",
+          "type": "Number",
+          "info": "Limit the result set to the specified number of resources.",
+          "required": false
+        },
+        {
+          "name": "offset",
+          "type": "Number",
+          "info": "Skip the specified number of resources in the result set.",
+          "required": false
+        }
+      ],
+      "callbacks": [
+        {
+          "name": "error",
+          "info": "Error"
+        },
+        {
+          "name": "success",
+          "info": "Success"
+        }
+      ]
+    },
+    {
+      "name": "getSeriesByCharacter",
+      "description": "Fetches lists of series containing a specific character, with optional filters.",
+      "args": [
+        {
+          "name": "publicKey",
+          "type": "credentials",
+          "info": "Public api key obtained from Marvel",
+          "required": true
+        },
+        {
+          "name": "privateKey",
+          "type": "credentials",
+          "info": "Private api key obtained from Marvel",
+          "required": true
+        },
+        {
+          "name": "characterId",
+          "type": "Number",
+          "info": "A single character id.",
+          "required": true
+        },
+        {
+          "name": "title",
+          "type": "String",
+          "info": "Return only issues in series whose title matches the input.",
+          "required": false
+        },
+        {
+          "name": "titleStartsWith",
+          "type": "String",
+          "info": "Return only issues in series whose title starts with the input.",
+          "required": false
+        },
+        {
+          "name": "startYear",
+          "type": "String",
+          "info": "Return only issues in series whose start year matches the input.",
+          "required": false
+        },
+        {
+          "name": "modifiedSince",
+          "type": "String",
+          "info": "Return only series which have been modified since the specified date.",
+          "required": false
+        },
+        {
+          "name": "creators",
+          "type": "String",
+          "info": "Return only series which feature work by the specified creators (accepts a comma-separated list of ids).",
+          "required": false
+        },
+        {
+          "name": "comics",
+          "type": "String",
+          "info": "Return only series which contain the specified comics (accepts a comma-separated list of ids).",
+          "required": false
+        },
+        {
+          "name": "events",
+          "type": "String",
+          "info": "Return only series which have comics that take place during the specified events (accepts a comma-separated list of ids).",
+          "required": false
+        },
+        {
+          "name": "stories",
+          "type": "String",
+          "info": "Return only series which contain the specified stories (accepts a comma-separated list of ids).",
+          "required": false
+        },
+        {
+          "name": "seriesType",
+          "type": "String",
+          "info": "Filter the series by publication frequency type. Values: collection, one shot, limited, ongoing",
+          "required": false
+        },
+        {
+          "name": "contains",
+          "type": "String",
+          "info": "Return only series containing one or more comics with the specified format. Values: comic, digital comic, hardcover, magazine, trade paperback, digest, graphic novel, infinite comic).",
+          "required": false
+        },
+        {
+          "name": "orderBy",
+          "type": "String",
+          "info": "Order the result set by a field or fields. Add a \"-\" to the value sort in descending order. Multiple values are given priority in the order in which they are passed. Values: title, startYear, modified",
+          "required": false
+        },
+        {
+          "name": "limit",
+          "type": "Number",
+          "info": "Limit the result set to the specified number of resources.",
+          "required": false
+        },
+        {
+          "name": "offset",
+          "type": "Number",
+          "info": "Skip the specified number of resources in the result set.",
+          "required": false
+        }
+      ],
+      "callbacks": [
+        {
+          "name": "error",
+          "info": "Error"
+        },
+        {
+          "name": "success",
+          "info": "Success"
+        }
+      ]
+    },
+    {
+      "name": "getStoriesByCharacter",
+      "description": "Fetches lists of stories containing a specific character, with optional filters.",
+      "args": [
+        {
+          "name": "publicKey",
+          "type": "credentials",
+          "info": "Public api key obtained from Marvel",
+          "required": true
+        },
+        {
+          "name": "privateKey",
+          "type": "credentials",
+          "info": "Private api key obtained from Marvel",
+          "required": true
+        },
+        {
+          "name": "characterId",
+          "type": "Number",
+          "info": "A single character id.",
+          "required": true
+        },
+        {
+          "name": "modifiedSince",
+          "type": "String",
+          "info": "Return only stories which have been modified since the specified date.",
+          "required": false
+        },
+        {
+          "name": "creators",
+          "type": "String",
+          "info": "Return only stories which feature work by the specified creators (accepts a comma-separated list of ids).",
+          "required": false
+        },
+        {
+          "name": "comics",
+          "type": "String",
+          "info": "Return only stories contained in the specified (accepts a comma-separated list of ids).",
+          "required": false
+        },
+        {
+          "name": "events",
+          "type": "String",
+          "info": "Return only stories which take place during the specified events (accepts a comma-separated list of ids).",
+          "required": false
+        },
+        {
+          "name": "series",
+          "type": "String",
+          "info": "Return only stories contained the specified series (accepts a comma-separated list of ids).",
+          "required": false
+        },
+        {
+          "name": "orderBy",
+          "type": "String",
+          "info": "Order the result set by a field or fields. Add a \"-\" to the value sort in descending order. Multiple values are given priority in the order in which they are passed. Values: id, modified",
+          "required": false
+        },
+        {
+          "name": "limit",
+          "type": "Number",
+          "info": "Limit the result set to the specified number of resources.",
+          "required": false
+        },
+        {
+          "name": "offset",
+          "type": "Number",
+          "info": "Skip the specified number of resources in the result set.",
+          "required": false
+        }
+      ],
+      "callbacks": [
+        {
+          "name": "error",
+          "info": "Error"
+        },
+        {
+          "name": "success",
+          "info": "Success"
+        }
+      ]
+    },
+    {
+      "name": "getComics",
+      "description": "Fetches lists of comics with optional filters.",
+      "args": [
+        {
+          "name": "publicKey",
+          "type": "credentials",
+          "info": "Public api key obtained from Marvel",
+          "required": true
+        },
+        {
+          "name": "privateKey",
+          "type": "credentials",
+          "info": "Private api key obtained from Marvel",
+          "required": true
+        },
+        {
+          "name": "format",
+          "type": "String",
+          "info": "Filter by the issue format (e.g. comic, digital comic, hardcover, magazine, trade paperback, digest, graphic novel, infinite comic).",
+          "required": false
+        },
+        {
+          "name": "formatType",
+          "type": "String",
+          "info": "Filter by the issue format type (comic or collection).",
+          "required": false
+        },
+        {
+          "name": "noVariants",
+          "type": "Boolean",
+          "info": "Exclude variant comics from the result set.",
+          "required": false
+        },
+        {
+          "name": "dateDescriptor",
+          "type": "String",
+          "info": "Return comics within a predefined date range. Values: lastWeek, thisWeek, nextWeek, thisMonth",
+          "required": false
+        },
+        {
+          "name": "dateRange",
+          "type": "String",
+          "info": "Return comics within a predefined date range. Dates must be specified as date1,date2 (e.g. 2013-01-01,2013-01-02). Dates are preferably formatted as YYYY-MM-DD but may be sent as any common date format.",
+          "required": false
+        },
+        {
+          "name": "title",
+          "type": "String",
+          "info": "Return only issues in series whose title matches the input.",
+          "required": false
+        },
+        {
+          "name": "titleStartsWith",
+          "type": "String",
+          "info": "Return only issues in series whose title starts with the input.",
+          "required": false
+        },
+        {
+          "name": "startYear",
+          "type": "String",
+          "info": "Return only issues in series whose start year matches the input.",
+          "required": false
+        },
+        {
+          "name": "issueNumber",
+          "type": "String",
+          "info": "Return only issues in series whose issue number matches the input.",
+          "required": false
+        },
+        {
+          "name": "diamondCode",
+          "type": "String",
+          "info": "Filter by diamond code.",
+          "required": false
+        },
+        {
+          "name": "digitalId",
+          "type": "Number",
+          "info": "Filter by digital comic id.",
+          "required": false
+        },
+        {
+          "name": "upc",
+          "type": "String",
+          "info": "Filter by UPC.",
+          "required": false
+        },
+        {
+          "name": "isbn",
+          "type": "String",
+          "info": "Filter by ISBN.",
+          "required": false
+        },
+        {
+          "name": "ean",
+          "type": "String",
+          "info": "Filter by EAN.",
+          "required": false
+        },
+        {
+          "name": "issn",
+          "type": "String",
+          "info": "Filter by ISSN.",
+          "required": false
+        },
+        {
+          "name": "hasDigitalIssue",
+          "type": "Boolean",
+          "info": "Include only results which are available digitally.",
+          "required": false
+        },
+        {
+          "name": "modifiedSince",
+          "type": "String",
+          "info": "Return only comics which have been modified since the specified date.",
+          "required": false
+        },
+        {
+          "name": "creators",
+          "type": "String",
+          "info": "Return only comics which feature work by the specified creators (accepts a comma-separated list of ids).",
+          "required": false
+        },
+        {
+          "name": "characters",
+          "type": "String",
+          "info": "Return only comics which feature the specified characters (accepts a comma-separated list of ids).",
+          "required": false
+        },
+        {
+          "name": "series",
+          "type": "String",
+          "info": "Return only comics which are part of the specified series (accepts a comma-separated list of ids).",
+          "required": false
+        },
+        {
+          "name": "events",
+          "type": "String",
+          "info": "Return only comics which take place in the specified events (accepts a comma-separated list of ids).",
+          "required": false
+        },
+        {
+          "name": "stories",
+          "type": "String",
+          "info": "Return only comics which contain the specified stories (accepts a comma-separated list of ids).",
+          "required": false
+        },
+        {
+          "name": "sharedAppearances",
+          "type": "String",
+          "info": "Return only comics in which the specified characters appear together (for example in which BOTH Spider-Man and Wolverine appear).",
+          "required": false
+        },
+        {
+          "name": "collaborators",
+          "type": "String",
+          "info": "Return only comics in which the specified creators worked together (for example in which BOTH Stan Lee and Jack Kirby did work).",
+          "required": false
+        },
+        {
+          "name": "orderBy",
+          "type": "String",
+          "info": "Order the result set by a field or fields. Add a \"-\" to the value sort in descending order. Multiple values are given priority in the order in which they are passed. Values: focDate, onsaleDate, title, issueNumber, modified",
+          "required": false
+        },
+        {
+          "name": "limit",
+          "type": "Number",
+          "info": "Limit the result set to the specified number of resources.",
+          "required": false
+        },
+        {
+          "name": "offset",
+          "type": "Number",
+          "info": "Skip the specified number of resources in the result set.",
+          "required": false
+        }
+      ],
+      "callbacks": [
+        {
+          "name": "error",
+          "info": "Error"
+        },
+        {
+          "name": "success",
+          "info": "Success"
+        }
+      ]
+    },
+    {
+      "name": "getSingleComic",
+      "description": "This method fetches a single comic resource. It is the canonical URI for any comic resource provided by the API.",
+      "args": [
+        {
+          "name": "publicKey",
+          "type": "credentials",
+          "info": "Public api key obtained from Marvel",
+          "required": true
+        },
+        {
+          "name": "privateKey",
+          "type": "credentials",
+          "info": "Private api key obtained from Marvel",
+          "required": true
+        },
+        {
+          "name": "comicId",
+          "type": "Number",
+          "info": "A single comic id.",
+          "required": true
+        }
+      ],
+      "callbacks": [
+        {
+          "name": "error",
+          "info": "Error"
+        },
+        {
+          "name": "success",
+          "info": "Success"
+        }
+      ]
+    },
+    {
+      "name": "getCharactersByComic",
+      "description": "Fetches lists of characters which appear in a specific comic with optional filters.",
+      "args": [
+        {
+          "name": "publicKey",
+          "type": "credentials",
+          "info": "Public api key obtained from Marvel",
+          "required": true
+        },
+        {
+          "name": "privateKey",
+          "type": "credentials",
+          "info": "Private api key obtained from Marvel",
+          "required": true
+        },
+        {
+          "name": "comicId",
+          "type": "Number",
+          "info": "A single comic id.",
+          "required": true
+        },
+        {
+          "name": "name",
+          "type": "String",
+          "info": "Return only characters matching the specified full character name (e.g. Spider-Man).",
+          "required": false
+        },
+        {
+          "name": "nameStartsWith",
+          "type": "String",
+          "info": "Return characters with names that begin with the specified string (e.g. Sp).",
+          "required": false
+        },
+        {
+          "name": "modifiedSince",
+          "type": "String",
+          "info": "Return only characters which have been modified since the specified date.",
+          "required": false
+        },
+        {
+          "name": "series",
+          "type": "String",
+          "info": "Return only characters which appear the specified series (accepts a comma-separated list of ids).",
+          "required": false
+        },
+        {
+          "name": "events",
+          "type": "String",
+          "info": "Return only characters which appear comics that took place in the specified events (accepts a comma-separated list of ids).",
+          "required": false
+        },
+        {
+          "name": "stories",
+          "type": "String",
+          "info": "Return only characters which appear the specified stories (accepts a comma-separated list of ids).",
+          "required": false
+        },
+        {
+          "name": "orderBy",
+          "type": "String",
+          "info": "Order the result set by a field or fields. Add a \"-\" to the value sort in descending order. Multiple values are given priority in the order in which they are passed. Values: name, modified",
+          "required": false
+        },
+        {
+          "name": "limit",
+          "type": "Number",
+          "info": "Limit the result set to the specified number of resources.",
+          "required": false
+        },
+        {
+          "name": "offset",
+          "type": "Number",
+          "info": "Skip the specified number of resources in the result set.",
+          "required": false
+        }
+      ],
+      "callbacks": [
+        {
+          "name": "error",
+          "info": "Error"
+        },
+        {
+          "name": "success",
+          "info": "Success"
+        }
+      ]
+    },
+    {
+      "name": "getCreatorsByComic",
+      "description": "Fetches lists of comic creators whose work appears in a specific comic, with optional filters.",
+      "args": [
+        {
+          "name": "publicKey",
+          "type": "credentials",
+          "info": "Public api key obtained from Marvel",
+          "required": true
+        },
+        {
+          "name": "privateKey",
+          "type": "credentials",
+          "info": "Private api key obtained from Marvel",
+          "required": true
+        },
+        {
+          "name": "comicId",
+          "type": "Number",
+          "info": "A single comic id.",
+          "required": true
+        },
+        {
+          "name": "firstName",
+          "type": "String",
+          "info": "Filter by creator first name (e.g. brian).",
+          "required": false
+        },
+        {
+          "name": "middleName",
+          "type": "String",
+          "info": "Filter by creator middle name (e.g. Michael).",
+          "required": false
+        },
+        {
+          "name": "lastName",
+          "type": "String",
+          "info": "Filter by creator last name (e.g. Bendis).",
+          "required": false
+        },
+        {
+          "name": "suffix",
+          "type": "String",
+          "info": "Filter by suffix or honorific (e.g. Jr., Sr.).",
+          "required": false
+        },
+        {
+          "name": "nameStartsWith",
+          "type": "String",
+          "info": "Filter by creator names that match critera (e.g. B, St L).",
+          "required": false
+        },
+        {
+          "name": "firstNameStartsWith",
+          "type": "String",
+          "info": "Filter by creator first names that match critera (e.g. B, St L).",
+          "required": false
+        },
+        {
+          "name": "middleNameStartsWith",
+          "type": "String",
+          "info": "Filter by creator middle names that match critera (e.g. Mi).",
+          "required": false
+        },
+        {
+          "name": "lastNameStartsWith",
+          "type": "String",
+          "info": "Filter by creator last names that match critera (e.g. Ben).",
+          "required": false
+        },
+        {
+          "name": "modifiedSince",
+          "type": "String",
+          "info": "Return only creators which have been modified since the specified date.",
+          "required": false
+        },
+        {
+          "name": "series",
+          "type": "String",
+          "info": "Return only creators who worked on in the specified series (accepts a comma-separated list of ids).",
+          "required": false
+        },
+        {
+          "name": "comics",
+          "type": "String",
+          "info": "Return only creators who worked on in the specified comics (accepts a comma-separated list of ids).",
+          "required": false
+        },
+        {
+          "name": "stories",
+          "type": "String",
+          "info": "Return only creators who worked on in the specified stories (accepts a comma-separated list of ids).",
+          "required": false
+        },
+        {
+          "name": "orderBy",
+          "type": "String",
+          "info": "Order the result set by a field or fields. Add a \"-\" to the value sort in descending order. Multiple values are given priority in the order in which they are passed. Values: lastName, firstName, middleName, suffix, modified",
+          "required": false
+        },
+        {
+          "name": "limit",
+          "type": "Number",
+          "info": "Limit the result set to the specified number of resources.",
+          "required": false
+        },
+        {
+          "name": "offset",
+          "type": "Number",
+          "info": "Skip the specified number of resources in the result set.",
+          "required": false
+        }
+      ],
+      "callbacks": [
+        {
+          "name": "error",
+          "info": "Error"
+        },
+        {
+          "name": "success",
+          "info": "Success"
+        }
+      ]
+    },
+    {
+      "name": "getEventsByComic",
+      "description": "Fetches lists of events in which a specific comic appears, with optional filters.",
+      "args": [
+        {
+          "name": "publicKey",
+          "type": "credentials",
+          "info": "Public api key obtained from Marvel",
+          "required": true
+        },
+        {
+          "name": "privateKey",
+          "type": "credentials",
+          "info": "Private api key obtained from Marvel",
+          "required": true
+        },
+        {
+          "name": "comicId",
+          "type": "Number",
+          "info": "A single comic id.",
+          "required": true
+        },
+        {
+          "name": "name",
+          "type": "String",
+          "info": "Filter the event list by name.",
+          "required": false
+        },
+        {
+          "name": "nameStartsWith",
+          "type": "String",
+          "info": "Return events with names that begin with the specified string (e.g. Sp).",
+          "required": false
+        },
+        {
+          "name": "modifiedSince",
+          "type": "String",
+          "info": "Return only events which have been modified since the specified date.",
+          "required": false
+        },
+        {
+          "name": "creators",
+          "type": "String",
+          "info": "Return only events which feature work by the specified creators (accepts a comma-separated list of ids).",
+          "required": false
+        },
+        {
+          "name": "series",
+          "type": "String",
+          "info": "Return only events which are part of the specified series (accepts a comma-separated list of ids).",
+          "required": false
+        },
+        {
+          "name": "characters",
+          "type": "String",
+          "info": "Return only events which feature the specified characters (accepts a comma-separated list of ids).",
+          "required": false
+        },
+        {
+          "name": "stories",
+          "type": "String",
+          "info": "Return only events which contain the specified stories (accepts a comma-separated list of ids).",
+          "required": false
+        },
+        {
+          "name": "orderBy",
+          "type": "String",
+          "info": "Order the result set by a field or fields. Add a \"-\" to the value sort in descending order. Multiple values are given priority in the order in which they are passed. Values: name, startDate, modified",
+          "required": false
+        },
+        {
+          "name": "limit",
+          "type": "Number",
+          "info": "Limit the result set to the specified number of resources.",
+          "required": false
+        },
+        {
+          "name": "offset",
+          "type": "Number",
+          "info": "Skip the specified number of resources in the result set.",
+          "required": false
+        }
+      ],
+      "callbacks": [
+        {
+          "name": "error",
+          "info": "Error"
+        },
+        {
+          "name": "success",
+          "info": "Success"
+        }
+      ]
+    },
+    {
+      "name": "getStoriesByComic",
+      "description": "Fetches lists of comic stories in a specific comic issue, with optional filters.",
+      "args": [
+        {
+          "name": "publicKey",
+          "type": "credentials",
+          "info": "Public api key obtained from Marvel",
+          "required": true
+        },
+        {
+          "name": "privateKey",
+          "type": "credentials",
+          "info": "Private api key obtained from Marvel",
+          "required": true
+        },
+        {
+          "name": "comicId",
+          "type": "Number",
+          "info": "A single comic id.",
+          "required": true
+        },
+        {
+          "name": "modifiedSince",
+          "type": "String",
+          "info": "Return only stories which have been modified since the specified date.",
+          "required": false
+        },
+        {
+          "name": "creators",
+          "type": "String",
+          "info": "Return only stories which feature work by the specified creators (accepts a comma-separated list of ids).",
+          "required": false
+        },
+        {
+          "name": "characters",
+          "type": "String",
+          "info": "Return only stories which feature the specified characters (accepts a comma-separated list of ids).",
+          "required": false
+        },
+        {
+          "name": "events",
+          "type": "String",
+          "info": "Return only stories which take place during the specified events (accepts a comma-separated list of ids).",
+          "required": false
+        },
+        {
+          "name": "series",
+          "type": "String",
+          "info": "Return only stories contained the specified series (accepts a comma-separated list of ids).",
+          "required": false
+        },
+        {
+          "name": "orderBy",
+          "type": "String",
+          "info": "Order the result set by a field or fields. Add a \"-\" to the value sort in descending order. Multiple values are given priority in the order in which they are passed. Values: id, modified",
+          "required": false
+        },
+        {
+          "name": "limit",
+          "type": "Number",
+          "info": "Limit the result set to the specified number of resources.",
+          "required": false
+        },
+        {
+          "name": "offset",
+          "type": "Number",
+          "info": "Skip the specified number of resources in the result set.",
+          "required": false
+        }
+      ],
+      "callbacks": [
+        {
+          "name": "error",
+          "info": "Error"
+        },
+        {
+          "name": "success",
+          "info": "Success"
+        }
+      ]
+    },
+    {
+      "name": "getCreators",
+      "description": "Fetches lists of comic creators with optional filters.",
+      "args": [
+        {
+          "name": "publicKey",
+          "type": "credentials",
+          "info": "Public api key obtained from Marvel",
+          "required": true
+        },
+        {
+          "name": "privateKey",
+          "type": "credentials",
+          "info": "Private api key obtained from Marvel",
+          "required": true
+        },
+        {
+          "name": "firstName",
+          "type": "String",
+          "info": "Filter by creator first name (e.g. brian).",
+          "required": false
+        },
+        {
+          "name": "middleName",
+          "type": "String",
+          "info": "Filter by creator middle name (e.g. Michael).",
+          "required": false
+        },
+        {
+          "name": "lastName",
+          "type": "String",
+          "info": "Filter by creator last name (e.g. Bendis).",
+          "required": false
+        },
+        {
+          "name": "suffix",
+          "type": "String",
+          "info": "Filter by suffix or honorific (e.g. Jr., Sr.).",
+          "required": false
+        },
+        {
+          "name": "nameStartsWith",
+          "type": "String",
+          "info": "Filter by creator names that match critera (e.g. B, St L).",
+          "required": false
+        },
+        {
+          "name": "firstNameStartsWith",
+          "type": "String",
+          "info": "Filter by creator first names that match critera (e.g. B, St L).",
+          "required": false
+        },
+        {
+          "name": "middleNameStartsWith",
+          "type": "String",
+          "info": "Filter by creator middle names that match critera (e.g. Mi).",
+          "required": false
+        },
+        {
+          "name": "lastNameStartsWith",
+          "type": "String",
+          "info": "Filter by creator last names that match critera (e.g. Ben).",
+          "required": false
+        },
+        {
+          "name": "modifiedSince",
+          "type": "String",
+          "info": "Return only creators which have been modified since the specified date.",
+          "required": false
+        },
+        {
+          "name": "series",
+          "type": "String",
+          "info": "Return only creators who worked on in the specified series (accepts a comma-separated list of ids).",
+          "required": false
+        },
+        {
+          "name": "events",
+          "type": "String",
+          "info": "Return only creators who worked on comics that took place in the specified events (accepts a comma-separated list of ids).",
+          "required": false
+        },
+        {
+          "name": "comics",
+          "type": "String",
+          "info": "Return only creators who worked on in the specified comics (accepts a comma-separated list of ids).",
+          "required": false
+        },
+        {
+          "name": "stories",
+          "type": "String",
+          "info": "Return only creators who worked on in the specified stories (accepts a comma-separated list of ids).",
+          "required": false
+        },
+        {
+          "name": "orderBy",
+          "type": "String",
+          "info": "Order the result set by a field or fields. Add a \"-\" to the value sort in descending order. Multiple values are given priority in the order in which they are passed. Values: lastName, firstName, middleName, suffix, modified",
+          "required": false
+        },
+        {
+          "name": "limit",
+          "type": "Number",
+          "info": "Limit the result set to the specified number of resources.",
+          "required": false
+        },
+        {
+          "name": "offset",
+          "type": "Number",
+          "info": "Skip the specified number of resources in the result set.",
+          "required": false
+        }
+      ],
+      "callbacks": [
+        {
+          "name": "error",
+          "info": "Error"
+        },
+        {
+          "name": "success",
+          "info": "Success"
+        }
+      ]
+    },
+    {
+      "name": "getSingleCreator",
+      "description": "This method fetches a single creator resource. It is the canonical URI for any creator resource provided by the API.",
+      "args": [
+        {
+          "name": "publicKey",
+          "type": "credentials",
+          "info": "Public api key obtained from Marvel",
+          "required": true
+        },
+        {
+          "name": "privateKey",
+          "type": "credentials",
+          "info": "Private api key obtained from Marvel",
+          "required": true
+        },
+        {
+          "name": "creatorId",
+          "type": "Number",
+          "info": "ID of the creator",
+          "required": true
+        }
+      ],
+      "callbacks": [
+        {
+          "name": "error",
+          "info": "Error"
+        },
+        {
+          "name": "success",
+          "info": "Success"
+        }
+      ]
+    },
+    {
+      "name": "getComicsByCreator",
+      "description": "Fetches lists of comics in which the work of a specific creator appears, with optional filters.",
+      "args": [
+        {
+          "name": "publicKey",
+          "type": "credentials",
+          "info": "Public api key obtained from Marvel",
+          "required": true
+        },
+        {
+          "name": "privateKey",
+          "type": "credentials",
+          "info": "Private api key obtained from Marvel",
+          "required": true
+        },
+        {
+          "name": "creatorId",
+          "type": "Number",
+          "info": "Creator id.",
+          "required": true
+        },
+        {
+          "name": "format",
+          "type": "String",
+          "info": "Filter by the issue format (e.g. comic, digital comic, hardcover, magazine, trade paperback, digest, graphic novel, infinite comic).",
+          "required": false
+        },
+        {
+          "name": "formatType",
+          "type": "String",
+          "info": "Filter by the issue format type (comic or collection).",
+          "required": false
+        },
+        {
+          "name": "noVariants",
+          "type": "Boolean",
+          "info": "Exclude variant comics from the result set.",
+          "required": false
+        },
+        {
+          "name": "dateDescriptor",
+          "type": "String",
+          "info": "Return comics within a predefined date range. Values: lastWeek, thisWeek, nextWeek, thisMonth",
+          "required": false
+        },
+        {
+          "name": "dateRange",
+          "type": "String",
+          "info": "Return comics within a predefined date range. Dates must be specified as date1,date2 (e.g. 2013-01-01,2013-01-02). Dates are preferably formatted as YYYY-MM-DD but may be sent as any common date format.",
+          "required": false
+        },
+        {
+          "name": "title",
+          "type": "String",
+          "info": "Return only issues in series whose title matches the input.",
+          "required": false
+        },
+        {
+          "name": "titleStartsWith",
+          "type": "String",
+          "info": "Return only issues in series whose title starts with the input.",
+          "required": false
+        },
+        {
+          "name": "startYear",
+          "type": "String",
+          "info": "Return only issues in series whose start year matches the input.",
+          "required": false
+        },
+        {
+          "name": "issueNumber",
+          "type": "String",
+          "info": "Return only issues in series whose issue number matches the input.",
+          "required": false
+        },
+        {
+          "name": "diamondCode",
+          "type": "String",
+          "info": "Filter by diamond code.",
+          "required": false
+        },
+        {
+          "name": "digitalId",
+          "type": "Number",
+          "info": "Filter by digital comic id.",
+          "required": false
+        },
+        {
+          "name": "upc",
+          "type": "String",
+          "info": "Filter by UPC.",
+          "required": false
+        },
+        {
+          "name": "isbn",
+          "type": "String",
+          "info": "Filter by ISBN.",
+          "required": false
+        },
+        {
+          "name": "ean",
+          "type": "String",
+          "info": "Filter by EAN.",
+          "required": false
+        },
+        {
+          "name": "issn",
+          "type": "String",
+          "info": "Filter by ISSN.",
+          "required": false
+        },
+        {
+          "name": "hasDigitalIssue",
+          "type": "Boolean",
+          "info": "Include only results which are available digitally.",
+          "required": false
+        },
+        {
+          "name": "modifiedSince",
+          "type": "String",
+          "info": "Return only comics which have been modified since the specified date.",
+          "required": false
+        },
+        {
+          "name": "characters",
+          "type": "String",
+          "info": "Return only comics which feature the specified characters (accepts a comma-separated list of ids).",
+          "required": false
+        },
+        {
+          "name": "series",
+          "type": "String",
+          "info": "Return only comics which are part of the specified series (accepts a comma-separated list of ids).",
+          "required": false
+        },
+        {
+          "name": "events",
+          "type": "String",
+          "info": "Return only comics which take place in the specified events (accepts a comma-separated list of ids).",
+          "required": false
+        },
+        {
+          "name": "stories",
+          "type": "String",
+          "info": "Return only comics which contain the specified stories (accepts a comma-separated list of ids).",
+          "required": false
+        },
+        {
+          "name": "sharedAppearances",
+          "type": "String",
+          "info": "Return only comics in which the specified characters appear together (for example in which BOTH Spider-Man and Wolverine appear).",
+          "required": false
+        },
+        {
+          "name": "collaborators",
+          "type": "String",
+          "info": "Return only comics in which the specified creators worked together (for example in which BOTH Stan Lee and Jack Kirby did work).",
+          "required": false
+        },
+        {
+          "name": "orderBy",
+          "type": "String",
+          "info": "Order the result set by a field or fields. Add a \"-\" to the value sort in descending order. Multiple values are given priority in the order in which they are passed. Values: focDate, onsaleDate, title, issueNumber, modified",
+          "required": false
+        },
+        {
+          "name": "limit",
+          "type": "Number",
+          "info": "Limit the result set to the specified number of resources.",
+          "required": false
+        },
+        {
+          "name": "offset",
+          "type": "Number",
+          "info": "Skip the specified number of resources in the result set.",
+          "required": false
+        }
+      ],
+      "callbacks": [
+        {
+          "name": "error",
+          "info": "Error"
+        },
+        {
+          "name": "success",
+          "info": "Success"
+        }
+      ]
+    },
+    {
+      "name": "getEventsByCreator",
+      "description": "Fetches lists of events featuring the work of a specific creator with optional filters.",
+      "args": [
+        {
+          "name": "publicKey",
+          "type": "credentials",
+          "info": "Public api key obtained from Marvel",
+          "required": true
+        },
+        {
+          "name": "privateKey",
+          "type": "credentials",
+          "info": "Private api key obtained from Marvel",
+          "required": true
+        },
+        {
+          "name": "creatorId",
+          "type": "Number",
+          "info": "Creator id.",
+          "required": true
+        },
+        {
+          "name": "name",
+          "type": "String",
+          "info": "Filter the event list by name.",
+          "required": false
+        },
+        {
+          "name": "nameStartsWith",
+          "type": "String",
+          "info": "Return events with names that begin with the specified string (e.g. Sp).",
+          "required": false
+        },
+        {
+          "name": "modifiedSince",
+          "type": "String",
+          "info": "Return only events which have been modified since the specified date.",
+          "required": false
+        },
+        {
+          "name": "comics",
+          "type": "String",
+          "info": "Return only events which take place in the specified comics (accepts a comma-separated list of ids).",
+          "required": false
+        },
+        {
+          "name": "series",
+          "type": "String",
+          "info": "Return only events which are part of the specified series (accepts a comma-separated list of ids).",
+          "required": false
+        },
+        {
+          "name": "characters",
+          "type": "String",
+          "info": "Return only events which feature the specified characters (accepts a comma-separated list of ids).",
+          "required": false
+        },
+        {
+          "name": "stories",
+          "type": "String",
+          "info": "Return only events which contain the specified stories (accepts a comma-separated list of ids).",
+          "required": false
+        },
+        {
+          "name": "orderBy",
+          "type": "String",
+          "info": "Order the result set by a field or fields. Add a \"-\" to the value sort in descending order. Multiple values are given priority in the order in which they are passed. Values: name, startDate, modified",
+          "required": false
+        },
+        {
+          "name": "limit",
+          "type": "Number",
+          "info": "Limit the result set to the specified number of resources.",
+          "required": false
+        },
+        {
+          "name": "offset",
+          "type": "Number",
+          "info": "Skip the specified number of resources in the result set.",
+          "required": false
+        }
+      ],
+      "callbacks": [
+        {
+          "name": "error",
+          "info": "Error"
+        },
+        {
+          "name": "success",
+          "info": "Success"
+        }
+      ]
+    },
+    {
+      "name": "getSeriesByCreator",
+      "description": "Fetches lists of comic series in which a specific creator's work appears, with optional filters.",
+      "args": [
+        {
+          "name": "publicKey",
+          "type": "credentials",
+          "info": "Public api key obtained from Marvel",
+          "required": true
+        },
+        {
+          "name": "privateKey",
+          "type": "credentials",
+          "info": "Private api key obtained from Marvel",
+          "required": true
+        },
+        {
+          "name": "creatorId",
+          "type": "Number",
+          "info": "Creator id.",
+          "required": true
+        },
+        {
+          "name": "title",
+          "type": "String",
+          "info": "Return only issues in series whose title matches the input.",
+          "required": false
+        },
+        {
+          "name": "titleStartsWith",
+          "type": "String",
+          "info": "Return only issues in series whose title starts with the input.",
+          "required": false
+        },
+        {
+          "name": "startYear",
+          "type": "String",
+          "info": "Return only issues in series whose start year matches the input.",
+          "required": false
+        },
+        {
+          "name": "modifiedSince",
+          "type": "String",
+          "info": "Return only series which have been modified since the specified date.",
+          "required": false
+        },
+        {
+          "name": "characters",
+          "type": "String",
+          "info": "Return only series which feature the specified characters (accepts a comma-separated list of ids).",
+          "required": false
+        },
+        {
+          "name": "comics",
+          "type": "String",
+          "info": "Return only series which contain the specified comics (accepts a comma-separated list of ids).",
+          "required": false
+        },
+        {
+          "name": "events",
+          "type": "String",
+          "info": "Return only series which have comics that take place during the specified events (accepts a comma-separated list of ids).",
+          "required": false
+        },
+        {
+          "name": "stories",
+          "type": "String",
+          "info": "Return only series which contain the specified stories (accepts a comma-separated list of ids).",
+          "required": false
+        },
+        {
+          "name": "seriesType",
+          "type": "String",
+          "info": "Filter the series by publication frequency type. Values: collection, one shot, limited, ongoing",
+          "required": false
+        },
+        {
+          "name": "contains",
+          "type": "String",
+          "info": "Return only series containing one or more comics with the specified format. Values: comic, digital comic, hardcover, magazine, trade paperback, digest, graphic novel, infinite comic).",
+          "required": false
+        },
+        {
+          "name": "orderBy",
+          "type": "String",
+          "info": "Order the result set by a field or fields. Add a \"-\" to the value sort in descending order. Multiple values are given priority in the order in which they are passed. Values: title, startYear, modified",
+          "required": false
+        },
+        {
+          "name": "limit",
+          "type": "Number",
+          "info": "Limit the result set to the specified number of resources.",
+          "required": false
+        },
+        {
+          "name": "offset",
+          "type": "Number",
+          "info": "Skip the specified number of resources in the result set.",
+          "required": false
+        }
+      ],
+      "callbacks": [
+        {
+          "name": "error",
+          "info": "Error"
+        },
+        {
+          "name": "success",
+          "info": "Success"
+        }
+      ]
+    },
+    {
+      "name": "getStoriesByCreator",
+      "description": "Fetches lists of comic stories by a specific creator with optional filters.",
+      "args": [
+        {
+          "name": "publicKey",
+          "type": "credentials",
+          "info": "Public api key obtained from Marvel",
+          "required": true
+        },
+        {
+          "name": "privateKey",
+          "type": "credentials",
+          "info": "Private api key obtained from Marvel",
+          "required": true
+        },
+        {
+          "name": "creatorId",
+          "type": "Number",
+          "info": "Creator id.",
+          "required": true
+        },
+        {
+          "name": "modifiedSince",
+          "type": "String",
+          "info": "Return only stories which have been modified since the specified date.",
+          "required": false
+        },
+        {
+          "name": "comics",
+          "type": "String",
+          "info": "Return only stories contained in the specified comics (accepts a comma-separated list of ids).",
+          "required": false
+        },
+        {
+          "name": "characters",
+          "type": "String",
+          "info": "Return only stories which feature the specified characters (accepts a comma-separated list of ids).",
+          "required": false
+        },
+        {
+          "name": "events",
+          "type": "String",
+          "info": "Return only stories which take place during the specified events (accepts a comma-separated list of ids).",
+          "required": false
+        },
+        {
+          "name": "series",
+          "type": "String",
+          "info": "Return only stories contained the specified series (accepts a comma-separated list of ids).",
+          "required": false
+        },
+        {
+          "name": "orderBy",
+          "type": "String",
+          "info": "Order the result set by a field or fields. Add a \"-\" to the value sort in descending order. Multiple values are given priority in the order in which they are passed. Values: id, modified",
+          "required": false
+        },
+        {
+          "name": "limit",
+          "type": "Number",
+          "info": "Limit the result set to the specified number of resources.",
+          "required": false
+        },
+        {
+          "name": "offset",
+          "type": "Number",
+          "info": "Skip the specified number of resources in the result set.",
+          "required": false
+        }
+      ],
+      "callbacks": [
+        {
+          "name": "error",
+          "info": "Error"
+        },
+        {
+          "name": "success",
+          "info": "Success"
+        }
+      ]
+    },
+    {
+      "name": "getEvents",
+      "description": "Fetches lists of events with optional filters.",
+      "args": [
+        {
+          "name": "publicKey",
+          "type": "credentials",
+          "info": "Public api key obtained from Marvel",
+          "required": true
+        },
+        {
+          "name": "privateKey",
+          "type": "credentials",
+          "info": "Private api key obtained from Marvel",
+          "required": true
+        },
+        {
+          "name": "name",
+          "type": "String",
+          "info": "Filter the event list by name.",
+          "required": false
+        },
+        {
+          "name": "nameStartsWith",
+          "type": "String",
+          "info": "Return events with names that begin with the specified string (e.g. Sp).",
+          "required": false
+        },
+        {
+          "name": "modifiedSince",
+          "type": "String",
+          "info": "Return only events which have been modified since the specified date.",
+          "required": false
+        },
+        {
+          "name": "creators",
+          "type": "String",
+          "info": "Return only events which feature work by the specified creators (accepts a comma-separated list of ids).",
+          "required": false
+        },
+        {
+          "name": "series",
+          "type": "String",
+          "info": "Return only events which are part of the specified series (accepts a comma-separated list of ids).",
+          "required": false
+        },
+        {
+          "name": "characters",
+          "type": "String",
+          "info": "Return only events which feature the specified characters (accepts a comma-separated list of ids).",
+          "required": false
+        },
+        {
+          "name": "comics",
+          "type": "String",
+          "info": "Return only events which take place in the specified comics (accepts a comma-separated list of ids).",
+          "required": false
+        },
+        {
+          "name": "stories",
+          "type": "String",
+          "info": "Return only events which contain the specified stories (accepts a comma-separated list of ids).",
+          "required": false
+        },
+        {
+          "name": "orderBy",
+          "type": "String",
+          "info": "Order the result set by a field or fields. Add a \"-\" to the value sort in descending order. Multiple values are given priority in the order in which they are passed. Values: name, startDate, modified",
+          "required": false
+        },
+        {
+          "name": "limit",
+          "type": "Number",
+          "info": "Limit the result set to the specified number of resources.",
+          "required": false
+        },
+        {
+          "name": "offset",
+          "type": "Number",
+          "info": "Skip the specified number of resources in the result set.",
+          "required": false
+        }
+      ],
+      "callbacks": [
+        {
+          "name": "error",
+          "info": "Error"
+        },
+        {
+          "name": "success",
+          "info": "Success"
+        }
+      ]
+    },
+    {
+      "name": "getSingleEvent",
+      "description": "This method fetches a single event resource. It is the canonical URI for any event resource provided by the API.",
+      "args": [
+        {
+          "name": "publicKey",
+          "type": "credentials",
+          "info": "Public api key obtained from Marvel",
+          "required": true
+        },
+        {
+          "name": "privateKey",
+          "type": "credentials",
+          "info": "Private api key obtained from Marvel",
+          "required": true
+        },
+        {
+          "name": "eventId",
+          "type": "Number",
+          "info": "ID of the event",
+          "required": false
+        }
+      ],
+      "callbacks": [
+        {
+          "name": "error",
+          "info": "Error"
+        },
+        {
+          "name": "success",
+          "info": "Success"
+        }
+      ]
+    },
+    {
+      "name": "getCharactersByEvent",
+      "description": "Fetches lists of characters which appear in a specific event, with optional filters.",
+      "args": [
+        {
+          "name": "publicKey",
+          "type": "credentials",
+          "info": "Public api key obtained from Marvel",
+          "required": true
+        },
+        {
+          "name": "privateKey",
+          "type": "credentials",
+          "info": "Private api key obtained from Marvel",
+          "required": true
+        },
+        {
+          "name": "eventId",
+          "type": "Number",
+          "info": "A single event id.",
+          "required": true
+        },
+        {
+          "name": "name",
+          "type": "String",
+          "info": "Return only characters matching the specified full character name (e.g. Spider-Man).",
+          "required": false
+        },
+        {
+          "name": "nameStartsWith",
+          "type": "String",
+          "info": "Return characters with names that begin with the specified string (e.g. Sp).",
+          "required": false
+        },
+        {
+          "name": "modifiedSince",
+          "type": "String",
+          "info": "Return only characters which have been modified since the specified date.",
+          "required": false
+        },
+        {
+          "name": "series",
+          "type": "String",
+          "info": "Return only characters which appear the specified series (accepts a comma-separated list of ids).",
+          "required": false
+        },
+        {
+          "name": "comics",
+          "type": "String",
+          "info": "Return only characters which appear in the specified comics (accepts a comma-separated list of ids).",
+          "required": false
+        },
+        {
+          "name": "stories",
+          "type": "String",
+          "info": "Return only characters which appear the specified stories (accepts a comma-separated list of ids).",
+          "required": false
+        },
+        {
+          "name": "orderBy",
+          "type": "String",
+          "info": "Order the result set by a field or fields. Add a \"-\" to the value sort in descending order. Multiple values are given priority in the order in which they are passed. Values: name, modified",
+          "required": false
+        },
+        {
+          "name": "limit",
+          "type": "Number",
+          "info": "Limit the result set to the specified number of resources.",
+          "required": false
+        },
+        {
+          "name": "offset",
+          "type": "Number",
+          "info": "Skip the specified number of resources in the result set.",
+          "required": false
+        }
+      ],
+      "callbacks": [
+        {
+          "name": "error",
+          "info": "Error"
+        },
+        {
+          "name": "success",
+          "info": "Success"
+        }
+      ]
+    },
+    {
+      "name": "getComicsByEvent",
+      "description": "Fetches lists of comics which take place during a specific event, with optional filters.",
+      "args": [
+        {
+          "name": "publicKey",
+          "type": "credentials",
+          "info": "Public api key obtained from Marvel",
+          "required": true
+        },
+        {
+          "name": "privateKey",
+          "type": "credentials",
+          "info": "Private api key obtained from Marvel",
+          "required": true
+        },
+        {
+          "name": "eventId",
+          "type": "Number",
+          "info": "Event id.",
+          "required": true
+        },
+        {
+          "name": "format",
+          "type": "String",
+          "info": "Filter by the issue format (e.g. comic, digital comic, hardcover, magazine, trade paperback, digest, graphic novel, infinite comic).",
+          "required": false
+        },
+        {
+          "name": "formatType",
+          "type": "String",
+          "info": "Filter by the issue format type (comic or collection).",
+          "required": false
+        },
+        {
+          "name": "noVariants",
+          "type": "Boolean",
+          "info": "Exclude variant comics from the result set.",
+          "required": false
+        },
+        {
+          "name": "dateDescriptor",
+          "type": "String",
+          "info": "Return comics within a predefined date range. Values: lastWeek, thisWeek, nextWeek, thisMonth",
+          "required": false
+        },
+        {
+          "name": "dateRange",
+          "type": "String",
+          "info": "Return comics within a predefined date range. Dates must be specified as date1,date2 (e.g. 2013-01-01,2013-01-02). Dates are preferably formatted as YYYY-MM-DD but may be sent as any common date format.",
+          "required": false
+        },
+        {
+          "name": "title",
+          "type": "String",
+          "info": "Return only issues in series whose title matches the input.",
+          "required": false
+        },
+        {
+          "name": "titleStartsWith",
+          "type": "String",
+          "info": "Return only issues in series whose title starts with the input.",
+          "required": false
+        },
+        {
+          "name": "startYear",
+          "type": "String",
+          "info": "Return only issues in series whose start year matches the input.",
+          "required": false
+        },
+        {
+          "name": "issueNumber",
+          "type": "String",
+          "info": "Return only issues in series whose issue number matches the input.",
+          "required": false
+        },
+        {
+          "name": "diamondCode",
+          "type": "String",
+          "info": "Filter by diamond code.",
+          "required": false
+        },
+        {
+          "name": "digitalId",
+          "type": "Number",
+          "info": "Filter by digital comic id.",
+          "required": false
+        },
+        {
+          "name": "upc",
+          "type": "String",
+          "info": "Filter by UPC.",
+          "required": false
+        },
+        {
+          "name": "isbn",
+          "type": "String",
+          "info": "Filter by ISBN.",
+          "required": false
+        },
+        {
+          "name": "ean",
+          "type": "String",
+          "info": "Filter by EAN.",
+          "required": false
+        },
+        {
+          "name": "issn",
+          "type": "String",
+          "info": "Filter by ISSN.",
+          "required": false
+        },
+        {
+          "name": "hasDigitalIssue",
+          "type": "Boolean",
+          "info": "Include only results which are available digitally.",
+          "required": false
+        },
+        {
+          "name": "modifiedSince",
+          "type": "String",
+          "info": "Return only comics which have been modified since the specified date.",
+          "required": false
+        },
+        {
+          "name": "creators",
+          "type": "String",
+          "info": "Return only comics which feature work by the specified creators (accepts a comma-separated list of ids).",
+          "required": false
+        },
+        {
+          "name": "characters",
+          "type": "String",
+          "info": "Return only comics which feature the specified characters (accepts a comma-separated list of ids).",
+          "required": false
+        },
+        {
+          "name": "series",
+          "type": "String",
+          "info": "Return only comics which are part of the specified series (accepts a comma-separated list of ids).",
+          "required": false
+        },
+        {
+          "name": "events",
+          "type": "String",
+          "info": "Return only comics which take place in the specified events (accepts a comma-separated list of ids).",
+          "required": false
+        },
+        {
+          "name": "stories",
+          "type": "String",
+          "info": "Return only comics which contain the specified stories (accepts a comma-separated list of ids).",
+          "required": false
+        },
+        {
+          "name": "sharedAppearances",
+          "type": "String",
+          "info": "Return only comics in which the specified characters appear together (for example in which BOTH Spider-Man and Wolverine appear).",
+          "required": false
+        },
+        {
+          "name": "collaborators",
+          "type": "String",
+          "info": "Return only comics in which the specified creators worked together (for example in which BOTH Stan Lee and Jack Kirby did work).",
+          "required": false
+        },
+        {
+          "name": "orderBy",
+          "type": "String",
+          "info": "Order the result set by a field or fields. Add a \"-\" to the value sort in descending order. Multiple values are given priority in the order in which they are passed. Values: focDate, onsaleDate, title, issueNumber, modified",
+          "required": false
+        },
+        {
+          "name": "limit",
+          "type": "Number",
+          "info": "Limit the result set to the specified number of resources.",
+          "required": false
+        },
+        {
+          "name": "offset",
+          "type": "Number",
+          "info": "Skip the specified number of resources in the result set.",
+          "required": false
+        }
+      ],
+      "callbacks": [
+        {
+          "name": "error",
+          "info": "Error"
+        },
+        {
+          "name": "success",
+          "info": "Success"
+        }
+      ]
+    },
+    {
+      "name": "getCreatorsByEvent",
+      "description": "Fetches lists of comic creators whose work appears in a specific event, with optional filters.",
+      "args": [
+        {
+          "name": "publicKey",
+          "type": "credentials",
+          "info": "Public api key obtained from Marvel",
+          "required": true
+        },
+        {
+          "name": "privateKey",
+          "type": "credentials",
+          "info": "Private api key obtained from Marvel",
+          "required": true
+        },
+        {
+          "name": "eventId",
+          "type": "Number",
+          "info": "A single event id.",
+          "required": true
+        },
+        {
+          "name": "firstName",
+          "type": "String",
+          "info": "Filter by creator first name (e.g. brian).",
+          "required": false
+        },
+        {
+          "name": "middleName",
+          "type": "String",
+          "info": "Filter by creator middle name (e.g. Michael).",
+          "required": false
+        },
+        {
+          "name": "lastName",
+          "type": "String",
+          "info": "Filter by creator last name (e.g. Bendis).",
+          "required": false
+        },
+        {
+          "name": "suffix",
+          "type": "String",
+          "info": "Filter by suffix or honorific (e.g. Jr., Sr.).",
+          "required": false
+        },
+        {
+          "name": "nameStartsWith",
+          "type": "String",
+          "info": "Filter by creator names that match critera (e.g. B, St L).",
+          "required": false
+        },
+        {
+          "name": "firstNameStartsWith",
+          "type": "String",
+          "info": "Filter by creator first names that match critera (e.g. B, St L).",
+          "required": false
+        },
+        {
+          "name": "middleNameStartsWith",
+          "type": "String",
+          "info": "Filter by creator middle names that match critera (e.g. Mi).",
+          "required": false
+        },
+        {
+          "name": "lastNameStartsWith",
+          "type": "String",
+          "info": "Filter by creator last names that match critera (e.g. Ben).",
+          "required": false
+        },
+        {
+          "name": "modifiedSince",
+          "type": "String",
+          "info": "Return only creators which have been modified since the specified date.",
+          "required": false
+        },
+        {
+          "name": "series",
+          "type": "String",
+          "info": "Return only creators who worked on in the specified series (accepts a comma-separated list of ids).",
+          "required": false
+        },
+        {
+          "name": "comics",
+          "type": "String",
+          "info": "Return only creators who worked on in the specified comics (accepts a comma-separated list of ids).",
+          "required": false
+        },
+        {
+          "name": "stories",
+          "type": "String",
+          "info": "Return only creators who worked on in the specified stories (accepts a comma-separated list of ids).",
+          "required": false
+        },
+        {
+          "name": "orderBy",
+          "type": "String",
+          "info": "Order the result set by a field or fields. Add a \"-\" to the value sort in descending order. Multiple values are given priority in the order in which they are passed. Values: lastName, firstName, middleName, suffix, modified",
+          "required": false
+        },
+        {
+          "name": "limit",
+          "type": "Number",
+          "info": "Limit the result set to the specified number of resources.",
+          "required": false
+        },
+        {
+          "name": "offset",
+          "type": "Number",
+          "info": "Skip the specified number of resources in the result set.",
+          "required": false
+        }
+      ],
+      "callbacks": [
+        {
+          "name": "error",
+          "info": "Error"
+        },
+        {
+          "name": "success",
+          "info": "Success"
+        }
+      ]
+    },
+    {
+      "name": "getSeriesByEvent",
+      "description": "Fetches lists of comic series in which a specific event takes place, with optional filters.",
+      "args": [
+        {
+          "name": "publicKey",
+          "type": "credentials",
+          "info": "Public api key obtained from Marvel",
+          "required": true
+        },
+        {
+          "name": "privateKey",
+          "type": "credentials",
+          "info": "Private api key obtained from Marvel",
+          "required": true
+        },
+        {
+          "name": "eventId",
+          "type": "Number",
+          "info": "A single event id.",
+          "required": true
+        },
+        {
+          "name": "title",
+          "type": "String",
+          "info": "Return only issues in series whose title matches the input.",
+          "required": false
+        },
+        {
+          "name": "titleStartsWith",
+          "type": "String",
+          "info": "Return only issues in series whose title starts with the input.",
+          "required": false
+        },
+        {
+          "name": "startYear",
+          "type": "String",
+          "info": "Return only issues in series whose start year matches the input.",
+          "required": false
+        },
+        {
+          "name": "modifiedSince",
+          "type": "String",
+          "info": "Return only series which have been modified since the specified date.",
+          "required": false
+        },
+        {
+          "name": "creators",
+          "type": "String",
+          "info": "Return only series which feature work by the specified creators (accepts a comma-separated list of ids).",
+          "required": false
+        },
+        {
+          "name": "comics",
+          "type": "String",
+          "info": "Return only series which contain the specified comics (accepts a comma-separated list of ids).",
+          "required": false
+        },
+        {
+          "name": "characters",
+          "type": "String",
+          "info": "Return only series which feature the specified characters (accepts a comma-separated list of ids).",
+          "required": false
+        },
+        {
+          "name": "stories",
+          "type": "String",
+          "info": "Return only series which contain the specified stories (accepts a comma-separated list of ids).",
+          "required": false
+        },
+        {
+          "name": "seriesType",
+          "type": "String",
+          "info": "Filter the series by publication frequency type. Values: collection, one shot, limited, ongoing",
+          "required": false
+        },
+        {
+          "name": "contains",
+          "type": "String",
+          "info": "Return only series containing one or more comics with the specified format. Values: comic, digital comic, hardcover, magazine, trade paperback, digest, graphic novel, infinite comic).",
+          "required": false
+        },
+        {
+          "name": "orderBy",
+          "type": "String",
+          "info": "Order the result set by a field or fields. Add a \"-\" to the value sort in descending order. Multiple values are given priority in the order in which they are passed. Values: title, startYear, modified",
+          "required": false
+        },
+        {
+          "name": "limit",
+          "type": "Number",
+          "info": "Limit the result set to the specified number of resources.",
+          "required": false
+        },
+        {
+          "name": "offset",
+          "type": "Number",
+          "info": "Skip the specified number of resources in the result set.",
+          "required": false
+        }
+      ],
+      "callbacks": [
+        {
+          "name": "error",
+          "info": "Error"
+        },
+        {
+          "name": "success",
+          "info": "Success"
+        }
+      ]
+    },
+    {
+      "name": "getStoriesByEvent",
+      "description": "Fetches lists of comic stories from a specific event, with optional filters.",
+      "args": [
+        {
+          "name": "publicKey",
+          "type": "credentials",
+          "info": "Public api key obtained from Marvel",
+          "required": true
+        },
+        {
+          "name": "privateKey",
+          "type": "credentials",
+          "info": "Private api key obtained from Marvel",
+          "required": true
+        },
+        {
+          "name": "eventId",
+          "type": "Number",
+          "info": "A single event id.",
+          "required": true
+        },
+        {
+          "name": "modifiedSince",
+          "type": "String",
+          "info": "Return only stories which have been modified since the specified date.",
+          "required": false
+        },
+        {
+          "name": "creators",
+          "type": "String",
+          "info": "Return only stories which feature work by the specified creators (accepts a comma-separated list of ids).",
+          "required": false
+        },
+        {
+          "name": "comics",
+          "type": "String",
+          "info": "Return only stories contained in the specified (accepts a comma-separated list of ids).",
+          "required": false
+        },
+        {
+          "name": "characters",
+          "type": "String",
+          "info": "Return only stories which feature work by the specified creators (accepts a comma-separated list of ids).",
+          "required": false
+        },
+        {
+          "name": "series",
+          "type": "String",
+          "info": "Return only stories contained the specified series (accepts a comma-separated list of ids).",
+          "required": false
+        },
+        {
+          "name": "orderBy",
+          "type": "String",
+          "info": "Order the result set by a field or fields. Add a \"-\" to the value sort in descending order. Multiple values are given priority in the order in which they are passed. Values: id, modified",
+          "required": false
+        },
+        {
+          "name": "limit",
+          "type": "Number",
+          "info": "Limit the result set to the specified number of resources.",
+          "required": false
+        },
+        {
+          "name": "offset",
+          "type": "Number",
+          "info": "Skip the specified number of resources in the result set.",
+          "required": false
+        }
+      ],
+      "callbacks": [
+        {
+          "name": "error",
+          "info": "Error"
+        },
+        {
+          "name": "success",
+          "info": "Success"
+        }
+      ]
+    },
+    {
+      "name": "getSeries",
+      "description": "Fetches lists of comic series with optional filters.",
+      "args": [
+        {
+          "name": "publicKey",
+          "type": "credentials",
+          "info": "Public api key obtained from Marvel",
+          "required": true
+        },
+        {
+          "name": "privateKey",
+          "type": "credentials",
+          "info": "Private api key obtained from Marvel",
+          "required": true
+        },
+        {
+          "name": "title",
+          "type": "String",
+          "info": "Return only issues in series whose title matches the input.",
+          "required": false
+        },
+        {
+          "name": "titleStartsWith",
+          "type": "String",
+          "info": "Return only issues in series whose title starts with the input.",
+          "required": false
+        },
+        {
+          "name": "startYear",
+          "type": "String",
+          "info": "Return only issues in series whose start year matches the input.",
+          "required": false
+        },
+        {
+          "name": "modifiedSince",
+          "type": "String",
+          "info": "Return only series which have been modified since the specified date.",
+          "required": false
+        },
+        {
+          "name": "characters",
+          "type": "String",
+          "info": "Return only series which feature the specified characters (accepts a comma-separated list of ids).",
+          "required": false
+        },
+        {
+          "name": "creators",
+          "type": "String",
+          "info": "Return only series which feature work by the specified creators (accepts a comma-separated list of ids).",
+          "required": false
+        },
+        {
+          "name": "comics",
+          "type": "String",
+          "info": "Return only series which contain the specified comics (accepts a comma-separated list of ids).",
+          "required": false
+        },
+        {
+          "name": "events",
+          "type": "String",
+          "info": "Return only series which have comics that take place during the specified events (accepts a comma-separated list of ids).",
+          "required": false
+        },
+        {
+          "name": "stories",
+          "type": "String",
+          "info": "Return only series which contain the specified stories (accepts a comma-separated list of ids).",
+          "required": false
+        },
+        {
+          "name": "seriesType",
+          "type": "String",
+          "info": "Filter the series by publication frequency type. Values: collection, one shot, limited, ongoing",
+          "required": false
+        },
+        {
+          "name": "contains",
+          "type": "String",
+          "info": "Return only series containing one or more comics with the specified format. Values: comic, digital comic, hardcover, magazine, trade paperback, digest, graphic novel, infinite comic).",
+          "required": false
+        },
+        {
+          "name": "orderBy",
+          "type": "String",
+          "info": "Order the result set by a field or fields. Add a \"-\" to the value sort in descending order. Multiple values are given priority in the order in which they are passed. Values: title, startYear, modified",
+          "required": false
+        },
+        {
+          "name": "limit",
+          "type": "Number",
+          "info": "Limit the result set to the specified number of resources.",
+          "required": false
+        },
+        {
+          "name": "offset",
+          "type": "Number",
+          "info": "Skip the specified number of resources in the result set.",
+          "required": false
+        }
+      ],
+      "callbacks": [
+        {
+          "name": "error",
+          "info": "Error"
+        },
+        {
+          "name": "success",
+          "info": "Success"
+        }
+      ]
+    },
+    {
+      "name": "getCharactersBySeries",
+      "description": "Fetches lists of characters which appear in specific series, with optional filters.",
+      "args": [
+        {
+          "name": "publicKey",
+          "type": "credentials",
+          "info": "Public api key obtained from Marvel",
+          "required": true
+        },
+        {
+          "name": "privateKey",
+          "type": "credentials",
+          "info": "Private api key obtained from Marvel",
+          "required": true
+        },
+        {
+          "name": "seriesId",
+          "type": "Number",
+          "info": "A single series id.",
+          "required": true
+        },
+        {
+          "name": "name",
+          "type": "String",
+          "info": "Return only characters matching the specified full character name (e.g. Spider-Man).",
+          "required": false
+        },
+        {
+          "name": "nameStartsWith",
+          "type": "String",
+          "info": "Return characters with names that begin with the specified string (e.g. Sp).",
+          "required": false
+        },
+        {
+          "name": "modifiedSince",
+          "type": "String",
+          "info": "Return only characters which have been modified since the specified date.",
+          "required": false
+        },
+        {
+          "name": "comics",
+          "type": "String",
+          "info": "Return only characters which appear in the specified comics (accepts a comma-separated list of ids).",
+          "required": false
+        },
+        {
+          "name": "events",
+          "type": "String",
+          "info": "Return only characters which appear comics that took place in the specified events (accepts a comma-separated list of ids).",
+          "required": false
+        },
+        {
+          "name": "stories",
+          "type": "String",
+          "info": "Return only characters which appear the specified stories (accepts a comma-separated list of ids).",
+          "required": false
+        },
+        {
+          "name": "orderBy",
+          "type": "String",
+          "info": "Order the result set by a field or fields. Add a \"-\" to the value sort in descending order. Multiple values are given priority in the order in which they are passed. Values: name, modified",
+          "required": false
+        },
+        {
+          "name": "limit",
+          "type": "Number",
+          "info": "Limit the result set to the specified number of resources.",
+          "required": false
+        },
+        {
+          "name": "offset",
+          "type": "Number",
+          "info": "Skip the specified number of resources in the result set.",
+          "required": false
+        }
+      ],
+      "callbacks": [
+        {
+          "name": "error",
+          "info": "Error"
+        },
+        {
+          "name": "success",
+          "info": "Success"
+        }
+      ]
+    },
+    {
+      "name": "getComicsBySeries",
+      "description": "Fetches lists of comics which are published as part of a specific series, with optional filters.",
+      "args": [
+        {
+          "name": "publicKey",
+          "type": "credentials",
+          "info": "Public api key obtained from Marvel",
+          "required": true
+        },
+        {
+          "name": "privateKey",
+          "type": "credentials",
+          "info": "Private api key obtained from Marvel",
+          "required": true
+        },
+        {
+          "name": "seriesId",
+          "type": "Number",
+          "info": "A single series id.",
+          "required": true
+        },
+        {
+          "name": "format",
+          "type": "String",
+          "info": "Filter by the issue format (e.g. comic, digital comic, hardcover, magazine, trade paperback, digest, graphic novel, infinite comic).",
+          "required": false
+        },
+        {
+          "name": "formatType",
+          "type": "String",
+          "info": "Filter by the issue format type (comic or collection).",
+          "required": false
+        },
+        {
+          "name": "noVariants",
+          "type": "Boolean",
+          "info": "Exclude variant comics from the result set.",
+          "required": false
+        },
+        {
+          "name": "dateDescriptor",
+          "type": "String",
+          "info": "Return comics within a predefined date range. Values: lastWeek, thisWeek, nextWeek, thisMonth",
+          "required": false
+        },
+        {
+          "name": "dateRange",
+          "type": "String",
+          "info": "Return comics within a predefined date range. Dates must be specified as date1,date2 (e.g. 2013-01-01,2013-01-02). Dates are preferably formatted as YYYY-MM-DD but may be sent as any common date format.",
+          "required": false
+        },
+        {
+          "name": "title",
+          "type": "String",
+          "info": "Return only issues in series whose title matches the input.",
+          "required": false
+        },
+        {
+          "name": "titleStartsWith",
+          "type": "String",
+          "info": "Return only issues in series whose title starts with the input.",
+          "required": false
+        },
+        {
+          "name": "startYear",
+          "type": "String",
+          "info": "Return only issues in series whose start year matches the input.",
+          "required": false
+        },
+        {
+          "name": "issueNumber",
+          "type": "String",
+          "info": "Return only issues in series whose issue number matches the input.",
+          "required": false
+        },
+        {
+          "name": "diamondCode",
+          "type": "String",
+          "info": "Filter by diamond code.",
+          "required": false
+        },
+        {
+          "name": "digitalId",
+          "type": "Number",
+          "info": "Filter by digital comic id.",
+          "required": false
+        },
+        {
+          "name": "upc",
+          "type": "String",
+          "info": "Filter by UPC.",
+          "required": false
+        },
+        {
+          "name": "isbn",
+          "type": "String",
+          "info": "Filter by ISBN.",
+          "required": false
+        },
+        {
+          "name": "ean",
+          "type": "String",
+          "info": "Filter by EAN.",
+          "required": false
+        },
+        {
+          "name": "issn",
+          "type": "String",
+          "info": "Filter by ISSN.",
+          "required": false
+        },
+        {
+          "name": "hasDigitalIssue",
+          "type": "Boolean",
+          "info": "Include only results which are available digitally.",
+          "required": false
+        },
+        {
+          "name": "modifiedSince",
+          "type": "String",
+          "info": "Return only comics which have been modified since the specified date.",
+          "required": false
+        },
+        {
+          "name": "creators",
+          "type": "String",
+          "info": "Return only comics which feature work by the specified creators (accepts a comma-separated list of ids).",
+          "required": false
+        },
+        {
+          "name": "characters",
+          "type": "String",
+          "info": "Return only comics which feature the specified characters (accepts a comma-separated list of ids).",
+          "required": false
+        },
+        {
+          "name": "events",
+          "type": "String",
+          "info": "Return only comics which take place in the specified events (accepts a comma-separated list of ids).",
+          "required": false
+        },
+        {
+          "name": "stories",
+          "type": "String",
+          "info": "Return only comics which contain the specified stories (accepts a comma-separated list of ids).",
+          "required": false
+        },
+        {
+          "name": "sharedAppearances",
+          "type": "String",
+          "info": "Return only comics in which the specified characters appear together (for example in which BOTH Spider-Man and Wolverine appear).",
+          "required": false
+        },
+        {
+          "name": "collaborators",
+          "type": "String",
+          "info": "Return only comics in which the specified creators worked together (for example in which BOTH Stan Lee and Jack Kirby did work).",
+          "required": false
+        },
+        {
+          "name": "orderBy",
+          "type": "String",
+          "info": "Order the result set by a field or fields. Add a \"-\" to the value sort in descending order. Multiple values are given priority in the order in which they are passed. Values: focDate, onsaleDate, title, issueNumber, modified",
+          "required": false
+        },
+        {
+          "name": "limit",
+          "type": "Number",
+          "info": "Limit the result set to the specified number of resources.",
+          "required": false
+        },
+        {
+          "name": "offset",
+          "type": "Number",
+          "info": "Skip the specified number of resources in the result set.",
+          "required": false
+        }
+      ],
+      "callbacks": [
+        {
+          "name": "error",
+          "info": "Error"
+        },
+        {
+          "name": "success",
+          "info": "Success"
+        }
+      ]
+    },
+    {
+      "name": "getCreatorsBySeries",
+      "description": "Fetches lists of comic creators whose work appears in a specific series, with optional filters. ",
+      "args": [
+        {
+          "name": "publicKey",
+          "type": "credentials",
+          "info": "Public api key obtained from Marvel",
+          "required": true
+        },
+        {
+          "name": "privateKey",
+          "type": "credentials",
+          "info": "Private api key obtained from Marvel",
+          "required": true
+        },
+        {
+          "name": "seriesId",
+          "type": "Number",
+          "info": "A single series id.",
+          "required": true
+        },
+        {
+          "name": "firstName",
+          "type": "String",
+          "info": "Filter by creator first name (e.g. brian).",
+          "required": false
+        },
+        {
+          "name": "middleName",
+          "type": "String",
+          "info": "Filter by creator middle name (e.g. Michael).",
+          "required": false
+        },
+        {
+          "name": "lastName",
+          "type": "String",
+          "info": "Filter by creator last name (e.g. Bendis).",
+          "required": false
+        },
+        {
+          "name": "suffix",
+          "type": "String",
+          "info": "Filter by suffix or honorific (e.g. Jr., Sr.).",
+          "required": false
+        },
+        {
+          "name": "nameStartsWith",
+          "type": "String",
+          "info": "Filter by creator names that match critera (e.g. B, St L).",
+          "required": false
+        },
+        {
+          "name": "firstNameStartsWith",
+          "type": "String",
+          "info": "Filter by creator first names that match critera (e.g. B, St L).",
+          "required": false
+        },
+        {
+          "name": "middleNameStartsWith",
+          "type": "String",
+          "info": "Filter by creator middle names that match critera (e.g. Mi).",
+          "required": false
+        },
+        {
+          "name": "lastNameStartsWith",
+          "type": "String",
+          "info": "Filter by creator last names that match critera (e.g. Ben).",
+          "required": false
+        },
+        {
+          "name": "modifiedSince",
+          "type": "String",
+          "info": "Return only creators which have been modified since the specified date.",
+          "required": false
+        },
+        {
+          "name": "events",
+          "type": "String",
+          "info": "Return only creators who worked on comics that took place in the specified events (accepts a comma-separated list of ids).",
+          "required": false
+        },
+        {
+          "name": "comics",
+          "type": "String",
+          "info": "Return only creators who worked on in the specified comics (accepts a comma-separated list of ids).",
+          "required": false
+        },
+        {
+          "name": "stories",
+          "type": "String",
+          "info": "Return only creators who worked on in the specified stories (accepts a comma-separated list of ids).",
+          "required": false
+        },
+        {
+          "name": "orderBy",
+          "type": "String",
+          "info": "Order the result set by a field or fields. Add a \"-\" to the value sort in descending order. Multiple values are given priority in the order in which they are passed. Values: lastName, firstName, middleName, suffix, modified",
+          "required": false
+        },
+        {
+          "name": "limit",
+          "type": "Number",
+          "info": "Limit the result set to the specified number of resources.",
+          "required": false
+        },
+        {
+          "name": "offset",
+          "type": "Number",
+          "info": "Skip the specified number of resources in the result set.",
+          "required": false
+        }
+      ],
+      "callbacks": [
+        {
+          "name": "error",
+          "info": "Error"
+        },
+        {
+          "name": "success",
+          "info": "Success"
+        }
+      ]
+    },
+    {
+      "name": "getEventsBySeries",
+      "description": "Fetches lists of events which occur in a specific series, with optional filters.",
+      "args": [
+        {
+          "name": "publicKey",
+          "type": "credentials",
+          "info": "Public api key obtained from Marvel",
+          "required": true
+        },
+        {
+          "name": "privateKey",
+          "type": "credentials",
+          "info": "Private api key obtained from Marvel",
+          "required": true
+        },
+        {
+          "name": "seriesId",
+          "type": "Number",
+          "info": "A single series id.",
+          "required": true
+        },
+        {
+          "name": "name",
+          "type": "String",
+          "info": "Filter the event list by name.",
+          "required": false
+        },
+        {
+          "name": "nameStartsWith",
+          "type": "String",
+          "info": "Return events with names that begin with the specified string (e.g. Sp).",
+          "required": false
+        },
+        {
+          "name": "modifiedSince",
+          "type": "String",
+          "info": "Return only events which have been modified since the specified date.",
+          "required": false
+        },
+        {
+          "name": "creators",
+          "type": "String",
+          "info": "Return only events which feature work by the specified creators (accepts a comma-separated list of ids).",
+          "required": false
+        },
+        {
+          "name": "characters",
+          "type": "String",
+          "info": "Return only events which feature the specified characters (accepts a comma-separated list of ids).",
+          "required": false
+        },
+        {
+          "name": "comics",
+          "type": "String",
+          "info": "Return only events which take place in the specified comics (accepts a comma-separated list of ids).",
+          "required": false
+        },
+        {
+          "name": "stories",
+          "type": "String",
+          "info": "Return only events which contain the specified stories (accepts a comma-separated list of ids).",
+          "required": false
+        },
+        {
+          "name": "orderBy",
+          "type": "String",
+          "info": "Order the result set by a field or fields. Add a \"-\" to the value sort in descending order. Multiple values are given priority in the order in which they are passed. Values: name, startDate modified",
+          "required": false
+        },
+        {
+          "name": "limit",
+          "type": "Number",
+          "info": "Limit the result set to the specified number of resources.",
+          "required": false
+        },
+        {
+          "name": "offset",
+          "type": "Number",
+          "info": "Skip the specified number of resources in the result set.",
+          "required": false
+        }
+      ],
+      "callbacks": [
+        {
+          "name": "error",
+          "info": "Error"
+        },
+        {
+          "name": "success",
+          "info": "Success"
+        }
+      ]
+    },
+    {
+      "name": "getStoriesBySeries",
+      "description": "Fetches lists of comic stories from a specific event, with optional filters.",
+      "args": [
+        {
+          "name": "publicKey",
+          "type": "credentials",
+          "info": "Public api key obtained from Marvel",
+          "required": true
+        },
+        {
+          "name": "privateKey",
+          "type": "credentials",
+          "info": "Private api key obtained from Marvel",
+          "required": true
+        },
+        {
+          "name": "seriesId",
+          "type": "Number",
+          "info": "A single series id.",
+          "required": true
+        },
+        {
+          "name": "modifiedSince",
+          "type": "String",
+          "info": "Return only stories which have been modified since the specified date.",
+          "required": false
+        },
+        {
+          "name": "creators",
+          "type": "String",
+          "info": "Return only stories which feature work by the specified creators (accepts a comma-separated list of ids).",
+          "required": false
+        },
+        {
+          "name": "comics",
+          "type": "String",
+          "info": "Return only stories contained in the specified (accepts a comma-separated list of ids).",
+          "required": false
+        },
+        {
+          "name": "characters",
+          "type": "String",
+          "info": "Return only stories which feature work by the specified creators (accepts a comma-separated list of ids).",
+          "required": false
+        },
+        {
+          "name": "events",
+          "type": "String",
+          "info": "Return only stories which take place during the specified events (accepts a comma-separated list of ids).",
+          "required": false
+        },
+        {
+          "name": "orderBy",
+          "type": "String",
+          "info": "Order the result set by a field or fields. Add a \"-\" to the value sort in descending order. Multiple values are given priority in the order in which they are passed. Values: id, modified",
+          "required": false
+        },
+        {
+          "name": "limit",
+          "type": "Number",
+          "info": "Limit the result set to the specified number of resources.",
+          "required": false
+        },
+        {
+          "name": "offset",
+          "type": "Number",
+          "info": "Skip the specified number of resources in the result set.",
+          "required": false
+        }
+      ],
+      "callbacks": [
+        {
+          "name": "error",
+          "info": "Error"
+        },
+        {
+          "name": "success",
+          "info": "Success"
+        }
+      ]
+    },
+    {
+      "name": "getStories",
+      "description": "Fetches lists of comic stories with optional filters.",
+      "args": [
+        {
+          "name": "publicKey",
+          "type": "credentials",
+          "info": "Public api key obtained from Marvel",
+          "required": true
+        },
+        {
+          "name": "privateKey",
+          "type": "credentials",
+          "info": "Private api key obtained from Marvel",
+          "required": true
+        },
+        {
+          "name": "modifiedSince",
+          "type": "String",
+          "info": "Return only stories which have been modified since the specified date.",
+          "required": false
+        },
+        {
+          "name": "creators",
+          "type": "String",
+          "info": "Return only stories which feature work by the specified creators (accepts a comma-separated list of ids).",
+          "required": false
+        },
+        {
+          "name": "comics",
+          "type": "String",
+          "info": "Return only stories contained in the specified (accepts a comma-separated list of ids).",
+          "required": false
+        },
+        {
+          "name": "series",
+          "type": "String",
+          "info": "Return only stories contained the specified series (accepts a comma-separated list of ids).",
+          "required": false
+        },
+        {
+          "name": "characters",
+          "type": "String",
+          "info": "Return only stories which feature work by the specified creators (accepts a comma-separated list of ids).",
+          "required": false
+        },
+        {
+          "name": "events",
+          "type": "String",
+          "info": "Return only stories which take place during the specified events (accepts a comma-separated list of ids).",
+          "required": false
+        },
+        {
+          "name": "orderBy",
+          "type": "String",
+          "info": "Order the result set by a field or fields. Add a \"-\" to the value sort in descending order. Multiple values are given priority in the order in which they are passed. Values: id, modified",
+          "required": false
+        },
+        {
+          "name": "limit",
+          "type": "Number",
+          "info": "Limit the result set to the specified number of resources.",
+          "required": false
+        },
+        {
+          "name": "offset",
+          "type": "Number",
+          "info": "Skip the specified number of resources in the result set.",
+          "required": false
+        }
+      ],
+      "callbacks": [
+        {
+          "name": "error",
+          "info": "Error"
+        },
+        {
+          "name": "success",
+          "info": "Success"
+        }
+      ]
+    },
+    {
+      "name": "getSingleStory",
+      "description": "This method fetches a single comic story resource. It is the canonical URI for any comic story resource provided by the API.",
+      "args": [
+        {
+          "name": "publicKey",
+          "type": "credentials",
+          "info": "Public api key obtained from Marvel",
+          "required": true
+        },
+        {
+          "name": "privateKey",
+          "type": "credentials",
+          "info": "Private api key obtained from Marvel",
+          "required": true
+        },
+        {
+          "name": "storyId",
+          "type": "Number",
+          "info": "Id of the story",
+          "required": false
+        }
+      ],
+      "callbacks": [
+        {
+          "name": "error",
+          "info": "Error"
+        },
+        {
+          "name": "success",
+          "info": "Success"
+        }
+      ]
+    },
+    {
+      "name": "getCharactersByStory",
+      "description": "Fetches lists of comic characters appearing in a single story, with optional filters. ",
+      "args": [
+        {
+          "name": "publicKey",
+          "type": "credentials",
+          "info": "Public api key obtained from Marvel",
+          "required": true
+        },
+        {
+          "name": "privateKey",
+          "type": "credentials",
+          "info": "Private api key obtained from Marvel",
+          "required": true
+        },
+        {
+          "name": "storyId",
+          "type": "Number",
+          "info": "A single story id.",
+          "required": true
+        },
+        {
+          "name": "name",
+          "type": "String",
+          "info": "Return only characters matching the specified full character name (e.g. Spider-Man).",
+          "required": false
+        },
+        {
+          "name": "nameStartsWith",
+          "type": "String",
+          "info": "Return characters with names that begin with the specified string (e.g. Sp).",
+          "required": false
+        },
+        {
+          "name": "modifiedSince",
+          "type": "String",
+          "info": "Return only characters which have been modified since the specified date.",
+          "required": false
+        },
+        {
+          "name": "comics",
+          "type": "String",
+          "info": "Return only characters which appear in the specified comics (accepts a comma-separated list of ids).",
+          "required": false
+        },
+        {
+          "name": "events",
+          "type": "String",
+          "info": "Return only characters which appear comics that took place in the specified events (accepts a comma-separated list of ids).",
+          "required": false
+        },
+        {
+          "name": "series",
+          "type": "String",
+          "info": "Return only characters which appear the specified series (accepts a comma-separated list of ids).",
+          "required": false
+        },
+        {
+          "name": "orderBy",
+          "type": "String",
+          "info": "Order the result set by a field or fields. Add a \"-\" to the value sort in descending order. Multiple values are given priority in the order in which they are passed. Values: name, modified",
+          "required": false
+        },
+        {
+          "name": "limit",
+          "type": "Number",
+          "info": "Limit the result set to the specified number of resources.",
+          "required": false
+        },
+        {
+          "name": "offset",
+          "type": "Number",
+          "info": "Skip the specified number of resources in the result set.",
+          "required": false
+        }
+      ],
+      "callbacks": [
+        {
+          "name": "error",
+          "info": "Error"
+        },
+        {
+          "name": "success",
+          "info": "Success"
+        }
+      ]
+    },
+    {
+      "name": "getComicsByStory",
+      "description": "Fetches lists of comic characters appearing in a single story, with optional filters.",
+      "args": [
+        {
+          "name": "publicKey",
+          "type": "credentials",
+          "info": "Public api key obtained from Marvel",
+          "required": true
+        },
+        {
+          "name": "privateKey",
+          "type": "credentials",
+          "info": "Private api key obtained from Marvel",
+          "required": true
+        },
+        {
+          "name": "storyId",
+          "type": "Number",
+          "info": "A single story id.",
+          "required": true
+        },
+        {
+          "name": "format",
+          "type": "String",
+          "info": "Filter by the issue format (e.g. comic, digital comic, hardcover, magazine, trade paperback, digest, graphic novel, infinite comic).",
+          "required": false
+        },
+        {
+          "name": "formatType",
+          "type": "String",
+          "info": "Filter by the issue format type (comic or collection).",
+          "required": false
+        },
+        {
+          "name": "noVariants",
+          "type": "Boolean",
+          "info": "Exclude variant comics from the result set.",
+          "required": false
+        },
+        {
+          "name": "dateDescriptor",
+          "type": "String",
+          "info": "Return comics within a predefined date range. Values: lastWeek, thisWeek, nextWeek, thisMonth",
+          "required": false
+        },
+        {
+          "name": "dateRange",
+          "type": "String",
+          "info": "Return comics within a predefined date range. Dates must be specified as date1,date2 (e.g. 2013-01-01,2013-01-02). Dates are preferably formatted as YYYY-MM-DD but may be sent as any common date format.",
+          "required": false
+        },
+        {
+          "name": "title",
+          "type": "String",
+          "info": "Return only issues in series whose title matches the input.",
+          "required": false
+        },
+        {
+          "name": "titleStartsWith",
+          "type": "String",
+          "info": "Return only issues in series whose title starts with the input.",
+          "required": false
+        },
+        {
+          "name": "startYear",
+          "type": "String",
+          "info": "Return only issues in series whose start year matches the input.",
+          "required": false
+        },
+        {
+          "name": "issueNumber",
+          "type": "String",
+          "info": "Return only issues in series whose issue number matches the input.",
+          "required": false
+        },
+        {
+          "name": "diamondCode",
+          "type": "String",
+          "info": "Filter by diamond code.",
+          "required": false
+        },
+        {
+          "name": "digitalId",
+          "type": "Number",
+          "info": "Filter by digital comic id.",
+          "required": false
+        },
+        {
+          "name": "upc",
+          "type": "String",
+          "info": "Filter by UPC.",
+          "required": false
+        },
+        {
+          "name": "isbn",
+          "type": "String",
+          "info": "Filter by ISBN.",
+          "required": false
+        },
+        {
+          "name": "ean",
+          "type": "String",
+          "info": "Filter by EAN.",
+          "required": false
+        },
+        {
+          "name": "issn",
+          "type": "String",
+          "info": "Filter by ISSN.",
+          "required": false
+        },
+        {
+          "name": "hasDigitalIssue",
+          "type": "Boolean",
+          "info": "Include only results which are available digitally.",
+          "required": false
+        },
+        {
+          "name": "modifiedSince",
+          "type": "String",
+          "info": "Return only comics which have been modified since the specified date.",
+          "required": false
+        },
+        {
+          "name": "creators",
+          "type": "String",
+          "info": "Return only comics which feature work by the specified creators (accepts a comma-separated list of ids).",
+          "required": false
+        },
+        {
+          "name": "characters",
+          "type": "String",
+          "info": "Return only comics which feature the specified characters (accepts a comma-separated list of ids).",
+          "required": false
+        },
+        {
+          "name": "events",
+          "type": "String",
+          "info": "Return only comics which take place in the specified events (accepts a comma-separated list of ids).",
+          "required": false
+        },
+        {
+          "name": "series",
+          "type": "String",
+          "info": "Return only characters which appear the specified series (accepts a comma-separated list of ids).",
+          "required": false
+        },
+        {
+          "name": "sharedAppearances",
+          "type": "String",
+          "info": "Return only comics in which the specified characters appear together (for example in which BOTH Spider-Man and Wolverine appear).",
+          "required": false
+        },
+        {
+          "name": "collaborators",
+          "type": "String",
+          "info": "Return only comics in which the specified creators worked together (for example in which BOTH Stan Lee and Jack Kirby did work).",
+          "required": false
+        },
+        {
+          "name": "orderBy",
+          "type": "String",
+          "info": "Order the result set by a field or fields. Add a \"-\" to the value sort in descending order. Multiple values are given priority in the order in which they are passed. Values: focDate, onsaleDate, title, issueNumber, modified",
+          "required": false
+        },
+        {
+          "name": "limit",
+          "type": "Number",
+          "info": "Limit the result set to the specified number of resources.",
+          "required": false
+        },
+        {
+          "name": "offset",
+          "type": "Number",
+          "info": "Skip the specified number of resources in the result set.",
+          "required": false
+        }
+      ],
+      "callbacks": [
+        {
+          "name": "error",
+          "info": "Error"
+        },
+        {
+          "name": "success",
+          "info": "Success"
+        }
+      ]
+    },
+    {
+      "name": "getCreatorsByStory",
+      "description": "Fetches lists of comic creators whose work appears in a specific story, with optional filters.",
+      "args": [
+        {
+          "name": "publicKey",
+          "type": "credentials",
+          "info": "Public api key obtained from Marvel",
+          "required": true
+        },
+        {
+          "name": "privateKey",
+          "type": "credentials",
+          "info": "Private api key obtained from Marvel",
+          "required": true
+        },
+        {
+          "name": "storyId",
+          "type": "Number",
+          "info": "A single story id.",
+          "required": true
+        },
+        {
+          "name": "firstName",
+          "type": "String",
+          "info": "Filter by creator first name (e.g. brian).",
+          "required": false
+        },
+        {
+          "name": "middleName",
+          "type": "String",
+          "info": "Filter by creator middle name (e.g. Michael).",
+          "required": false
+        },
+        {
+          "name": "lastName",
+          "type": "String",
+          "info": "Filter by creator last name (e.g. Bendis).",
+          "required": false
+        },
+        {
+          "name": "suffix",
+          "type": "String",
+          "info": "Filter by suffix or honorific (e.g. Jr., Sr.).",
+          "required": false
+        },
+        {
+          "name": "nameStartsWith",
+          "type": "String",
+          "info": "Filter by creator names that match critera (e.g. B, St L).",
+          "required": false
+        },
+        {
+          "name": "firstNameStartsWith",
+          "type": "String",
+          "info": "Filter by creator first names that match critera (e.g. B, St L).",
+          "required": false
+        },
+        {
+          "name": "middleNameStartsWith",
+          "type": "String",
+          "info": "Filter by creator middle names that match critera (e.g. Mi).",
+          "required": false
+        },
+        {
+          "name": "lastNameStartsWith",
+          "type": "String",
+          "info": "Filter by creator last names that match critera (e.g. Ben).",
+          "required": false
+        },
+        {
+          "name": "modifiedSince",
+          "type": "String",
+          "info": "Return only creators which have been modified since the specified date.",
+          "required": false
+        },
+        {
+          "name": "events",
+          "type": "String",
+          "info": "Return only creators who worked on comics that took place in the specified events (accepts a comma-separated list of ids).",
+          "required": false
+        },
+        {
+          "name": "comics",
+          "type": "String",
+          "info": "Return only creators who worked on in the specified comics (accepts a comma-separated list of ids).",
+          "required": false
+        },
+        {
+          "name": "series",
+          "type": "String",
+          "info": "Return only creators who worked on the specified series (accepts a comma-separated list of ids).",
+          "required": false
+        },
+        {
+          "name": "orderBy",
+          "type": "String",
+          "info": "Order the result set by a field or fields. Add a \"-\" to the value sort in descending order. Multiple values are given priority in the order in which they are passed. Values: lastName, firstName, middleName, suffix, modified",
+          "required": false
+        },
+        {
+          "name": "limit",
+          "type": "Number",
+          "info": "Limit the result set to the specified number of resources.",
+          "required": false
+        },
+        {
+          "name": "offset",
+          "type": "Number",
+          "info": "Skip the specified number of resources in the result set.",
+          "required": false
+        }
+      ],
+      "callbacks": [
+        {
+          "name": "error",
+          "info": "Error"
+        },
+        {
+          "name": "success",
+          "info": "Success"
+        }
+      ]
+    },
+    {
+      "name": "getEventsByStory",
+      "description": "Fetches lists of events in which a specific story appears, with optional filters.",
+      "args": [
+        {
+          "name": "publicKey",
+          "type": "credentials",
+          "info": "Public api key obtained from Marvel",
+          "required": true
+        },
+        {
+          "name": "privateKey",
+          "type": "credentials",
+          "info": "Private api key obtained from Marvel",
+          "required": true
+        },
+        {
+          "name": "storyId",
+          "type": "Number",
+          "info": "A single story id.",
+          "required": true
+        },
+        {
+          "name": "name",
+          "type": "String",
+          "info": "Filter the event list by name.",
+          "required": false
+        },
+        {
+          "name": "nameStartsWith",
+          "type": "String",
+          "info": "Return events with names that begin with the specified string (e.g. Sp).",
+          "required": false
+        },
+        {
+          "name": "modifiedSince",
+          "type": "String",
+          "info": "Return only events which have been modified since the specified date.",
+          "required": false
+        },
+        {
+          "name": "creators",
+          "type": "String",
+          "info": "Return only events which feature work by the specified creators (accepts a comma-separated list of ids).",
+          "required": false
+        },
+        {
+          "name": "characters",
+          "type": "String",
+          "info": "Return only events which feature the specified characters (accepts a comma-separated list of ids).",
+          "required": false
+        },
+        {
+          "name": "comics",
+          "type": "String",
+          "info": "Return only events which take place in the specified comics (accepts a comma-separated list of ids).",
+          "required": false
+        },
+        {
+          "name": "series",
+          "type": "String",
+          "info": "Return only events which are part of the specified series (accepts a comma-separated list of ids).",
+          "required": false
+        },
+        {
+          "name": "orderBy",
+          "type": "String",
+          "info": "Order the result set by a field or fields. Add a \"-\" to the value sort in descending order. Multiple values are given priority in the order in which they are passed. Values: name, startDate modified",
+          "required": false
+        },
+        {
+          "name": "limit",
+          "type": "Number",
+          "info": "Limit the result set to the specified number of resources.",
+          "required": false
+        },
+        {
+          "name": "offset",
+          "type": "Number",
+          "info": "Skip the specified number of resources in the result set.",
+          "required": false
+        }
+      ],
+      "callbacks": [
+        {
+          "name": "error",
+          "info": "Error"
+        },
+        {
+          "name": "success",
+          "info": "Success"
+        }
+      ]
+    },
+    {
+      "name": "getSeriesByStory",
+      "description": "Fetches lists of comic series in which the specified story takes place.",
+      "args": [
+        {
+          "name": "publicKey",
+          "type": "credentials",
+          "info": "Public api key obtained from Marvel",
+          "required": true
+        },
+        {
+          "name": "privateKey",
+          "type": "credentials",
+          "info": "Private api key obtained from Marvel",
+          "required": true
+        },
+        {
+          "name": "storyId",
+          "type": "Number",
+          "info": "A single story id.",
+          "required": true
+        },
+        {
+          "name": "title",
+          "type": "String",
+          "info": "Return only issues in series whose title matches the input.",
+          "required": false
+        },
+        {
+          "name": "titleStartsWith",
+          "type": "String",
+          "info": "Return only issues in series whose title starts with the input.",
+          "required": false
+        },
+        {
+          "name": "startYear",
+          "type": "String",
+          "info": "Return only issues in series whose start year matches the input.",
+          "required": false
+        },
+        {
+          "name": "modifiedSince",
+          "type": "String",
+          "info": "Return only series which have been modified since the specified date.",
+          "required": false
+        },
+        {
+          "name": "creators",
+          "type": "String",
+          "info": "Return only series which feature work by the specified creators (accepts a comma-separated list of ids).",
+          "required": false
+        },
+        {
+          "name": "comics",
+          "type": "String",
+          "info": "Return only series which contain the specified comics (accepts a comma-separated list of ids).",
+          "required": false
+        },
+        {
+          "name": "characters",
+          "type": "String",
+          "info": "Return only series which feature the specified characters (accepts a comma-separated list of ids).",
+          "required": false
+        },
+        {
+          "name": "creators",
+          "type": "String",
+          "info": "Return only series which feature work by the specified creators (accepts a comma-separated list of ids).",
+          "required": false
+        },
+        {
+          "name": "seriesType",
+          "type": "String",
+          "info": "Filter the series by publication frequency type. Values: collection, one shot, limited, ongoing",
+          "required": false
+        },
+        {
+          "name": "contains",
+          "type": "String",
+          "info": "Return only series containing one or more comics with the specified format. Values: comic, digital comic, hardcover, magazine, trade paperback, digest, graphic novel, infinite comic).",
+          "required": false
+        },
+        {
+          "name": "orderBy",
+          "type": "String",
+          "info": "Order the result set by a field or fields. Add a \"-\" to the value sort in descending order. Multiple values are given priority in the order in which they are passed. Values: title, startYear, modified",
+          "required": false
+        },
+        {
+          "name": "limit",
+          "type": "Number",
+          "info": "Limit the result set to the specified number of resources.",
+          "required": false
+        },
+        {
+          "name": "offset",
+          "type": "Number",
+          "info": "Skip the specified number of resources in the result set.",
+          "required": false
+        }
+      ],
+      "callbacks": [
+        {
+          "name": "error",
+          "info": "Error"
+        },
+        {
+          "name": "success",
+          "info": "Success"
+        }
+      ]
+    }
+  ]
+}

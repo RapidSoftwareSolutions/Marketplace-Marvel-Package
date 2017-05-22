@@ -1,0 +1,47 @@
+       <?php
+       $routes = [
+       'getSeriesByStory',
+       'getEventsByStory',
+       'getCreatorsByStory',
+       'getComicsByStory',
+       'getCharactersByStory',
+       'getSingleStory',
+       'getStories',
+       'getStoriesBySeries',
+       'getEventsBySeries',
+       'getCreatorsBySeries',
+       'getComicsBySeries',
+       'getCharactersBySeries',
+       'getSingleSeries',
+       'getSeries',
+       'getStoriesByEvent',
+       'getSeriesByEvent',
+       'getCreatorsByEvent',
+       'getComicsByEvent',
+       'getCharactersByEvent',
+       'getSingleEvent',
+       'getEvents',
+       'getStoriesByCreator',
+       'getSeriesByCreator',
+       'getEventsByCreator',
+       'getComicsByCreator',
+       'getSingleCreator',
+       'getCreators',
+       'getStoriesByComic',
+       'getEventsByComic',
+       'getCreatorsByComic',
+       'getCharactersByComic',
+       'getSingleComic',
+       'getComics',
+       'getStoriesByCharacter',
+       'getSeriesByCharacter',
+       'getEventsByCharacter',
+       'getComicsByCharacter',
+       'getSingleCharacter',
+        'getCharacters',
+        'metadata'
+       ];
+       foreach ($routes as $file) {
+           require __DIR__ . '/../src/routes/' . $file . '.php';
+       }
+
