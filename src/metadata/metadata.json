@@ -2704,6 +2704,41 @@
         }
       ]
     },
+    ,
+    {
+      "name": "getSingleSeries",
+      "description": "Fetches signle series by its id",
+      "args": [
+        {
+          "name": "publicKey",
+          "type": "credentials",
+          "info": "Public api key obtained from Marvel",
+          "required": true
+        },
+        {
+          "name": "privateKey",
+          "type": "credentials",
+          "info": "Private api key obtained from Marvel",
+          "required": true
+        },
+        {
+          "name": "seriesId",
+          "type": "Number",
+          "info": "Id of the series",
+          "required": false
+        }
+      ],
+      "callbacks": [
+        {
+          "name": "error",
+          "info": "Error"
+        },
+        {
+          "name": "success",
+          "info": "Success"
+        }
+      ]
+    }
     {
       "name": "getCharactersBySeries",
       "description": "Fetches lists of characters which appear in specific series, with optional filters.",

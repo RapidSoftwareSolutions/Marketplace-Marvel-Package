@@ -545,6 +545,16 @@ Fetches lists of comic series with optional filters.
 | limit          | Number     | Limit the result set to the specified number of resources.
 | offset         | Number     | Skip the specified number of resources in the result set.
 
+# Marvel.getSingleSeries
+This method fetches a single comic series resource. It is the canonical URI for any comic story resource provided by the API.
+
+| Field     | Type       | Description
+|-----------|------------|----------
+| publicKey | credentials| Public api key obtained from Marvel
+| privateKey| credentials| Private api key obtained from Marvel
+| seriesId  | Number     | ID of the series
+
+
 ## Marvel.getCharactersBySeries
 Fetches lists of characters which appear in specific series, with optional filters.
 
