@@ -43,7 +43,7 @@ RUN echo "http://dl-4.alpinelinux.org/alpine/v3.5/main/" >> /etc/apk/repositorie
     && chmod a+x /usr/local/bin/run.sh
 
 # Install app dependencies
-RUN composer install --no-interaction
+RUN composer install --no-dev --no-interaction
 
 COPY /conf/php.ini /etc/php7/conf.d/50-setting.ini
 COPY /conf/www.conf /etc/php7/php-fpm.d/www.conf
