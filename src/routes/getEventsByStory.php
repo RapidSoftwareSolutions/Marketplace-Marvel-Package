@@ -28,16 +28,16 @@ $app->post('/api/Marvel/getEventsByStory', function ($request, $response, $args)
         $body['modifiedSince'] = $post_data['args']['modifiedSince'];
     }
     if (isset($post_data['args']['comics']) && strlen($post_data['args']['comics']) > 0) {
-        $body['comics'] = $post_data['args']['comics'];
+        $body['comics'] = implode(',', $post_data['args']['comics']);
     }
     if (isset($post_data['args']['creators']) && strlen($post_data['args']['creators']) > 0) {
-        $body['creators'] = $post_data['args']['creators'];
+        $body['creators'] = implode(',', $post_data['args']['creators']);
     }
     if (isset($post_data['args']['characters']) && strlen($post_data['args']['characters']) > 0) {
-        $body['characters'] = $post_data['args']['characters'];
+        $body['characters'] = implode(',', $post_data['args']['characters']);
     }
     if (isset($post_data['args']['series']) && strlen($post_data['args']['series']) > 0) {
-        $body['series'] = $post_data['args']['series'];
+        $body['series'] = implode(',', $post_data['args']['series']);
     }
     if (isset($post_data['args']['orderBy']) && strlen($post_data['args']['orderBy']) > 0) {
         $body['orderBy'] = $post_data['args']['orderBy'];

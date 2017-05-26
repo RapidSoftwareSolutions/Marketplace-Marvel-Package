@@ -20,10 +20,10 @@ Fetches lists of comic characters with optional filters.
 | name          | String     | Return only characters matching the specified full character name (e.g. Spider-Man).
 | nameStartsWith| String     | Return characters with names that begin with the specified string (e.g. Sp).
 | modifiedSince | String     | Return only characters which have been modified since the specified date.
-| comics        | String     | Return only characters which appear in the specified comics (accepts a comma-separated list of ids).
-| series        | String     | Return only characters which appear the specified series (accepts a comma-separated list of ids).
-| events        | String     | Return only characters which appear the specified events (accepts a comma-separated list of ids).
-| stories       | String     | Return only characters which appear the specified stories (accepts a comma-separated list of ids).
+| comics        | Array      | Return only characters which appear in the specified comics (accepts an array of ids).
+| series        | Array      | Return only characters which appear the specified series (accepts an array of ids).
+| events        | Array      | Return only characters which appear the specified events (accepts an array of ids).
+| stories       | Array      | Return only characters which appear the specified stories (accepts an array of ids).
 | orderBy       | String     | Order the result set by a field or fields. Add a "-" to the value sort in descending order. Multiple values are given priority in the order in which they are passed. Values: name, modified
 | limit         | Number     | Limit the result set to the specified number of resources.
 | offset        | Number     | Skip the specified number of resources in the result set.
@@ -49,7 +49,7 @@ Fetches lists of comics containing a specific character, with optional filters.
 | formatType       | String     | Filter by the issue format type (comic or collection).
 | noVariants       | Boolean    | Exclude variant comics from the result set.
 | dateDescriptor   | String     | Return comics within a predefined date range. Values: lastWeek, thisWeek, nextWeek, thisMonth
-| dateRange        | String     | Return comics within a predefined date range. Dates must be specified as date1,date2 (e.g. 2013-01-01,2013-01-02). Dates are preferably formatted as YYYY-MM-DD but may be sent as any common date format.
+| dateRange        | Array      | Return comics within a predefined date range. Dates must be specified as array. Dates are preferably formatted as YYYY-MM-DD but may be sent as any common date format.
 | title            | String     | Return only issues in series whose title matches the input.
 | titleStartsWith  | String     | Return only issues in series whose title starts with the input.
 | startYear        | String     | Return only issues in series whose start year matches the input.
@@ -62,10 +62,10 @@ Fetches lists of comics containing a specific character, with optional filters.
 | issn             | String     | Filter by ISSN.
 | hasDigitalIssue  | Boolean    | Include only results which are available digitally.
 | modifiedSince    | String     | Return only comics which have been modified since the specified date.
-| creators         | String     | Return only comics which feature work by the specified creators (accepts a comma-separated list of ids).
-| series           | String     | Return only comics which are part of the specified series (accepts a comma-separated list of ids).
-| events           | String     | Return only comics which take place in the specified events (accepts a comma-separated list of ids).
-| stories          | String     | Return only comics which contain the specified stories (accepts a comma-separated list of ids).
+| creators         | Array      | Return only comics which feature work by the specified creators (accepts an array of ids).
+| series           | Array      | Return only comics which are part of the specified series (accepts an array of ids).
+| events           | Array      | Return only comics which take place in the specified events (accepts an array of ids).
+| stories          | Array      | Return only comics which contain the specified stories (accepts an array of ids).
 | sharedAppearances| String     | Return only comics in which the specified characters appear together (for example in which BOTH Spider-Man and Wolverine appear).
 | collaborators    | String     | Return only comics in which the specified creators worked together (for example in which BOTH Stan Lee and Jack Kirby did work).
 | orderBy          | String     | Order the result set by a field or fields. Add a "-" to the value sort in descending order. Multiple values are given priority in the order in which they are passed. Values: focDate, onsaleDate, title, issueNumber, modified
@@ -83,10 +83,10 @@ Fetches lists of events containing a specific character, with optional filters.
 | name          | String     | Filter the event list by name.
 | nameStartsWith| String     | Return events with names that begin with the specified string (e.g. Sp).
 | modifiedSince | String     | Return only events which have been modified since the specified date.
-| creators      | String     | Return only events which feature work by the specified creators (accepts a comma-separated list of ids).
-| series        | String     | Return only events which are part of the specified series (accepts a comma-separated list of ids).
-| comics        | String     | Return only events which take place in the specified comics (accepts a comma-separated list of ids).
-| stories       | String     | Return only events which contain the specified stories (accepts a comma-separated list of ids).
+| creators      | Array      | Return only events which feature work by the specified creators (accepts an array of ids).
+| series        | Array      | Return only events which are part of the specified series (accepts an array of ids).
+| comics        | Array      | Return only events which take place in the specified comics (accepts an array of ids).
+| stories       | Array      | Return only events which contain the specified stories (accepts an array of ids).
 | orderBy       | String     | Order the result set by a field or fields. Add a "-" to the value sort in descending order. Multiple values are given priority in the order in which they are passed. Values: name, startDate modified
 | limit         | Number     | Limit the result set to the specified number of resources.
 | offset        | Number     | Skip the specified number of resources in the result set.
@@ -103,10 +103,10 @@ Fetches lists of series containing a specific character, with optional filters.
 | titleStartsWith| String     | Return only issues in series whose title starts with the input.
 | startYear      | String     | Return only issues in series whose start year matches the input.
 | modifiedSince  | String     | Return only series which have been modified since the specified date.
-| creators       | String     | Return only series which feature work by the specified creators (accepts a comma-separated list of ids).
-| comics         | String     | Return only series which contain the specified comics (accepts a comma-separated list of ids).
-| events         | String     | Return only series which have comics that take place during the specified events (accepts a comma-separated list of ids).
-| stories        | String     | Return only series which contain the specified stories (accepts a comma-separated list of ids).
+| creators       | Array      | Return only series which feature work by the specified creators (accepts an array of ids).
+| comics         | Array      | Return only series which contain the specified comics (accepts an array of ids).
+| events         | Array      | Return only series which have comics that take place during the specified events (accepts an array of ids).
+| stories        | Array      | Return only series which contain the specified stories (accepts an array of ids).
 | seriesType     | String     | Filter the series by publication frequency type. Values: collection, one shot, limited, ongoing
 | contains       | String     | Return only series containing one or more comics with the specified format. Values: comic, digital comic, hardcover, magazine, trade paperback, digest, graphic novel, infinite comic).
 | orderBy        | String     | Order the result set by a field or fields. Add a "-" to the value sort in descending order. Multiple values are given priority in the order in which they are passed. Values: title, startYear, modified
@@ -122,10 +122,10 @@ Fetches lists of stories containing a specific character, with optional filters.
 | privateKey   | credentials| Private api key obtained from Marvel
 | characterId  | Number     | A single character id.
 | modifiedSince| String     | Return only stories which have been modified since the specified date.
-| creators     | String     | Return only stories which feature work by the specified creators (accepts a comma-separated list of ids).
-| comics       | String     | Return only stories contained in the specified (accepts a comma-separated list of ids).
-| events       | String     | Return only stories which take place during the specified events (accepts a comma-separated list of ids).
-| series       | String     | Return only stories contained the specified series (accepts a comma-separated list of ids).
+| creators     | Array      | Return only stories which feature work by the specified creators (accepts an array of ids).
+| comics       | Array      | Return only stories contained in the specified (accepts an array of ids).
+| events       | Array      | Return only stories which take place during the specified events (accepts an array of ids).
+| series       | Array      | Return only stories contained the specified series (accepts an array of ids).
 | orderBy      | String     | Order the result set by a field or fields. Add a "-" to the value sort in descending order. Multiple values are given priority in the order in which they are passed. Values: id, modified
 | limit        | Number     | Limit the result set to the specified number of resources.
 | offset       | Number     | Skip the specified number of resources in the result set.
@@ -141,7 +141,7 @@ Fetches lists of comics with optional filters.
 | formatType       | String     | Filter by the issue format type (comic or collection).
 | noVariants       | Boolean    | Exclude variant comics from the result set.
 | dateDescriptor   | String     | Return comics within a predefined date range. Values: lastWeek, thisWeek, nextWeek, thisMonth
-| dateRange        | String     | Return comics within a predefined date range. Dates must be specified as date1,date2 (e.g. 2013-01-01,2013-01-02). Dates are preferably formatted as YYYY-MM-DD but may be sent as any common date format.
+| dateRange        | Array      | Return comics within a predefined date range. Dates must be specified as array. Dates are preferably formatted as YYYY-MM-DD but may be sent as any common date format.
 | title            | String     | Return only issues in series whose title matches the input.
 | titleStartsWith  | String     | Return only issues in series whose title starts with the input.
 | startYear        | String     | Return only issues in series whose start year matches the input.
@@ -154,11 +154,11 @@ Fetches lists of comics with optional filters.
 | issn             | String     | Filter by ISSN.
 | hasDigitalIssue  | Boolean    | Include only results which are available digitally.
 | modifiedSince    | String     | Return only comics which have been modified since the specified date.
-| creators         | String     | Return only comics which feature work by the specified creators (accepts a comma-separated list of ids).
-| characters       | String     | Return only comics which feature the specified characters (accepts a comma-separated list of ids).
-| series           | String     | Return only comics which are part of the specified series (accepts a comma-separated list of ids).
-| events           | String     | Return only comics which take place in the specified events (accepts a comma-separated list of ids).
-| stories          | String     | Return only comics which contain the specified stories (accepts a comma-separated list of ids).
+| creators         | Array      | Return only comics which feature work by the specified creators (accepts an array of ids).
+| characters       | Array      | Return only comics which feature the specified characters (accepts an array of ids).
+| series           | Array      | Return only comics which are part of the specified series (accepts an array of ids).
+| events           | Array      | Return only comics which take place in the specified events (accepts an array of ids).
+| stories          | Array      | Return only comics which contain the specified stories (accepts an array of ids).
 | sharedAppearances| String     | Return only comics in which the specified characters appear together (for example in which BOTH Spider-Man and Wolverine appear).
 | collaborators    | String     | Return only comics in which the specified creators worked together (for example in which BOTH Stan Lee and Jack Kirby did work).
 | orderBy          | String     | Order the result set by a field or fields. Add a "-" to the value sort in descending order. Multiple values are given priority in the order in which they are passed. Values: focDate, onsaleDate, title, issueNumber, modified
@@ -185,9 +185,9 @@ Fetches lists of characters which appear in a specific comic with optional filte
 | name          | String     | Return only characters matching the specified full character name (e.g. Spider-Man).
 | nameStartsWith| String     | Return characters with names that begin with the specified string (e.g. Sp).
 | modifiedSince | String     | Return only characters which have been modified since the specified date.
-| series        | String     | Return only characters which appear the specified series (accepts a comma-separated list of ids).
-| events        | String     | Return only characters which appear comics that took place in the specified events (accepts a comma-separated list of ids).
-| stories       | String     | Return only characters which appear the specified stories (accepts a comma-separated list of ids).
+| series        | Array      | Return only characters which appear the specified series (accepts an array of ids).
+| events        | Array      | Return only characters which appear comics that took place in the specified events (accepts an array of ids).
+| stories       | Array      | Return only characters which appear the specified stories (accepts an array of ids).
 | orderBy       | String     | Order the result set by a field or fields. Add a "-" to the value sort in descending order. Multiple values are given priority in the order in which they are passed. Values: name, modified
 | limit         | Number     | Limit the result set to the specified number of resources.
 | offset        | Number     | Skip the specified number of resources in the result set.
@@ -209,9 +209,9 @@ Fetches lists of comic creators whose work appears in a specific comic, with opt
 | middleNameStartsWith| String     | Filter by creator middle names that match critera (e.g. Mi).
 | lastNameStartsWith  | String     | Filter by creator last names that match critera (e.g. Ben).
 | modifiedSince       | String     | Return only creators which have been modified since the specified date.
-| series              | String     | Return only creators who worked on in the specified series (accepts a comma-separated list of ids).
-| comics              | String     | Return only creators who worked on in the specified comics (accepts a comma-separated list of ids).
-| stories             | String     | Return only creators who worked on in the specified stories (accepts a comma-separated list of ids).
+| series              | Array      | Return only creators who worked on in the specified series (accepts an array of ids).
+| comics              | Array      | Return only creators who worked on in the specified comics (accepts an array of ids).
+| stories             | Array      | Return only creators who worked on in the specified stories (accepts an array of ids).
 | orderBy             | String     | Order the result set by a field or fields. Add a "-" to the value sort in descending order. Multiple values are given priority in the order in which they are passed. Values: lastName, firstName, middleName, suffix, modified
 | limit               | Number     | Limit the result set to the specified number of resources.
 | offset              | Number     | Skip the specified number of resources in the result set.
@@ -227,10 +227,10 @@ Fetches lists of events in which a specific comic appears, with optional filters
 | name          | String     | Filter the event list by name.
 | nameStartsWith| String     | Return events with names that begin with the specified string (e.g. Sp).
 | modifiedSince | String     | Return only events which have been modified since the specified date.
-| creators      | String     | Return only events which feature work by the specified creators (accepts a comma-separated list of ids).
-| series        | String     | Return only events which are part of the specified series (accepts a comma-separated list of ids).
-| characters    | String     | Return only events which feature the specified characters (accepts a comma-separated list of ids).
-| stories       | String     | Return only events which contain the specified stories (accepts a comma-separated list of ids).
+| creators      | Array      | Return only events which feature work by the specified creators (accepts an array of ids).
+| series        | Array      | Return only events which are part of the specified series (accepts an array of ids).
+| characters    | Array      | Return only events which feature the specified characters (accepts an array of ids).
+| stories       | Array      | Return only events which contain the specified stories (accepts an array of ids).
 | orderBy       | String     | Order the result set by a field or fields. Add a "-" to the value sort in descending order. Multiple values are given priority in the order in which they are passed. Values: name, startDate, modified
 | limit         | Number     | Limit the result set to the specified number of resources.
 | offset        | Number     | Skip the specified number of resources in the result set.
@@ -244,10 +244,10 @@ Fetches lists of comic stories in a specific comic issue, with optional filters.
 | privateKey   | credentials| Private api key obtained from Marvel
 | comicId      | Number     | A single comic id.
 | modifiedSince| String     | Return only stories which have been modified since the specified date.
-| creators     | String     | Return only stories which feature work by the specified creators (accepts a comma-separated list of ids).
-| characters   | String     | Return only stories which feature the specified characters (accepts a comma-separated list of ids).
-| events       | String     | Return only stories which take place during the specified events (accepts a comma-separated list of ids).
-| series       | String     | Return only stories contained the specified series (accepts a comma-separated list of ids).
+| creators     | Array      | Return only stories which feature work by the specified creators (accepts an array of ids).
+| characters   | Array      | Return only stories which feature the specified characters (accepts an array of ids).
+| events       | Array      | Return only stories which take place during the specified events (accepts an array of ids).
+| series       | Array      | Return only stories contained the specified series (accepts an array of ids).
 | orderBy      | String     | Order the result set by a field or fields. Add a "-" to the value sort in descending order. Multiple values are given priority in the order in which they are passed. Values: id, modified
 | limit        | Number     | Limit the result set to the specified number of resources.
 | offset       | Number     | Skip the specified number of resources in the result set.
@@ -268,10 +268,10 @@ Fetches lists of comic creators with optional filters.
 | middleNameStartsWith| String     | Filter by creator middle names that match critera (e.g. Mi).
 | lastNameStartsWith  | String     | Filter by creator last names that match critera (e.g. Ben).
 | modifiedSince       | String     | Return only creators which have been modified since the specified date.
-| series              | String     | Return only creators who worked on in the specified series (accepts a comma-separated list of ids).
-| events              | String     | Return only creators who worked on comics that took place in the specified events (accepts a comma-separated list of ids).
-| comics              | String     | Return only creators who worked on in the specified comics (accepts a comma-separated list of ids).
-| stories             | String     | Return only creators who worked on in the specified stories (accepts a comma-separated list of ids).
+| series              | Array      | Return only creators who worked on in the specified series (accepts an array of ids).
+| events              | Array      | Return only creators who worked on comics that took place in the specified events (accepts an array of ids).
+| comics              | Array      | Return only creators who worked on in the specified comics (accepts an array of ids).
+| stories             | Array      | Return only creators who worked on in the specified stories (accepts an array of ids).
 | orderBy             | String     | Order the result set by a field or fields. Add a "-" to the value sort in descending order. Multiple values are given priority in the order in which they are passed. Values: lastName, firstName, middleName, suffix, modified
 | limit               | Number     | Limit the result set to the specified number of resources.
 | offset              | Number     | Skip the specified number of resources in the result set.
@@ -297,7 +297,7 @@ Fetches lists of comics in which the work of a specific creator appears, with op
 | formatType       | String     | Filter by the issue format type (comic or collection).
 | noVariants       | Boolean    | Exclude variant comics from the result set.
 | dateDescriptor   | String     | Return comics within a predefined date range. Values: lastWeek, thisWeek, nextWeek, thisMonth
-| dateRange        | String     | Return comics within a predefined date range. Dates must be specified as date1,date2 (e.g. 2013-01-01,2013-01-02). Dates are preferably formatted as YYYY-MM-DD but may be sent as any common date format.
+| dateRange        | Array      | Return comics within a predefined date range. Dates must be specified as array. Dates are preferably formatted as YYYY-MM-DD but may be sent as any common date format.
 | title            | String     | Return only issues in series whose title matches the input.
 | titleStartsWith  | String     | Return only issues in series whose title starts with the input.
 | startYear        | String     | Return only issues in series whose start year matches the input.
@@ -310,10 +310,10 @@ Fetches lists of comics in which the work of a specific creator appears, with op
 | issn             | String     | Filter by ISSN.
 | hasDigitalIssue  | Boolean    | Include only results which are available digitally.
 | modifiedSince    | String     | Return only comics which have been modified since the specified date.
-| characters       | String     | Return only comics which feature the specified characters (accepts a comma-separated list of ids).
-| series           | String     | Return only comics which are part of the specified series (accepts a comma-separated list of ids).
-| events           | String     | Return only comics which take place in the specified events (accepts a comma-separated list of ids).
-| stories          | String     | Return only comics which contain the specified stories (accepts a comma-separated list of ids).
+| characters       | Array      | Return only comics which feature the specified characters (accepts an array of ids).
+| series           | Array      | Return only comics which are part of the specified series (accepts an array of ids).
+| events           | Array      | Return only comics which take place in the specified events (accepts an array of ids).
+| stories          | Array      | Return only comics which contain the specified stories (accepts an array of ids).
 | sharedAppearances| String     | Return only comics in which the specified characters appear together (for example in which BOTH Spider-Man and Wolverine appear).
 | collaborators    | String     | Return only comics in which the specified creators worked together (for example in which BOTH Stan Lee and Jack Kirby did work).
 | orderBy          | String     | Order the result set by a field or fields. Add a "-" to the value sort in descending order. Multiple values are given priority in the order in which they are passed. Values: focDate, onsaleDate, title, issueNumber, modified
@@ -331,10 +331,10 @@ Fetches lists of events featuring the work of a specific creator with optional f
 | name          | String     | Filter the event list by name.
 | nameStartsWith| String     | Return events with names that begin with the specified string (e.g. Sp).
 | modifiedSince | String     | Return only events which have been modified since the specified date.
-| comics        | String     | Return only events which take place in the specified comics (accepts a comma-separated list of ids).
-| series        | String     | Return only events which are part of the specified series (accepts a comma-separated list of ids).
-| characters    | String     | Return only events which feature the specified characters (accepts a comma-separated list of ids).
-| stories       | String     | Return only events which contain the specified stories (accepts a comma-separated list of ids).
+| comics        | Array      | Return only events which take place in the specified comics (accepts an array of ids).
+| series        | Array      | Return only events which are part of the specified series (accepts an array of ids).
+| characters    | Array      | Return only events which feature the specified characters (accepts an array of ids).
+| stories       | Array      | Return only events which contain the specified stories (accepts an array of ids).
 | orderBy       | String     | Order the result set by a field or fields. Add a "-" to the value sort in descending order. Multiple values are given priority in the order in which they are passed. Values: name, startDate, modified
 | limit         | Number     | Limit the result set to the specified number of resources.
 | offset        | Number     | Skip the specified number of resources in the result set.
@@ -351,10 +351,10 @@ Fetches lists of comic series in which a specific creator's work appears, with o
 | titleStartsWith| String     | Return only issues in series whose title starts with the input.
 | startYear      | String     | Return only issues in series whose start year matches the input.
 | modifiedSince  | String     | Return only series which have been modified since the specified date.
-| characters     | String     | Return only series which feature the specified characters (accepts a comma-separated list of ids).
-| comics         | String     | Return only series which contain the specified comics (accepts a comma-separated list of ids).
-| events         | String     | Return only series which have comics that take place during the specified events (accepts a comma-separated list of ids).
-| stories        | String     | Return only series which contain the specified stories (accepts a comma-separated list of ids).
+| characters     | Array      | Return only series which feature the specified characters (accepts an array of ids).
+| comics         | Array      | Return only series which contain the specified comics (accepts an array of ids).
+| events         | Array      | Return only series which have comics that take place during the specified events (accepts an array of ids).
+| stories        | Array      | Return only series which contain the specified stories (accepts an array of ids).
 | seriesType     | String     | Filter the series by publication frequency type. Values: collection, one shot, limited, ongoing
 | contains       | String     | Return only series containing one or more comics with the specified format. Values: comic, digital comic, hardcover, magazine, trade paperback, digest, graphic novel, infinite comic).
 | orderBy        | String     | Order the result set by a field or fields. Add a "-" to the value sort in descending order. Multiple values are given priority in the order in which they are passed. Values: title, startYear, modified
@@ -370,10 +370,10 @@ Fetches lists of comic stories by a specific creator with optional filters.
 | privateKey   | credentials| Private api key obtained from Marvel
 | creatorId    | Number     | Creator id.
 | modifiedSince| String     | Return only stories which have been modified since the specified date.
-| comics       | String     | Return only stories contained in the specified comics (accepts a comma-separated list of ids).
-| characters   | String     | Return only stories which feature the specified characters (accepts a comma-separated list of ids).
-| events       | String     | Return only stories which take place during the specified events (accepts a comma-separated list of ids).
-| series       | String     | Return only stories contained the specified series (accepts a comma-separated list of ids).
+| comics       | Array      | Return only stories contained in the specified comics (accepts an array of ids).
+| characters   | Array      | Return only stories which feature the specified characters (accepts an array of ids).
+| events       | Array      | Return only stories which take place during the specified events (accepts an array of ids).
+| series       | Array      | Return only stories contained the specified series (accepts an array of ids).
 | orderBy      | String     | Order the result set by a field or fields. Add a "-" to the value sort in descending order. Multiple values are given priority in the order in which they are passed. Values: id, modified
 | limit        | Number     | Limit the result set to the specified number of resources.
 | offset       | Number     | Skip the specified number of resources in the result set.
@@ -388,11 +388,11 @@ Fetches lists of events with optional filters.
 | name          | String     | Filter the event list by name.
 | nameStartsWith| String     | Return events with names that begin with the specified string (e.g. Sp).
 | modifiedSince | String     | Return only events which have been modified since the specified date.
-| creators      | String     | Return only events which feature work by the specified creators (accepts a comma-separated list of ids).
-| series        | String     | Return only events which are part of the specified series (accepts a comma-separated list of ids).
-| characters    | String     | Return only events which feature the specified characters (accepts a comma-separated list of ids).
-| comics        | String     | Return only events which take place in the specified comics (accepts a comma-separated list of ids).
-| stories       | String     | Return only events which contain the specified stories (accepts a comma-separated list of ids).
+| creators      | Array      | Return only events which feature work by the specified creators (accepts an array of ids).
+| series        | Array      | Return only events which are part of the specified series (accepts an array of ids).
+| characters    | Array      | Return only events which feature the specified characters (accepts an array of ids).
+| comics        | Array      | Return only events which take place in the specified comics (accepts an array of ids).
+| stories       | Array      | Return only events which contain the specified stories (accepts an array of ids).
 | orderBy       | String     | Order the result set by a field or fields. Add a "-" to the value sort in descending order. Multiple values are given priority in the order in which they are passed. Values: name, startDate, modified
 | limit         | Number     | Limit the result set to the specified number of resources.
 | offset        | Number     | Skip the specified number of resources in the result set.
@@ -417,9 +417,9 @@ Fetches lists of characters which appear in a specific event, with optional filt
 | name          | String     | Return only characters matching the specified full character name (e.g. Spider-Man).
 | nameStartsWith| String     | Return characters with names that begin with the specified string (e.g. Sp).
 | modifiedSince | String     | Return only characters which have been modified since the specified date.
-| series        | String     | Return only characters which appear the specified series (accepts a comma-separated list of ids).
-| comics        | String     | Return only characters which appear in the specified comics (accepts a comma-separated list of ids).
-| stories       | String     | Return only characters which appear the specified stories (accepts a comma-separated list of ids).
+| series        | Array      | Return only characters which appear the specified series (accepts an array of ids).
+| comics        | Array      | Return only characters which appear in the specified comics (accepts an array of ids).
+| stories       | Array      | Return only characters which appear the specified stories (accepts an array of ids).
 | orderBy       | String     | Order the result set by a field or fields. Add a "-" to the value sort in descending order. Multiple values are given priority in the order in which they are passed. Values: name, modified
 | limit         | Number     | Limit the result set to the specified number of resources.
 | offset        | Number     | Skip the specified number of resources in the result set.
@@ -436,7 +436,7 @@ Fetches lists of comics which take place during a specific event, with optional 
 | formatType       | String     | Filter by the issue format type (comic or collection).
 | noVariants       | Boolean    | Exclude variant comics from the result set.
 | dateDescriptor   | String     | Return comics within a predefined date range. Values: lastWeek, thisWeek, nextWeek, thisMonth
-| dateRange        | String     | Return comics within a predefined date range. Dates must be specified as date1,date2 (e.g. 2013-01-01,2013-01-02). Dates are preferably formatted as YYYY-MM-DD but may be sent as any common date format.
+| dateRange        | Array      | Return comics within a predefined date range. Dates must be specified as array. Dates are preferably formatted as YYYY-MM-DD but may be sent as any common date format.
 | title            | String     | Return only issues in series whose title matches the input.
 | titleStartsWith  | String     | Return only issues in series whose title starts with the input.
 | startYear        | String     | Return only issues in series whose start year matches the input.
@@ -449,11 +449,11 @@ Fetches lists of comics which take place during a specific event, with optional 
 | issn             | String     | Filter by ISSN.
 | hasDigitalIssue  | Boolean    | Include only results which are available digitally.
 | modifiedSince    | String     | Return only comics which have been modified since the specified date.
-| creators         | String     | Return only comics which feature work by the specified creators (accepts a comma-separated list of ids).
-| characters       | String     | Return only comics which feature the specified characters (accepts a comma-separated list of ids).
-| series           | String     | Return only comics which are part of the specified series (accepts a comma-separated list of ids).
-| events           | String     | Return only comics which take place in the specified events (accepts a comma-separated list of ids).
-| stories          | String     | Return only comics which contain the specified stories (accepts a comma-separated list of ids).
+| creators         | Array      | Return only comics which feature work by the specified creators (accepts an array of ids).
+| characters       | Array      | Return only comics which feature the specified characters (accepts an array of ids).
+| series           | Array      | Return only comics which are part of the specified series (accepts an array of ids).
+| events           | Array      | Return only comics which take place in the specified events (accepts an array of ids).
+| stories          | Array      | Return only comics which contain the specified stories (accepts an array of ids).
 | sharedAppearances| String     | Return only comics in which the specified characters appear together (for example in which BOTH Spider-Man and Wolverine appear).
 | collaborators    | String     | Return only comics in which the specified creators worked together (for example in which BOTH Stan Lee and Jack Kirby did work).
 | orderBy          | String     | Order the result set by a field or fields. Add a "-" to the value sort in descending order. Multiple values are given priority in the order in which they are passed. Values: focDate, onsaleDate, title, issueNumber, modified
@@ -477,9 +477,9 @@ Fetches lists of comic creators whose work appears in a specific event, with opt
 | middleNameStartsWith| String     | Filter by creator middle names that match critera (e.g. Mi).
 | lastNameStartsWith  | String     | Filter by creator last names that match critera (e.g. Ben).
 | modifiedSince       | String     | Return only creators which have been modified since the specified date.
-| series              | String     | Return only creators who worked on in the specified series (accepts a comma-separated list of ids).
-| comics              | String     | Return only creators who worked on in the specified comics (accepts a comma-separated list of ids).
-| stories             | String     | Return only creators who worked on in the specified stories (accepts a comma-separated list of ids).
+| series              | Array      | Return only creators who worked on in the specified series (accepts an array of ids).
+| comics              | Array      | Return only creators who worked on in the specified comics (accepts an array of ids).
+| stories             | Array      | Return only creators who worked on in the specified stories (accepts an array of ids).
 | orderBy             | String     | Order the result set by a field or fields. Add a "-" to the value sort in descending order. Multiple values are given priority in the order in which they are passed. Values: lastName, firstName, middleName, suffix, modified
 | limit               | Number     | Limit the result set to the specified number of resources.
 | offset              | Number     | Skip the specified number of resources in the result set.
@@ -496,10 +496,10 @@ Fetches lists of comic series in which a specific event takes place, with option
 | titleStartsWith| String     | Return only issues in series whose title starts with the input.
 | startYear      | String     | Return only issues in series whose start year matches the input.
 | modifiedSince  | String     | Return only series which have been modified since the specified date.
-| creators       | String     | Return only series which feature work by the specified creators (accepts a comma-separated list of ids).
-| comics         | String     | Return only series which contain the specified comics (accepts a comma-separated list of ids).
-| characters     | String     | Return only series which feature the specified characters (accepts a comma-separated list of ids).
-| stories        | String     | Return only series which contain the specified stories (accepts a comma-separated list of ids).
+| creators       | Array      | Return only series which feature work by the specified creators (accepts an array of ids).
+| comics         | Array      | Return only series which contain the specified comics (accepts an array of ids).
+| characters     | Array      | Return only series which feature the specified characters (accepts an array of ids).
+| stories        | Array      | Return only series which contain the specified stories (accepts an array of ids).
 | seriesType     | String     | Filter the series by publication frequency type. Values: collection, one shot, limited, ongoing
 | contains       | String     | Return only series containing one or more comics with the specified format. Values: comic, digital comic, hardcover, magazine, trade paperback, digest, graphic novel, infinite comic).
 | orderBy        | String     | Order the result set by a field or fields. Add a "-" to the value sort in descending order. Multiple values are given priority in the order in which they are passed. Values: title, startYear, modified
@@ -515,10 +515,10 @@ Fetches lists of comic stories from a specific event, with optional filters.
 | privateKey   | credentials| Private api key obtained from Marvel
 | eventId      | Number     | A single event id.
 | modifiedSince| String     | Return only stories which have been modified since the specified date.
-| creators     | String     | Return only stories which feature work by the specified creators (accepts a comma-separated list of ids).
-| comics       | String     | Return only stories contained in the specified (accepts a comma-separated list of ids).
-| characters   | String     | Return only stories which feature work by the specified creators (accepts a comma-separated list of ids).
-| series       | String     | Return only stories contained the specified series (accepts a comma-separated list of ids).
+| creators     | Array      | Return only stories which feature work by the specified creators (accepts an array of ids).
+| comics       | Array      | Return only stories contained in the specified (accepts an array of ids).
+| characters   | Array      | Return only stories which feature work by the specified creators (accepts an array of ids).
+| series       | Array      | Return only stories contained the specified series (accepts an array of ids).
 | orderBy      | String     | Order the result set by a field or fields. Add a "-" to the value sort in descending order. Multiple values are given priority in the order in which they are passed. Values: id, modified
 | limit        | Number     | Limit the result set to the specified number of resources.
 | offset       | Number     | Skip the specified number of resources in the result set.
@@ -534,11 +534,11 @@ Fetches lists of comic series with optional filters.
 | titleStartsWith| String     | Return only issues in series whose title starts with the input.
 | startYear      | String     | Return only issues in series whose start year matches the input.
 | modifiedSince  | String     | Return only series which have been modified since the specified date.
-| characters     | String     | Return only series which feature the specified characters (accepts a comma-separated list of ids).
-| creators       | String     | Return only series which feature work by the specified creators (accepts a comma-separated list of ids).
-| comics         | String     | Return only series which contain the specified comics (accepts a comma-separated list of ids).
-| events         | String     | Return only series which have comics that take place during the specified events (accepts a comma-separated list of ids).
-| stories        | String     | Return only series which contain the specified stories (accepts a comma-separated list of ids).
+| characters     | Array      | Return only series which feature the specified characters (accepts an array of ids).
+| creators       | Array      | Return only series which feature work by the specified creators (accepts an array of ids).
+| comics         | Array      | Return only series which contain the specified comics (accepts an array of ids).
+| events         | Array      | Return only series which have comics that take place during the specified events (accepts an array of ids).
+| stories        | Array      | Return only series which contain the specified stories (accepts an array of ids).
 | seriesType     | String     | Filter the series by publication frequency type. Values: collection, one shot, limited, ongoing
 | contains       | String     | Return only series containing one or more comics with the specified format. Values: comic, digital comic, hardcover, magazine, trade paperback, digest, graphic novel, infinite comic).
 | orderBy        | String     | Order the result set by a field or fields. Add a "-" to the value sort in descending order. Multiple values are given priority in the order in which they are passed. Values: title, startYear, modified
@@ -566,9 +566,9 @@ Fetches lists of characters which appear in specific series, with optional filte
 | name          | String     | Return only characters matching the specified full character name (e.g. Spider-Man).
 | nameStartsWith| String     | Return characters with names that begin with the specified string (e.g. Sp).
 | modifiedSince | String     | Return only characters which have been modified since the specified date.
-| comics        | String     | Return only characters which appear in the specified comics (accepts a comma-separated list of ids).
-| events        | String     | Return only characters which appear comics that took place in the specified events (accepts a comma-separated list of ids).
-| stories       | String     | Return only characters which appear the specified stories (accepts a comma-separated list of ids).
+| comics        | Array      | Return only characters which appear in the specified comics (accepts an array of ids).
+| events        | Array      | Return only characters which appear comics that took place in the specified events (accepts an array of ids).
+| stories       | Array      | Return only characters which appear the specified stories (accepts an array of ids).
 | orderBy       | String     | Order the result set by a field or fields. Add a "-" to the value sort in descending order. Multiple values are given priority in the order in which they are passed. Values: name, modified
 | limit         | Number     | Limit the result set to the specified number of resources.
 | offset        | Number     | Skip the specified number of resources in the result set.
@@ -585,7 +585,7 @@ Fetches lists of comics which are published as part of a specific series, with o
 | formatType       | String     | Filter by the issue format type (comic or collection).
 | noVariants       | Boolean    | Exclude variant comics from the result set.
 | dateDescriptor   | String     | Return comics within a predefined date range. Values: lastWeek, thisWeek, nextWeek, thisMonth
-| dateRange        | String     | Return comics within a predefined date range. Dates must be specified as date1,date2 (e.g. 2013-01-01,2013-01-02). Dates are preferably formatted as YYYY-MM-DD but may be sent as any common date format.
+| dateRange        | Array      | Return comics within a predefined date range. Dates must be specified as array. Dates are preferably formatted as YYYY-MM-DD but may be sent as any common date format.
 | title            | String     | Return only issues in series whose title matches the input.
 | titleStartsWith  | String     | Return only issues in series whose title starts with the input.
 | startYear        | String     | Return only issues in series whose start year matches the input.
@@ -598,10 +598,10 @@ Fetches lists of comics which are published as part of a specific series, with o
 | issn             | String     | Filter by ISSN.
 | hasDigitalIssue  | Boolean    | Include only results which are available digitally.
 | modifiedSince    | String     | Return only comics which have been modified since the specified date.
-| creators         | String     | Return only comics which feature work by the specified creators (accepts a comma-separated list of ids).
-| characters       | String     | Return only comics which feature the specified characters (accepts a comma-separated list of ids).
-| events           | String     | Return only comics which take place in the specified events (accepts a comma-separated list of ids).
-| stories          | String     | Return only comics which contain the specified stories (accepts a comma-separated list of ids).
+| creators         | Array      | Return only comics which feature work by the specified creators (accepts an array of ids).
+| characters       | Array      | Return only comics which feature the specified characters (accepts an array of ids).
+| events           | Array      | Return only comics which take place in the specified events (accepts an array of ids).
+| stories          | Array      | Return only comics which contain the specified stories (accepts an array of ids).
 | sharedAppearances| String     | Return only comics in which the specified characters appear together (for example in which BOTH Spider-Man and Wolverine appear).
 | collaborators    | String     | Return only comics in which the specified creators worked together (for example in which BOTH Stan Lee and Jack Kirby did work).
 | orderBy          | String     | Order the result set by a field or fields. Add a "-" to the value sort in descending order. Multiple values are given priority in the order in which they are passed. Values: focDate, onsaleDate, title, issueNumber, modified
@@ -625,9 +625,9 @@ Fetches lists of comic creators whose work appears in a specific series, with op
 | middleNameStartsWith| String     | Filter by creator middle names that match critera (e.g. Mi).
 | lastNameStartsWith  | String     | Filter by creator last names that match critera (e.g. Ben).
 | modifiedSince       | String     | Return only creators which have been modified since the specified date.
-| events              | String     | Return only creators who worked on comics that took place in the specified events (accepts a comma-separated list of ids).
-| comics              | String     | Return only creators who worked on in the specified comics (accepts a comma-separated list of ids).
-| stories             | String     | Return only creators who worked on in the specified stories (accepts a comma-separated list of ids).
+| events              | Array      | Return only creators who worked on comics that took place in the specified events (accepts an array of ids).
+| comics              | Array      | Return only creators who worked on in the specified comics (accepts an array of ids).
+| stories             | Array      | Return only creators who worked on in the specified stories (accepts an array of ids).
 | orderBy             | String     | Order the result set by a field or fields. Add a "-" to the value sort in descending order. Multiple values are given priority in the order in which they are passed. Values: lastName, firstName, middleName, suffix, modified
 | limit               | Number     | Limit the result set to the specified number of resources.
 | offset              | Number     | Skip the specified number of resources in the result set.
@@ -643,10 +643,10 @@ Fetches lists of events which occur in a specific series, with optional filters.
 | name          | String     | Filter the event list by name.
 | nameStartsWith| String     | Return events with names that begin with the specified string (e.g. Sp).
 | modifiedSince | String     | Return only events which have been modified since the specified date.
-| creators      | String     | Return only events which feature work by the specified creators (accepts a comma-separated list of ids).
-| characters    | String     | Return only events which feature the specified characters (accepts a comma-separated list of ids).
-| comics        | String     | Return only events which take place in the specified comics (accepts a comma-separated list of ids).
-| stories       | String     | Return only events which contain the specified stories (accepts a comma-separated list of ids).
+| creators      | Array      | Return only events which feature work by the specified creators (accepts an array of ids).
+| characters    | Array      | Return only events which feature the specified characters (accepts an array of ids).
+| comics        | Array      | Return only events which take place in the specified comics (accepts an array of ids).
+| stories       | Array      | Return only events which contain the specified stories (accepts an array of ids).
 | orderBy       | String     | Order the result set by a field or fields. Add a "-" to the value sort in descending order. Multiple values are given priority in the order in which they are passed. Values: name, startDate modified
 | limit         | Number     | Limit the result set to the specified number of resources.
 | offset        | Number     | Skip the specified number of resources in the result set.
@@ -660,10 +660,10 @@ Fetches lists of comic stories from a specific event, with optional filters.
 | privateKey   | credentials| Private api key obtained from Marvel
 | seriesId     | Number     | A single series id.
 | modifiedSince| String     | Return only stories which have been modified since the specified date.
-| creators     | String     | Return only stories which feature work by the specified creators (accepts a comma-separated list of ids).
-| comics       | String     | Return only stories contained in the specified (accepts a comma-separated list of ids).
-| characters   | String     | Return only stories which feature work by the specified creators (accepts a comma-separated list of ids).
-| events       | String     | Return only stories which take place during the specified events (accepts a comma-separated list of ids).
+| creators     | Array      | Return only stories which feature work by the specified creators (accepts an array of ids).
+| comics       | Array      | Return only stories contained in the specified (accepts an array of ids).
+| characters   | Array      | Return only stories which feature work by the specified creators (accepts an array of ids).
+| events       | Array      | Return only stories which take place during the specified events (accepts an array of ids).
 | orderBy      | String     | Order the result set by a field or fields. Add a "-" to the value sort in descending order. Multiple values are given priority in the order in which they are passed. Values: id, modified
 | limit        | Number     | Limit the result set to the specified number of resources.
 | offset       | Number     | Skip the specified number of resources in the result set.
@@ -676,11 +676,11 @@ Fetches lists of comic stories with optional filters.
 | publicKey    | credentials| Public api key obtained from Marvel
 | privateKey   | credentials| Private api key obtained from Marvel
 | modifiedSince| String     | Return only stories which have been modified since the specified date.
-| creators     | String     | Return only stories which feature work by the specified creators (accepts a comma-separated list of ids).
-| comics       | String     | Return only stories contained in the specified (accepts a comma-separated list of ids).
-| series       | String     | Return only stories contained the specified series (accepts a comma-separated list of ids).
-| characters   | String     | Return only stories which feature work by the specified creators (accepts a comma-separated list of ids).
-| events       | String     | Return only stories which take place during the specified events (accepts a comma-separated list of ids).
+| creators     | Array      | Return only stories which feature work by the specified creators (accepts an array of ids).
+| comics       | Array      | Return only stories contained in the specified (accepts an array of ids).
+| series       | Array      | Return only stories contained the specified series (accepts an array of ids).
+| characters   | Array      | Return only stories which feature work by the specified creators (accepts an array of ids).
+| events       | Array      | Return only stories which take place during the specified events (accepts an array of ids).
 | orderBy      | String     | Order the result set by a field or fields. Add a "-" to the value sort in descending order. Multiple values are given priority in the order in which they are passed. Values: id, modified
 | limit        | Number     | Limit the result set to the specified number of resources.
 | offset       | Number     | Skip the specified number of resources in the result set.
@@ -705,9 +705,9 @@ Fetches lists of comic characters appearing in a single story, with optional fil
 | name          | String     | Return only characters matching the specified full character name (e.g. Spider-Man).
 | nameStartsWith| String     | Return characters with names that begin with the specified string (e.g. Sp).
 | modifiedSince | String     | Return only characters which have been modified since the specified date.
-| comics        | String     | Return only characters which appear in the specified comics (accepts a comma-separated list of ids).
-| events        | String     | Return only characters which appear comics that took place in the specified events (accepts a comma-separated list of ids).
-| series        | String     | Return only characters which appear the specified series (accepts a comma-separated list of ids).
+| comics        | Array      | Return only characters which appear in the specified comics (accepts an array of ids).
+| events        | Array      | Return only characters which appear comics that took place in the specified events (accepts an array of ids).
+| series        | Array      | Return only characters which appear the specified series (accepts an array of ids).
 | orderBy       | String     | Order the result set by a field or fields. Add a "-" to the value sort in descending order. Multiple values are given priority in the order in which they are passed. Values: name, modified
 | limit         | Number     | Limit the result set to the specified number of resources.
 | offset        | Number     | Skip the specified number of resources in the result set.
@@ -724,7 +724,7 @@ Fetches lists of comic characters appearing in a single story, with optional fil
 | formatType       | String     | Filter by the issue format type (comic or collection).
 | noVariants       | Boolean    | Exclude variant comics from the result set.
 | dateDescriptor   | String     | Return comics within a predefined date range. Values: lastWeek, thisWeek, nextWeek, thisMonth
-| dateRange        | String     | Return comics within a predefined date range. Dates must be specified as date1,date2 (e.g. 2013-01-01,2013-01-02). Dates are preferably formatted as YYYY-MM-DD but may be sent as any common date format.
+| dateRange        | Array      | Return comics within a predefined date range. Dates must be specified as array. Dates are preferably formatted as YYYY-MM-DD but may be sent as any common date format.
 | title            | String     | Return only issues in series whose title matches the input.
 | titleStartsWith  | String     | Return only issues in series whose title starts with the input.
 | startYear        | String     | Return only issues in series whose start year matches the input.
@@ -737,10 +737,10 @@ Fetches lists of comic characters appearing in a single story, with optional fil
 | issn             | String     | Filter by ISSN.
 | hasDigitalIssue  | Boolean    | Include only results which are available digitally.
 | modifiedSince    | String     | Return only comics which have been modified since the specified date.
-| creators         | String     | Return only comics which feature work by the specified creators (accepts a comma-separated list of ids).
-| characters       | String     | Return only comics which feature the specified characters (accepts a comma-separated list of ids).
-| events           | String     | Return only comics which take place in the specified events (accepts a comma-separated list of ids).
-| series           | String     | Return only characters which appear the specified series (accepts a comma-separated list of ids).
+| creators         | Array      | Return only comics which feature work by the specified creators (accepts an array of ids).
+| characters       | Array      | Return only comics which feature the specified characters (accepts an array of ids).
+| events           | Array      | Return only comics which take place in the specified events (accepts an array of ids).
+| series           | Array      | Return only characters which appear the specified series (accepts an array of ids).
 | sharedAppearances| String     | Return only comics in which the specified characters appear together (for example in which BOTH Spider-Man and Wolverine appear).
 | collaborators    | String     | Return only comics in which the specified creators worked together (for example in which BOTH Stan Lee and Jack Kirby did work).
 | orderBy          | String     | Order the result set by a field or fields. Add a "-" to the value sort in descending order. Multiple values are given priority in the order in which they are passed. Values: focDate, onsaleDate, title, issueNumber, modified
@@ -764,9 +764,9 @@ Fetches lists of comic creators whose work appears in a specific story, with opt
 | middleNameStartsWith| String     | Filter by creator middle names that match critera (e.g. Mi).
 | lastNameStartsWith  | String     | Filter by creator last names that match critera (e.g. Ben).
 | modifiedSince       | String     | Return only creators which have been modified since the specified date.
-| events              | String     | Return only creators who worked on comics that took place in the specified events (accepts a comma-separated list of ids).
-| comics              | String     | Return only creators who worked on in the specified comics (accepts a comma-separated list of ids).
-| series              | String     | Return only creators who worked on the specified series (accepts a comma-separated list of ids).
+| events              | Array      | Return only creators who worked on comics that took place in the specified events (accepts an array of ids).
+| comics              | Array      | Return only creators who worked on in the specified comics (accepts an array of ids).
+| series              | Array      | Return only creators who worked on the specified series (accepts an array of ids).
 | orderBy             | String     | Order the result set by a field or fields. Add a "-" to the value sort in descending order. Multiple values are given priority in the order in which they are passed. Values: lastName, firstName, middleName, suffix, modified
 | limit               | Number     | Limit the result set to the specified number of resources.
 | offset              | Number     | Skip the specified number of resources in the result set.
@@ -782,10 +782,10 @@ Fetches lists of events in which a specific story appears, with optional filters
 | name          | String     | Filter the event list by name.
 | nameStartsWith| String     | Return events with names that begin with the specified string (e.g. Sp).
 | modifiedSince | String     | Return only events which have been modified since the specified date.
-| creators      | String     | Return only events which feature work by the specified creators (accepts a comma-separated list of ids).
-| characters    | String     | Return only events which feature the specified characters (accepts a comma-separated list of ids).
-| comics        | String     | Return only events which take place in the specified comics (accepts a comma-separated list of ids).
-| series        | String     | Return only events which are part of the specified series (accepts a comma-separated list of ids).
+| creators      | Array      | Return only events which feature work by the specified creators (accepts an array of ids).
+| characters    | Array      | Return only events which feature the specified characters (accepts an array of ids).
+| comics        | Array      | Return only events which take place in the specified comics (accepts an array of ids).
+| series        | Array      | Return only events which are part of the specified series (accepts an array of ids).
 | orderBy       | String     | Order the result set by a field or fields. Add a "-" to the value sort in descending order. Multiple values are given priority in the order in which they are passed. Values: name, startDate modified
 | limit         | Number     | Limit the result set to the specified number of resources.
 | offset        | Number     | Skip the specified number of resources in the result set.
@@ -802,10 +802,10 @@ Fetches lists of comic series in which the specified story takes place.
 | titleStartsWith| String     | Return only issues in series whose title starts with the input.
 | startYear      | String     | Return only issues in series whose start year matches the input.
 | modifiedSince  | String     | Return only series which have been modified since the specified date.
-| creators       | String     | Return only series which feature work by the specified creators (accepts a comma-separated list of ids).
-| comics         | String     | Return only series which contain the specified comics (accepts a comma-separated list of ids).
-| characters     | String     | Return only series which feature the specified characters (accepts a comma-separated list of ids).
-| creators       | String     | Return only series which feature work by the specified creators (accepts a comma-separated list of ids).
+| creators       | Array      | Return only series which feature work by the specified creators (accepts an array of ids).
+| comics         | Array      | Return only series which contain the specified comics (accepts an array of ids).
+| characters     | Array      | Return only series which feature the specified characters (accepts an array of ids).
+| creators       | Array      | Return only series which feature work by the specified creators (accepts an array of ids).
 | seriesType     | String     | Filter the series by publication frequency type. Values: collection, one shot, limited, ongoing
 | contains       | String     | Return only series containing one or more comics with the specified format. Values: comic, digital comic, hardcover, magazine, trade paperback, digest, graphic novel, infinite comic).
 | orderBy        | String     | Order the result set by a field or fields. Add a "-" to the value sort in descending order. Multiple values are given priority in the order in which they are passed. Values: title, startYear, modified

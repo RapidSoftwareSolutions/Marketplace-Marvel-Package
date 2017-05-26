@@ -44,37 +44,63 @@
         },
         {
           "name": "modifiedSince",
-          "type": "String",
+          "type": "DatePicker",
           "info": "Return only characters which have been modified since the specified date.",
           "required": false
         },
         {
           "name": "comics",
-          "type": "String",
-          "info": "Return only characters which appear in the specified comics (accepts a comma-separated list of ids).",
+          "type": "List",
+          "info": "Return only characters which appear in the specified comics (accepts an array of ids).",
+          "structure": {
+            "name": "comicsId",
+            "type": "Number",
+            "info": "Id of the comics"
+          },
           "required": false
         },
         {
           "name": "series",
-          "type": "String",
-          "info": "Return only characters which appear the specified series (accepts a comma-separated list of ids).",
+          "type": "List",
+          "structure": {
+            "name": "seriesId",
+            "type": "Number",
+            "info": "Id of the series"
+          },
+          "info": "Return only characters which appear the specified series (accepts an array of ids).",
           "required": false
         },
         {
           "name": "events",
-          "type": "String",
-          "info": "Return only characters which appear the specified events (accepts a comma-separated list of ids).",
+          "type": "List",
+          "structure": {
+            "name": "eventId",
+            "type": "Number",
+            "info": "Id of the event"
+          },
+          "info": "Return only characters which appear the specified events (accepts an array of ids).",
           "required": false
         },
         {
           "name": "stories",
-          "type": "String",
-          "info": "Return only characters which appear the specified stories (accepts a comma-separated list of ids).",
+          "type": "List",
+          "structure": {
+            "name": "storyId",
+            "type": "Number",
+            "info": "Id of the stories"
+          },
+          "info": "Return only characters which appear the specified stories (accepts an array of ids).",
           "required": false
         },
         {
           "name": "orderBy",
-          "type": "String",
+          "type": "Select",
+          "options": [
+            "name",
+            "modified",
+            "-name",
+            "-modified"
+          ],
           "info": "Order the result set by a field or fields. Add a \"-\" to the value sort in descending order. Multiple values are given priority in the order in which they are passed. Values: name, modified",
           "required": false
         },
@@ -160,13 +186,27 @@
         },
         {
           "name": "format",
-          "type": "String",
+          "type": "Select",
+          "options": [
+            "comic",
+            "digital comic",
+            "hardcover",
+            "magazine",
+            "trade paperback",
+            "digest",
+            "graphic novel",
+            "infinite comic"
+          ],
           "info": "Filter by the issue format (e.g. comic, digital comic, hardcover, magazine, trade paperback, digest, graphic novel, infinite comic).",
           "required": false
         },
         {
           "name": "formatType",
-          "type": "String",
+          "type": "Select",
+          "options": [
+            "comic",
+            "collection"
+          ],
           "info": "Filter by the issue format type (comic or collection).",
           "required": false
         },
@@ -178,15 +218,26 @@
         },
         {
           "name": "dateDescriptor",
-          "type": "String",
+          "type": "Select",
+          "options": [
+            "lastWeek",
+            "thisWeek",
+            "nextWeek",
+            "thisMonth"
+          ],
           "info": "Return comics within a predefined date range. Values: lastWeek, thisWeek, nextWeek, thisMonth",
           "required": false
         },
         {
           "name": "dateRange",
-          "type": "String",
-          "info": "Return comics within a predefined date range. Dates must be specified as date1,date2 (e.g. 2013-01-01,2013-01-02). Dates are preferably formatted as YYYY-MM-DD but may be sent as any common date format.",
-          "required": false
+          "type": "List",
+          "info": "Return comics within a predefined date range. Dates must be specified as array.  Dates are preferably formatted as YYYY-MM-DD but may be sent as any common date format.",
+          "required": false,
+          "structure": {
+            "name": "date",
+            "type": "DatePicker",
+            "info": "Date"
+          }
         },
         {
           "name": "title",
@@ -256,32 +307,52 @@
         },
         {
           "name": "modifiedSince",
-          "type": "String",
+          "type": "DatePicker",
           "info": "Return only comics which have been modified since the specified date.",
           "required": false
         },
         {
           "name": "creators",
-          "type": "String",
-          "info": "Return only comics which feature work by the specified creators (accepts a comma-separated list of ids).",
+          "type": "List",
+          "structure": {
+            "name": "creators",
+            "type": "Number",
+            "info": "Id of the creators"
+          },
+          "info": "Return only comics which feature work by the specified creators (accepts an array of ids).",
           "required": false
         },
         {
           "name": "series",
-          "type": "String",
-          "info": "Return only comics which are part of the specified series (accepts a comma-separated list of ids).",
+          "type": "List",
+          "structure": {
+            "name": "seriesId",
+            "type": "Number",
+            "info": "Id of the series"
+          },
+          "info": "Return only comics which are part of the specified series (accepts an array of ids).",
           "required": false
         },
         {
           "name": "events",
-          "type": "String",
-          "info": "Return only comics which take place in the specified events (accepts a comma-separated list of ids).",
+          "type": "List",
+          "structure": {
+            "name": "eventId",
+            "type": "Number",
+            "info": "Id of the event"
+          },
+          "info": "Return only comics which take place in the specified events (accepts an array of ids).",
           "required": false
         },
         {
           "name": "stories",
-          "type": "String",
-          "info": "Return only comics which contain the specified stories (accepts a comma-separated list of ids).",
+          "type": "List",
+          "structure": {
+            "name": "storyId",
+            "type": "Number",
+            "info": "Id of the stories"
+          },
+          "info": "Return only comics which contain the specified stories (accepts an array of ids).",
           "required": false
         },
         {
@@ -298,7 +369,19 @@
         },
         {
           "name": "orderBy",
-          "type": "String",
+          "type": "Select",
+          "options": [
+            "focDate",
+            "onsaleDate",
+            "title",
+            "issueNumber",
+            "modified",
+            "-focDate",
+            "-onsaleDate",
+            "-title",
+            "-issueNumber",
+            "-modified"
+          ],
           "info": "Order the result set by a field or fields. Add a \"-\" to the value sort in descending order. Multiple values are given priority in the order in which they are passed. Values: focDate, onsaleDate, title, issueNumber, modified",
           "required": false
         },
@@ -362,37 +445,65 @@
         },
         {
           "name": "modifiedSince",
-          "type": "String",
+          "type": "DatePicker",
           "info": "Return only events which have been modified since the specified date.",
           "required": false
         },
         {
           "name": "creators",
-          "type": "String",
-          "info": "Return only events which feature work by the specified creators (accepts a comma-separated list of ids).",
+          "type": "List",
+          "structure": {
+            "name": "creators",
+            "type": "Number",
+            "info": "Id of the creators"
+          },
+          "info": "Return only comics which feature work by the specified creators (accepts an array of ids).",
           "required": false
         },
         {
           "name": "series",
-          "type": "String",
-          "info": "Return only events which are part of the specified series (accepts a comma-separated list of ids).",
+          "type": "List",
+          "structure": {
+            "name": "seriesId",
+            "type": "Number",
+            "info": "Id of the series"
+          },
+          "info": "Return only events which are part of the specified series (accepts an array of ids).",
           "required": false
         },
         {
           "name": "comics",
-          "type": "String",
-          "info": "Return only events which take place in the specified comics (accepts a comma-separated list of ids).",
+          "type": "List",
+          "structure": {
+            "name": "comicsId",
+            "type": "Number",
+            "info": "Id of the comics"
+          },
+          "info": "Return only events which take place in the specified comics (accepts an array of ids).",
           "required": false
         },
         {
           "name": "stories",
-          "type": "String",
-          "info": "Return only events which contain the specified stories (accepts a comma-separated list of ids).",
+          "type": "List",
+          "structure": {
+            "name": "storyId",
+            "type": "Number",
+            "info": "Id of the stories"
+          },
+          "info": "Return only events which contain the specified stories (accepts an array of ids).",
           "required": false
         },
         {
           "name": "orderBy",
-          "type": "String",
+          "type": "Select",
+          "options": [
+            "name",
+            "startDate",
+            "modified",
+            "-name",
+            "-startDate",
+            "-modified"
+          ],
           "info": "Order the result set by a field or fields. Add a \"-\" to the value sort in descending order. Multiple values are given priority in the order in which they are passed. Values: name, startDate modified",
           "required": false
         },
@@ -462,49 +573,92 @@
         },
         {
           "name": "modifiedSince",
-          "type": "String",
+          "type": "DatePicker",
           "info": "Return only series which have been modified since the specified date.",
           "required": false
         },
         {
           "name": "creators",
-          "type": "String",
-          "info": "Return only series which feature work by the specified creators (accepts a comma-separated list of ids).",
+          "structure": {
+            "name": "creatorId",
+            "type": "Number",
+            "info": "Id of the creator"
+          },
+          "info": "Return only series which feature work by the specified creators (accepts an array of ids).",
           "required": false
         },
         {
           "name": "comics",
-          "type": "String",
-          "info": "Return only series which contain the specified comics (accepts a comma-separated list of ids).",
+          "type": "List",
+          "structure": {
+            "name": "comicsId",
+            "type": "Number",
+            "info": "Id of the comics"
+          },
+          "info": "Return only series which contain the specified comics (accepts an array of ids).",
           "required": false
         },
         {
           "name": "events",
-          "type": "String",
-          "info": "Return only series which have comics that take place during the specified events (accepts a comma-separated list of ids).",
+          "type": "List",
+          "structure": {
+            "name": "eventId",
+            "type": "Number",
+            "info": "Id of the event"
+          },
+          "info": "Return only series which have comics that take place during the specified events (accepts an array of ids).",
           "required": false
         },
         {
           "name": "stories",
-          "type": "String",
-          "info": "Return only series which contain the specified stories (accepts a comma-separated list of ids).",
+          "type": "List",
+          "structure": {
+            "name": "storyId",
+            "type": "Number",
+            "info": "Id of the stories"
+          },
+          "info": "Return only series which contain the specified stories (accepts an array of ids).",
           "required": false
         },
         {
           "name": "seriesType",
-          "type": "String",
+          "type": "Select",
+          "options": [
+            "collection",
+            "one shot",
+            "limited",
+            "ongoing"
+          ],
           "info": "Filter the series by publication frequency type. Values: collection, one shot, limited, ongoing",
           "required": false
         },
         {
           "name": "contains",
-          "type": "String",
+          "type": "Select",
+          "options": [
+            "comic",
+            "digital comic",
+            "hardcover",
+            "magazine",
+            "trade paperback",
+            "digest",
+            "graphic novel",
+            "infinite comic"
+          ],
           "info": "Return only series containing one or more comics with the specified format. Values: comic, digital comic, hardcover, magazine, trade paperback, digest, graphic novel, infinite comic).",
           "required": false
         },
         {
           "name": "orderBy",
-          "type": "String",
+          "type": "Select",
+          "options": [
+            "title",
+            "startYear",
+            "modified",
+            "-title",
+            "-startYear",
+            "-modified"
+          ],
           "info": "Order the result set by a field or fields. Add a \"-\" to the value sort in descending order. Multiple values are given priority in the order in which they are passed. Values: title, startYear, modified",
           "required": false
         },
@@ -556,37 +710,63 @@
         },
         {
           "name": "modifiedSince",
-          "type": "String",
+          "type": "DatePicker",
           "info": "Return only stories which have been modified since the specified date.",
           "required": false
         },
         {
           "name": "creators",
-          "type": "String",
-          "info": "Return only stories which feature work by the specified creators (accepts a comma-separated list of ids).",
+          "type": "List",
+          "structure": {
+            "name": "creatorId",
+            "type": "Number",
+            "info": "Id of the creator"
+          },
+          "info": "Return only stories which feature work by the specified creators (accepts an array of ids).",
           "required": false
         },
         {
           "name": "comics",
-          "type": "String",
-          "info": "Return only stories contained in the specified (accepts a comma-separated list of ids).",
+          "type": "List",
+          "structure": {
+            "name": "comicsId",
+            "type": "Number",
+            "info": "Id of the comics"
+          },
+          "info": "Return only stories contained in the specified (accepts an array of ids).",
           "required": false
         },
         {
           "name": "events",
-          "type": "String",
-          "info": "Return only stories which take place during the specified events (accepts a comma-separated list of ids).",
+          "type": "List",
+          "structure": {
+            "name": "eventId",
+            "type": "Number",
+            "info": "Id of the event"
+          },
+          "info": "Return only stories which take place during the specified events (accepts an array of ids).",
           "required": false
         },
         {
           "name": "series",
-          "type": "String",
-          "info": "Return only stories contained the specified series (accepts a comma-separated list of ids).",
+          "type": "List",
+          "structure": {
+            "name": "seriesId",
+            "type": "Number",
+            "info": "Id of the series"
+          },
+          "info": "Return only stories contained the specified series (accepts an array of ids).",
           "required": false
         },
         {
           "name": "orderBy",
-          "type": "String",
+          "type": "Select",
+          "options": [
+            "id",
+            "modified",
+            "-id",
+            "-modified"
+          ],
           "info": "Order the result set by a field or fields. Add a \"-\" to the value sort in descending order. Multiple values are given priority in the order in which they are passed. Values: id, modified",
           "required": false
         },
@@ -632,13 +812,27 @@
         },
         {
           "name": "format",
-          "type": "String",
+          "type": "Select",
+          "options": [
+            "comic",
+            "digital comic",
+            "hardcover",
+            "magazine",
+            "trade paperback",
+            "digest",
+            "graphic novel",
+            "infinite comic"
+          ],
           "info": "Filter by the issue format (e.g. comic, digital comic, hardcover, magazine, trade paperback, digest, graphic novel, infinite comic).",
           "required": false
         },
         {
           "name": "formatType",
-          "type": "String",
+          "type": "Select",
+          "options": [
+            "comic",
+            "collection"
+          ],
           "info": "Filter by the issue format type (comic or collection).",
           "required": false
         },
@@ -650,15 +844,26 @@
         },
         {
           "name": "dateDescriptor",
-          "type": "String",
+          "type": "Select",
+          "options": [
+            "lastWeek",
+            "thisWeek",
+            "nextWeek",
+            "thisMonth"
+          ],
           "info": "Return comics within a predefined date range. Values: lastWeek, thisWeek, nextWeek, thisMonth",
           "required": false
         },
         {
           "name": "dateRange",
-          "type": "String",
-          "info": "Return comics within a predefined date range. Dates must be specified as date1,date2 (e.g. 2013-01-01,2013-01-02). Dates are preferably formatted as YYYY-MM-DD but may be sent as any common date format.",
-          "required": false
+          "type": "List",
+          "info": "Return comics within a predefined date range. Dates must be specified as array.  Dates are preferably formatted as YYYY-MM-DD but may be sent as any common date format.",
+          "required": false,
+          "structure": {
+            "name": "date",
+            "type": "DatePicker",
+            "info": "Date"
+          }
         },
         {
           "name": "title",
@@ -728,38 +933,63 @@
         },
         {
           "name": "modifiedSince",
-          "type": "String",
+          "type": "DatePicker",
           "info": "Return only comics which have been modified since the specified date.",
           "required": false
         },
         {
           "name": "creators",
-          "type": "String",
-          "info": "Return only comics which feature work by the specified creators (accepts a comma-separated list of ids).",
+          "type": "List",
+          "structure": {
+            "name": "creatorId",
+            "type": "Number",
+            "info": "Id of the creator"
+          },
+          "info": "Return only comics which feature work by the specified creators (accepts an array of ids).",
           "required": false
         },
         {
           "name": "characters",
-          "type": "String",
-          "info": "Return only comics which feature the specified characters (accepts a comma-separated list of ids).",
+          "type": "List",
+          "structure": {
+            "name": "characterId",
+            "type": "Number",
+            "info": "Id of the character"
+          },
+          "info": "Return only comics which feature the specified characters (accepts an array of ids).",
           "required": false
         },
         {
           "name": "series",
-          "type": "String",
-          "info": "Return only comics which are part of the specified series (accepts a comma-separated list of ids).",
+          "type": "List",
+          "structure": {
+            "name": "seriesId",
+            "type": "Number",
+            "info": "Id of the series"
+          },
+          "info": "Return only comics which are part of the specified series (accepts an array of ids).",
           "required": false
         },
         {
           "name": "events",
-          "type": "String",
-          "info": "Return only comics which take place in the specified events (accepts a comma-separated list of ids).",
+          "type": "List",
+          "structure": {
+            "name": "eventId",
+            "type": "Number",
+            "info": "Id of the event"
+          },
+          "info": "Return only comics which take place in the specified events (accepts an array of ids).",
           "required": false
         },
         {
           "name": "stories",
-          "type": "String",
-          "info": "Return only comics which contain the specified stories (accepts a comma-separated list of ids).",
+          "type": "List",
+          "structure": {
+            "name": "storyId",
+            "type": "Number",
+            "info": "Id of the stories"
+          },
+          "info": "Return only comics which contain the specified stories (accepts an array of ids).",
           "required": false
         },
         {
@@ -776,7 +1006,19 @@
         },
         {
           "name": "orderBy",
-          "type": "String",
+          "type": "Select",
+          "options": [
+            "focDate",
+            "onsaleDate",
+            "title",
+            "issueNumber",
+            "modified",
+            "-focDate",
+            "-onsaleDate",
+            "-title",
+            "-issueNumber",
+            "-modified"
+          ],
           "info": "Order the result set by a field or fields. Add a \"-\" to the value sort in descending order. Multiple values are given priority in the order in which they are passed. Values: focDate, onsaleDate, title, issueNumber, modified",
           "required": false
         },
@@ -874,31 +1116,52 @@
         },
         {
           "name": "modifiedSince",
-          "type": "String",
+          "type": "DatePicker",
           "info": "Return only characters which have been modified since the specified date.",
           "required": false
         },
         {
           "name": "series",
-          "type": "String",
-          "info": "Return only characters which appear the specified series (accepts a comma-separated list of ids).",
+          "type": "List",
+          "structure": {
+            "name": "seriesId",
+            "type": "Number",
+            "info": "Id of the series"
+          },
+          "info": "Return only characters which appear the specified series (accepts an array of ids).",
           "required": false
         },
         {
           "name": "events",
-          "type": "String",
-          "info": "Return only characters which appear comics that took place in the specified events (accepts a comma-separated list of ids).",
+          "type": "List",
+          "structure": {
+            "name": "eventId",
+            "type": "Number",
+            "info": "Id of the event"
+          },
+          "info": "Return only characters which appear comics that took place in the specified events (accepts an array of ids).",
           "required": false
         },
         {
           "name": "stories",
-          "type": "String",
-          "info": "Return only characters which appear the specified stories (accepts a comma-separated list of ids).",
+          "type": "List",
+          "structure": {
+            "name": "storyId",
+            "type": "Number",
+            "info": "Id of the stories"
+          },
+          "info": "Return only characters which appear the specified stories (accepts an array of ids).",
           "required": false
         },
         {
           "name": "orderBy",
-          "type": "String",
+          "type": "Select",
+          "options": [
+            "name",
+            "modified",
+            "-name",
+            "-modified"
+          ],
           "info": "Order the result set by a field or fields. Add a \"-\" to the value sort in descending order. Multiple values are given priority in the order in which they are passed. Values: name, modified",
           "required": false
         },
@@ -998,31 +1261,58 @@
         },
         {
           "name": "modifiedSince",
-          "type": "String",
+          "type": "DatePicker",
           "info": "Return only creators which have been modified since the specified date.",
           "required": false
         },
         {
           "name": "series",
-          "type": "String",
-          "info": "Return only creators who worked on in the specified series (accepts a comma-separated list of ids).",
+          "type": "List",
+          "structure": {
+            "name": "seriesId",
+            "type": "Number",
+            "info": "Id of the series"
+          },
+          "info": "Return only creators who worked on in the specified series (accepts an array of ids).",
           "required": false
         },
         {
           "name": "comics",
-          "type": "String",
-          "info": "Return only creators who worked on in the specified comics (accepts a comma-separated list of ids).",
+          "type": "List",
+          "structure": {
+            "name": "comicsId",
+            "type": "Number",
+            "info": "Id of the comics"
+          },
+          "info": "Return only creators who worked on in the specified comics (accepts an array of ids).",
           "required": false
         },
         {
           "name": "stories",
-          "type": "String",
-          "info": "Return only creators who worked on in the specified stories (accepts a comma-separated list of ids).",
+          "type": "List",
+          "structure": {
+            "name": "storyId",
+            "type": "Number",
+            "info": "Id of the stories"
+          },
+          "info": "Return only creators who worked on in the specified stories (accepts an array of ids).",
           "required": false
         },
         {
           "name": "orderBy",
-          "type": "String",
+          "type": "Select",
+          "options": [
+            "lastName",
+            "firstName",
+            "middleName",
+            "suffic",
+            "modified",
+            "-lastName",
+            "-firstName",
+            "-middleName",
+            "-suffix",
+            "-modified"
+          ],
           "info": "Order the result set by a field or fields. Add a \"-\" to the value sort in descending order. Multiple values are given priority in the order in which they are passed. Values: lastName, firstName, middleName, suffix, modified",
           "required": false
         },
@@ -1086,37 +1376,60 @@
         },
         {
           "name": "modifiedSince",
-          "type": "String",
+          "type": "DatePicker",
           "info": "Return only events which have been modified since the specified date.",
           "required": false
         },
         {
           "name": "creators",
-          "type": "String",
-          "info": "Return only events which feature work by the specified creators (accepts a comma-separated list of ids).",
+          "type": "List",
+          "structure": {
+            "name": "creators",
+            "type": "Number",
+            "info": "Id of the creators"
+          },
+          "info": "Return only comics which feature work by the specified creators (accepts an array of ids).",
           "required": false
         },
         {
           "name": "series",
-          "type": "String",
-          "info": "Return only events which are part of the specified series (accepts a comma-separated list of ids).",
+          "type": "List",
+          "structure": {
+            "name": "seriesId",
+            "type": "Number",
+            "info": "Id of the series"
+          },
+          "info": "Return only events which are part of the specified series (accepts an array of ids).",
           "required": false
         },
         {
           "name": "characters",
           "type": "String",
-          "info": "Return only events which feature the specified characters (accepts a comma-separated list of ids).",
+          "info": "Return only events which feature the specified characters (accepts an array of ids).",
           "required": false
         },
         {
           "name": "stories",
-          "type": "String",
-          "info": "Return only events which contain the specified stories (accepts a comma-separated list of ids).",
+          "type": "List",
+          "structure": {
+            "name": "storyId",
+            "type": "Number",
+            "info": "Id of the stories"
+          },
+          "info": "Return only events which contain the specified stories (accepts an array of ids).",
           "required": false
         },
         {
           "name": "orderBy",
-          "type": "String",
+          "type": "Select",
+          "options": [
+            "name",
+            "startDate",
+            "modified",
+            "-name",
+            "-startDate",
+            "-modified"
+          ],
           "info": "Order the result set by a field or fields. Add a \"-\" to the value sort in descending order. Multiple values are given priority in the order in which they are passed. Values: name, startDate, modified",
           "required": false
         },
@@ -1168,37 +1481,58 @@
         },
         {
           "name": "modifiedSince",
-          "type": "String",
+          "type": "DatePicker",
           "info": "Return only stories which have been modified since the specified date.",
           "required": false
         },
         {
           "name": "creators",
-          "type": "String",
-          "info": "Return only stories which feature work by the specified creators (accepts a comma-separated list of ids).",
+          "type": "List",
+          "structure": {
+            "name": "creatorId",
+            "type": "Number",
+            "info": "Id of the creator"
+          },
+          "info": "Return only stories which feature work by the specified creators (accepts an array of ids).",
           "required": false
         },
         {
           "name": "characters",
           "type": "String",
-          "info": "Return only stories which feature the specified characters (accepts a comma-separated list of ids).",
+          "info": "Return only stories which feature the specified characters (accepts an array of ids).",
           "required": false
         },
         {
           "name": "events",
-          "type": "String",
-          "info": "Return only stories which take place during the specified events (accepts a comma-separated list of ids).",
+          "type": "List",
+          "structure": {
+            "name": "eventId",
+            "type": "Number",
+            "info": "Id of the event"
+          },
+          "info": "Return only stories which take place during the specified events (accepts an array of ids).",
           "required": false
         },
         {
           "name": "series",
-          "type": "String",
-          "info": "Return only stories contained the specified series (accepts a comma-separated list of ids).",
+          "type": "List",
+          "structure": {
+            "name": "seriesId",
+            "type": "Number",
+            "info": "Id of the series"
+          },
+          "info": "Return only stories contained the specified series (accepts an array of ids).",
           "required": false
         },
         {
           "name": "orderBy",
-          "type": "String",
+          "type": "Select",
+          "options": [
+            "id",
+            "modified",
+            "-id",
+            "-modified"
+          ],
           "info": "Order the result set by a field or fields. Add a \"-\" to the value sort in descending order. Multiple values are given priority in the order in which they are passed. Values: id, modified",
           "required": false
         },
@@ -1292,37 +1626,69 @@
         },
         {
           "name": "modifiedSince",
-          "type": "String",
+          "type": "DatePicker",
           "info": "Return only creators which have been modified since the specified date.",
           "required": false
         },
         {
           "name": "series",
-          "type": "String",
-          "info": "Return only creators who worked on in the specified series (accepts a comma-separated list of ids).",
+          "type": "List",
+          "structure": {
+            "name": "seriesId",
+            "type": "Number",
+            "info": "Id of the series"
+          },
+          "info": "Return only creators who worked on in the specified series (accepts an array of ids).",
           "required": false
         },
         {
           "name": "events",
-          "type": "String",
-          "info": "Return only creators who worked on comics that took place in the specified events (accepts a comma-separated list of ids).",
+          "type": "List",
+          "structure": {
+            "name": "eventId",
+            "type": "Number",
+            "info": "Id of the event"
+          },
+          "info": "Return only creators who worked on comics that took place in the specified events (accepts an array of ids).",
           "required": false
         },
         {
           "name": "comics",
-          "type": "String",
-          "info": "Return only creators who worked on in the specified comics (accepts a comma-separated list of ids).",
+          "type": "List",
+          "structure": {
+            "name": "comicsId",
+            "type": "Number",
+            "info": "Id of the comics"
+          },
+          "info": "Return only creators who worked on in the specified comics (accepts an array of ids).",
           "required": false
         },
         {
           "name": "stories",
-          "type": "String",
-          "info": "Return only creators who worked on in the specified stories (accepts a comma-separated list of ids).",
+          "type": "List",
+          "structure": {
+            "name": "storyId",
+            "type": "Number",
+            "info": "Id of the stories"
+          },
+          "info": "Return only creators who worked on in the specified stories (accepts an array of ids).",
           "required": false
         },
         {
           "name": "orderBy",
-          "type": "String",
+          "type": "Select",
+          "options": [
+            "lastName",
+            "firstName",
+            "middleName",
+            "suffic",
+            "modified",
+            "-lastName",
+            "-firstName",
+            "-middleName",
+            "-suffix",
+            "-modified"
+          ],
           "info": "Order the result set by a field or fields. Add a \"-\" to the value sort in descending order. Multiple values are given priority in the order in which they are passed. Values: lastName, firstName, middleName, suffix, modified",
           "required": false
         },
@@ -1408,13 +1774,27 @@
         },
         {
           "name": "format",
-          "type": "String",
+          "type": "Select",
+          "options": [
+            "comic",
+            "digital comic",
+            "hardcover",
+            "magazine",
+            "trade paperback",
+            "digest",
+            "graphic novel",
+            "infinite comic"
+          ],
           "info": "Filter by the issue format (e.g. comic, digital comic, hardcover, magazine, trade paperback, digest, graphic novel, infinite comic).",
           "required": false
         },
         {
           "name": "formatType",
-          "type": "String",
+          "type": "Select",
+          "options": [
+            "comic",
+            "collection"
+          ],
           "info": "Filter by the issue format type (comic or collection).",
           "required": false
         },
@@ -1426,15 +1806,26 @@
         },
         {
           "name": "dateDescriptor",
-          "type": "String",
+          "type": "Select",
+          "options": [
+            "lastWeek",
+            "thisWeek",
+            "nextWeek",
+            "thisMonth"
+          ],
           "info": "Return comics within a predefined date range. Values: lastWeek, thisWeek, nextWeek, thisMonth",
           "required": false
         },
         {
           "name": "dateRange",
-          "type": "String",
-          "info": "Return comics within a predefined date range. Dates must be specified as date1,date2 (e.g. 2013-01-01,2013-01-02). Dates are preferably formatted as YYYY-MM-DD but may be sent as any common date format.",
-          "required": false
+          "type": "List",
+          "info": "Return comics within a predefined date range. Dates must be specified as array.  Dates are preferably formatted as YYYY-MM-DD but may be sent as any common date format.",
+          "required": false,
+          "structure": {
+            "name": "date",
+            "type": "DatePicker",
+            "info": "Date"
+          }
         },
         {
           "name": "title",
@@ -1504,32 +1895,52 @@
         },
         {
           "name": "modifiedSince",
-          "type": "String",
+          "type": "DatePicker",
           "info": "Return only comics which have been modified since the specified date.",
           "required": false
         },
         {
           "name": "characters",
-          "type": "String",
-          "info": "Return only comics which feature the specified characters (accepts a comma-separated list of ids).",
+          "type": "List",
+          "structure": {
+            "name": "characterId",
+            "type": "Number",
+            "info": "Id of the character"
+          },
+          "info": "Return only comics which feature the specified characters (accepts an array of ids).",
           "required": false
         },
         {
           "name": "series",
-          "type": "String",
-          "info": "Return only comics which are part of the specified series (accepts a comma-separated list of ids).",
+          "type": "List",
+          "structure": {
+            "name": "seriesId",
+            "type": "Number",
+            "info": "Id of the series"
+          },
+          "info": "Return only comics which are part of the specified series (accepts an array of ids).",
           "required": false
         },
         {
           "name": "events",
-          "type": "String",
-          "info": "Return only comics which take place in the specified events (accepts a comma-separated list of ids).",
+          "type": "List",
+          "structure": {
+            "name": "eventId",
+            "type": "Number",
+            "info": "Id of the event"
+          },
+          "info": "Return only comics which take place in the specified events (accepts an array of ids).",
           "required": false
         },
         {
           "name": "stories",
-          "type": "String",
-          "info": "Return only comics which contain the specified stories (accepts a comma-separated list of ids).",
+          "type": "List",
+          "structure": {
+            "name": "storyId",
+            "type": "Number",
+            "info": "Id of the stories"
+          },
+          "info": "Return only comics which contain the specified stories (accepts an array of ids).",
           "required": false
         },
         {
@@ -1546,7 +1957,19 @@
         },
         {
           "name": "orderBy",
-          "type": "String",
+          "type": "Select",
+          "options": [
+            "focDate",
+            "onsaleDate",
+            "title",
+            "issueNumber",
+            "modified",
+            "-focDate",
+            "-onsaleDate",
+            "-title",
+            "-issueNumber",
+            "-modified"
+          ],
           "info": "Order the result set by a field or fields. Add a \"-\" to the value sort in descending order. Multiple values are given priority in the order in which they are passed. Values: focDate, onsaleDate, title, issueNumber, modified",
           "required": false
         },
@@ -1610,37 +2033,60 @@
         },
         {
           "name": "modifiedSince",
-          "type": "String",
+          "type": "DatePicker",
           "info": "Return only events which have been modified since the specified date.",
           "required": false
         },
         {
           "name": "comics",
-          "type": "String",
-          "info": "Return only events which take place in the specified comics (accepts a comma-separated list of ids).",
+          "type": "List",
+          "structure": {
+            "name": "comicsId",
+            "type": "Number",
+            "info": "Id of the comics"
+          },
+          "info": "Return only events which take place in the specified comics (accepts an array of ids).",
           "required": false
         },
         {
           "name": "series",
-          "type": "String",
-          "info": "Return only events which are part of the specified series (accepts a comma-separated list of ids).",
+          "type": "List",
+          "structure": {
+            "name": "seriesId",
+            "type": "Number",
+            "info": "Id of the series"
+          },
+          "info": "Return only events which are part of the specified series (accepts an array of ids).",
           "required": false
         },
         {
           "name": "characters",
           "type": "String",
-          "info": "Return only events which feature the specified characters (accepts a comma-separated list of ids).",
+          "info": "Return only events which feature the specified characters (accepts an array of ids).",
           "required": false
         },
         {
           "name": "stories",
-          "type": "String",
-          "info": "Return only events which contain the specified stories (accepts a comma-separated list of ids).",
+          "type": "List",
+          "structure": {
+            "name": "storyId",
+            "type": "Number",
+            "info": "Id of the stories"
+          },
+          "info": "Return only events which contain the specified stories (accepts an array of ids).",
           "required": false
         },
         {
           "name": "orderBy",
-          "type": "String",
+          "type": "Select",
+          "options": [
+            "name",
+            "startDate",
+            "modified",
+            "-name",
+            "-startDate",
+            "-modified"
+          ],
           "info": "Order the result set by a field or fields. Add a \"-\" to the value sort in descending order. Multiple values are given priority in the order in which they are passed. Values: name, startDate, modified",
           "required": false
         },
@@ -1710,49 +2156,88 @@
         },
         {
           "name": "modifiedSince",
-          "type": "String",
+          "type": "DatePicker",
           "info": "Return only series which have been modified since the specified date.",
           "required": false
         },
         {
           "name": "characters",
           "type": "String",
-          "info": "Return only series which feature the specified characters (accepts a comma-separated list of ids).",
+          "info": "Return only series which feature the specified characters (accepts an array of ids).",
           "required": false
         },
         {
           "name": "comics",
-          "type": "String",
-          "info": "Return only series which contain the specified comics (accepts a comma-separated list of ids).",
+          "type": "List",
+          "structure": {
+            "name": "comicsId",
+            "type": "Number",
+            "info": "Id of the comics"
+          },
+          "info": "Return only series which contain the specified comics (accepts an array of ids).",
           "required": false
         },
         {
           "name": "events",
-          "type": "String",
-          "info": "Return only series which have comics that take place during the specified events (accepts a comma-separated list of ids).",
+          "type": "List",
+          "structure": {
+            "name": "eventId",
+            "type": "Number",
+            "info": "Id of the event"
+          },
+          "info": "Return only series which have comics that take place during the specified events (accepts an array of ids).",
           "required": false
         },
         {
           "name": "stories",
-          "type": "String",
-          "info": "Return only series which contain the specified stories (accepts a comma-separated list of ids).",
+          "type": "List",
+          "structure": {
+            "name": "storyId",
+            "type": "Number",
+            "info": "Id of the stories"
+          },
+          "info": "Return only series which contain the specified stories (accepts an array of ids).",
           "required": false
         },
         {
           "name": "seriesType",
-          "type": "String",
+          "type": "Select",
+          "options": [
+            "collection",
+            "one shot",
+            "limited",
+            "ongoing"
+          ],
           "info": "Filter the series by publication frequency type. Values: collection, one shot, limited, ongoing",
           "required": false
         },
         {
           "name": "contains",
-          "type": "String",
+          "type": "Select",
+          "options": [
+            "comic",
+            "digital comic",
+            "hardcover",
+            "magazine",
+            "trade paperback",
+            "digest",
+            "graphic novel",
+            "infinite comic"
+          ],
           "info": "Return only series containing one or more comics with the specified format. Values: comic, digital comic, hardcover, magazine, trade paperback, digest, graphic novel, infinite comic).",
           "required": false
         },
         {
           "name": "orderBy",
-          "type": "String",
+          "type": "Select",
+          "options": [
+            "title",
+            "startYear",
+            "modified",
+            "-title",
+            "-startYear",
+            "-modified"
+          ],
           "info": "Order the result set by a field or fields. Add a \"-\" to the value sort in descending order. Multiple values are given priority in the order in which they are passed. Values: title, startYear, modified",
           "required": false
         },
@@ -1804,37 +2289,58 @@
         },
         {
           "name": "modifiedSince",
-          "type": "String",
+          "type": "DatePicker",
           "info": "Return only stories which have been modified since the specified date.",
           "required": false
         },
         {
           "name": "comics",
-          "type": "String",
-          "info": "Return only stories contained in the specified comics (accepts a comma-separated list of ids).",
+          "type": "List",
+          "structure": {
+            "name": "comicsId",
+            "type": "Number",
+            "info": "Id of the comics"
+          },
+          "info": "Return only stories contained in the specified comics (accepts an array of ids).",
           "required": false
         },
         {
           "name": "characters",
           "type": "String",
-          "info": "Return only stories which feature the specified characters (accepts a comma-separated list of ids).",
+          "info": "Return only stories which feature the specified characters (accepts an array of ids).",
           "required": false
         },
         {
           "name": "events",
-          "type": "String",
-          "info": "Return only stories which take place during the specified events (accepts a comma-separated list of ids).",
+          "type": "List",
+          "structure": {
+            "name": "eventId",
+            "type": "Number",
+            "info": "Id of the event"
+          },
+          "info": "Return only stories which take place during the specified events (accepts an array of ids).",
           "required": false
         },
         {
           "name": "series",
-          "type": "String",
-          "info": "Return only stories contained the specified series (accepts a comma-separated list of ids).",
+          "type": "List",
+          "structure": {
+            "name": "seriesId",
+            "type": "Number",
+            "info": "Id of the series"
+          },
+          "info": "Return only stories contained the specified series (accepts an array of ids).",
           "required": false
         },
         {
           "name": "orderBy",
-          "type": "String",
+          "type": "Select",
+          "options": [
+            "id",
+            "modified",
+            "-id",
+            "-modified"
+          ],
           "info": "Order the result set by a field or fields. Add a \"-\" to the value sort in descending order. Multiple values are given priority in the order in which they are passed. Values: id, modified",
           "required": false
         },
@@ -1892,43 +2398,71 @@
         },
         {
           "name": "modifiedSince",
-          "type": "String",
+          "type": "DatePicker",
           "info": "Return only events which have been modified since the specified date.",
           "required": false
         },
         {
           "name": "creators",
-          "type": "String",
-          "info": "Return only events which feature work by the specified creators (accepts a comma-separated list of ids).",
+          "type": "List",
+          "structure": {
+            "name": "creators",
+            "type": "Number",
+            "info": "Id of the creators"
+          },
+          "info": "Return only comics which feature work by the specified creators (accepts an array of ids).",
           "required": false
         },
         {
           "name": "series",
-          "type": "String",
-          "info": "Return only events which are part of the specified series (accepts a comma-separated list of ids).",
+          "type": "List",
+          "structure": {
+            "name": "seriesId",
+            "type": "Number",
+            "info": "Id of the series"
+          },
+          "info": "Return only events which are part of the specified series (accepts an array of ids).",
           "required": false
         },
         {
           "name": "characters",
           "type": "String",
-          "info": "Return only events which feature the specified characters (accepts a comma-separated list of ids).",
+          "info": "Return only events which feature the specified characters (accepts an array of ids).",
           "required": false
         },
         {
           "name": "comics",
-          "type": "String",
-          "info": "Return only events which take place in the specified comics (accepts a comma-separated list of ids).",
+          "type": "List",
+          "structure": {
+            "name": "comicsId",
+            "type": "Number",
+            "info": "Id of the comics"
+          },
+          "info": "Return only events which take place in the specified comics (accepts an array of ids).",
           "required": false
         },
         {
           "name": "stories",
-          "type": "String",
-          "info": "Return only events which contain the specified stories (accepts a comma-separated list of ids).",
+          "type": "List",
+          "structure": {
+            "name": "storyId",
+            "type": "Number",
+            "info": "Id of the stories"
+          },
+          "info": "Return only events which contain the specified stories (accepts an array of ids).",
           "required": false
         },
         {
           "name": "orderBy",
-          "type": "String",
+          "type": "Select",
+          "options": [
+            "name",
+            "startDate",
+            "modified",
+            "-name",
+            "-startDate",
+            "-modified"
+          ],
           "info": "Order the result set by a field or fields. Add a \"-\" to the value sort in descending order. Multiple values are given priority in the order in which they are passed. Values: name, startDate, modified",
           "required": false
         },
@@ -2026,31 +2560,52 @@
         },
         {
           "name": "modifiedSince",
-          "type": "String",
+          "type": "DatePicker",
           "info": "Return only characters which have been modified since the specified date.",
           "required": false
         },
         {
           "name": "series",
-          "type": "String",
-          "info": "Return only characters which appear the specified series (accepts a comma-separated list of ids).",
+          "type": "List",
+          "structure": {
+            "name": "seriesId",
+            "type": "Number",
+            "info": "Id of the series"
+          },
+          "info": "Return only characters which appear the specified series (accepts an array of ids).",
           "required": false
         },
         {
           "name": "comics",
-          "type": "String",
-          "info": "Return only characters which appear in the specified comics (accepts a comma-separated list of ids).",
+          "type": "List",
+          "info": "Return only characters which appear in the specified comics (accepts an array of ids).",
+          "structure": {
+            "name": "comicsId",
+            "type": "Number",
+            "info": "Id of the comics"
+          },
           "required": false
         },
         {
           "name": "stories",
-          "type": "String",
-          "info": "Return only characters which appear the specified stories (accepts a comma-separated list of ids).",
+          "type": "List",
+          "structure": {
+            "name": "storyId",
+            "type": "Number",
+            "info": "Id of the stories"
+          },
+          "info": "Return only characters which appear the specified stories (accepts an array of ids).",
           "required": false
         },
         {
           "name": "orderBy",
-          "type": "String",
+          "type": "Select",
+          "options": [
+            "name",
+            "modified",
+            "-name",
+            "-modified"
+          ],
           "info": "Order the result set by a field or fields. Add a \"-\" to the value sort in descending order. Multiple values are given priority in the order in which they are passed. Values: name, modified",
           "required": false
         },
@@ -2102,13 +2657,27 @@
         },
         {
           "name": "format",
-          "type": "String",
+          "type": "Select",
+          "options": [
+            "comic",
+            "digital comic",
+            "hardcover",
+            "magazine",
+            "trade paperback",
+            "digest",
+            "graphic novel",
+            "infinite comic"
+          ],
           "info": "Filter by the issue format (e.g. comic, digital comic, hardcover, magazine, trade paperback, digest, graphic novel, infinite comic).",
           "required": false
         },
         {
           "name": "formatType",
-          "type": "String",
+          "type": "Select",
+          "options": [
+            "comic",
+            "collection"
+          ],
           "info": "Filter by the issue format type (comic or collection).",
           "required": false
         },
@@ -2120,15 +2689,26 @@
         },
         {
           "name": "dateDescriptor",
-          "type": "String",
+          "type": "Select",
+          "options": [
+            "lastWeek",
+            "thisWeek",
+            "nextWeek",
+            "thisMonth"
+          ],
           "info": "Return comics within a predefined date range. Values: lastWeek, thisWeek, nextWeek, thisMonth",
           "required": false
         },
         {
           "name": "dateRange",
-          "type": "String",
-          "info": "Return comics within a predefined date range. Dates must be specified as date1,date2 (e.g. 2013-01-01,2013-01-02). Dates are preferably formatted as YYYY-MM-DD but may be sent as any common date format.",
-          "required": false
+          "type": "List",
+          "info": "Return comics within a predefined date range. Dates must be specified as array.  Dates are preferably formatted as YYYY-MM-DD but may be sent as any common date format.",
+          "required": false,
+          "structure": {
+            "name": "date",
+            "type": "DatePicker",
+            "info": "Date"
+          }
         },
         {
           "name": "title",
@@ -2198,38 +2778,63 @@
         },
         {
           "name": "modifiedSince",
-          "type": "String",
+          "type": "DatePicker",
           "info": "Return only comics which have been modified since the specified date.",
           "required": false
         },
         {
           "name": "creators",
-          "type": "String",
-          "info": "Return only comics which feature work by the specified creators (accepts a comma-separated list of ids).",
+          "type": "List",
+          "structure": {
+            "name": "creatorId",
+            "type": "Number",
+            "info": "Id of the creator"
+          },
+          "info": "Return only comics which feature work by the specified creators (accepts an array of ids).",
           "required": false
         },
         {
           "name": "characters",
-          "type": "String",
-          "info": "Return only comics which feature the specified characters (accepts a comma-separated list of ids).",
+          "type": "List",
+          "structure": {
+            "name": "characterId",
+            "type": "Number",
+            "info": "Id of the character"
+          },
+          "info": "Return only comics which feature the specified characters (accepts an array of ids).",
           "required": false
         },
         {
           "name": "series",
-          "type": "String",
-          "info": "Return only comics which are part of the specified series (accepts a comma-separated list of ids).",
+          "type": "List",
+          "structure": {
+            "name": "seriesId",
+            "type": "Number",
+            "info": "Id of the series"
+          },
+          "info": "Return only comics which are part of the specified series (accepts an array of ids).",
           "required": false
         },
         {
           "name": "events",
-          "type": "String",
-          "info": "Return only comics which take place in the specified events (accepts a comma-separated list of ids).",
+          "type": "List",
+          "structure": {
+            "name": "eventId",
+            "type": "Number",
+            "info": "Id of the event"
+          },
+          "info": "Return only comics which take place in the specified events (accepts an array of ids).",
           "required": false
         },
         {
           "name": "stories",
-          "type": "String",
-          "info": "Return only comics which contain the specified stories (accepts a comma-separated list of ids).",
+          "type": "List",
+          "structure": {
+            "name": "storyId",
+            "type": "Number",
+            "info": "Id of the stories"
+          },
+          "info": "Return only comics which contain the specified stories (accepts an array of ids).",
           "required": false
         },
         {
@@ -2246,7 +2851,19 @@
         },
         {
           "name": "orderBy",
-          "type": "String",
+          "type": "Select",
+          "options": [
+            "focDate",
+            "onsaleDate",
+            "title",
+            "issueNumber",
+            "modified",
+            "-focDate",
+            "-onsaleDate",
+            "-title",
+            "-issueNumber",
+            "-modified"
+          ],
           "info": "Order the result set by a field or fields. Add a \"-\" to the value sort in descending order. Multiple values are given priority in the order in which they are passed. Values: focDate, onsaleDate, title, issueNumber, modified",
           "required": false
         },
@@ -2346,31 +2963,58 @@
         },
         {
           "name": "modifiedSince",
-          "type": "String",
+          "type": "DatePicker",
           "info": "Return only creators which have been modified since the specified date.",
           "required": false
         },
         {
           "name": "series",
-          "type": "String",
-          "info": "Return only creators who worked on in the specified series (accepts a comma-separated list of ids).",
+          "type": "List",
+          "structure": {
+            "name": "seriesId",
+            "type": "Number",
+            "info": "Id of the series"
+          },
+          "info": "Return only creators who worked on in the specified series (accepts an array of ids).",
           "required": false
         },
         {
           "name": "comics",
-          "type": "String",
-          "info": "Return only creators who worked on in the specified comics (accepts a comma-separated list of ids).",
+          "type": "List",
+          "structure": {
+            "name": "comicsId",
+            "type": "Number",
+            "info": "Id of the comics"
+          },
+          "info": "Return only creators who worked on in the specified comics (accepts an array of ids).",
           "required": false
         },
         {
           "name": "stories",
-          "type": "String",
-          "info": "Return only creators who worked on in the specified stories (accepts a comma-separated list of ids).",
+          "type": "List",
+          "structure": {
+            "name": "storyId",
+            "type": "Number",
+            "info": "Id of the stories"
+          },
+          "info": "Return only creators who worked on in the specified stories (accepts an array of ids).",
           "required": false
         },
         {
           "name": "orderBy",
-          "type": "String",
+          "type": "Select",
+          "options": [
+            "lastName",
+            "firstName",
+            "middleName",
+            "suffic",
+            "modified",
+            "-lastName",
+            "-firstName",
+            "-middleName",
+            "-suffix",
+            "-modified"
+          ],
           "info": "Order the result set by a field or fields. Add a \"-\" to the value sort in descending order. Multiple values are given priority in the order in which they are passed. Values: lastName, firstName, middleName, suffix, modified",
           "required": false
         },
@@ -2440,49 +3084,87 @@
         },
         {
           "name": "modifiedSince",
-          "type": "String",
+          "type": "DatePicker",
           "info": "Return only series which have been modified since the specified date.",
           "required": false
         },
         {
           "name": "creators",
-          "type": "String",
-          "info": "Return only series which feature work by the specified creators (accepts a comma-separated list of ids).",
+          "structure": {
+            "name": "creatorId",
+            "type": "Number",
+            "info": "Id of the creator"
+          },
+          "info": "Return only series which feature work by the specified creators (accepts an array of ids).",
           "required": false
         },
         {
           "name": "comics",
-          "type": "String",
-          "info": "Return only series which contain the specified comics (accepts a comma-separated list of ids).",
+          "type": "List",
+          "structure": {
+            "name": "comicsId",
+            "type": "Number",
+            "info": "Id of the comics"
+          },
+          "info": "Return only series which contain the specified comics (accepts an array of ids).",
           "required": false
         },
         {
           "name": "characters",
           "type": "String",
-          "info": "Return only series which feature the specified characters (accepts a comma-separated list of ids).",
+          "info": "Return only series which feature the specified characters (accepts an array of ids).",
           "required": false
         },
         {
           "name": "stories",
-          "type": "String",
-          "info": "Return only series which contain the specified stories (accepts a comma-separated list of ids).",
+          "type": "List",
+          "structure": {
+            "name": "storyId",
+            "type": "Number",
+            "info": "Id of the stories"
+          },
+          "info": "Return only series which contain the specified stories (accepts an array of ids).",
           "required": false
         },
         {
           "name": "seriesType",
-          "type": "String",
+          "type": "Select",
+          "options": [
+            "collection",
+            "one shot",
+            "limited",
+            "ongoing"
+          ],
           "info": "Filter the series by publication frequency type. Values: collection, one shot, limited, ongoing",
           "required": false
         },
         {
           "name": "contains",
-          "type": "String",
+          "type": "Select",
+          "options": [
+            "comic",
+            "digital comic",
+            "hardcover",
+            "magazine",
+            "trade paperback",
+            "digest",
+            "graphic novel",
+            "infinite comic"
+          ],
           "info": "Return only series containing one or more comics with the specified format. Values: comic, digital comic, hardcover, magazine, trade paperback, digest, graphic novel, infinite comic).",
           "required": false
         },
         {
           "name": "orderBy",
-          "type": "String",
+          "type": "Select",
+          "options": [
+            "title",
+            "startYear",
+            "modified",
+            "-title",
+            "-startYear",
+            "-modified"
+          ],
           "info": "Order the result set by a field or fields. Add a \"-\" to the value sort in descending order. Multiple values are given priority in the order in which they are passed. Values: title, startYear, modified",
           "required": false
         },
@@ -2534,37 +3216,58 @@
         },
         {
           "name": "modifiedSince",
-          "type": "String",
+          "type": "DatePicker",
           "info": "Return only stories which have been modified since the specified date.",
           "required": false
         },
         {
           "name": "creators",
-          "type": "String",
-          "info": "Return only stories which feature work by the specified creators (accepts a comma-separated list of ids).",
+          "type": "List",
+          "structure": {
+            "name": "creatorId",
+            "type": "Number",
+            "info": "Id of the creator"
+          },
+          "info": "Return only stories which feature work by the specified creators (accepts an array of ids).",
           "required": false
         },
         {
           "name": "comics",
-          "type": "String",
-          "info": "Return only stories contained in the specified (accepts a comma-separated list of ids).",
+          "type": "List",
+          "structure": {
+            "name": "comicsId",
+            "type": "Number",
+            "info": "Id of the comics"
+          },
+          "info": "Return only stories contained in the specified (accepts an array of ids).",
           "required": false
         },
         {
           "name": "characters",
           "type": "String",
-          "info": "Return only stories which feature work by the specified creators (accepts a comma-separated list of ids).",
+          "info": "Return only stories which feature work by the specified creators (accepts an array of ids).",
           "required": false
         },
         {
           "name": "series",
-          "type": "String",
-          "info": "Return only stories contained the specified series (accepts a comma-separated list of ids).",
+          "type": "List",
+          "structure": {
+            "name": "seriesId",
+            "type": "Number",
+            "info": "Id of the series"
+          },
+          "info": "Return only stories contained the specified series (accepts an array of ids).",
           "required": false
         },
         {
           "name": "orderBy",
-          "type": "String",
+          "type": "Select",
+          "options": [
+            "id",
+            "modified",
+            "-id",
+            "-modified"
+          ],
           "info": "Order the result set by a field or fields. Add a \"-\" to the value sort in descending order. Multiple values are given priority in the order in which they are passed. Values: id, modified",
           "required": false
         },
@@ -2628,55 +3331,98 @@
         },
         {
           "name": "modifiedSince",
-          "type": "String",
+          "type": "DatePicker",
           "info": "Return only series which have been modified since the specified date.",
           "required": false
         },
         {
           "name": "characters",
           "type": "String",
-          "info": "Return only series which feature the specified characters (accepts a comma-separated list of ids).",
+          "info": "Return only series which feature the specified characters (accepts an array of ids).",
           "required": false
         },
         {
           "name": "creators",
-          "type": "String",
-          "info": "Return only series which feature work by the specified creators (accepts a comma-separated list of ids).",
+          "structure": {
+            "name": "creatorId",
+            "type": "Number",
+            "info": "Id of the creator"
+          },
+          "info": "Return only series which feature work by the specified creators (accepts an array of ids).",
           "required": false
         },
         {
           "name": "comics",
-          "type": "String",
-          "info": "Return only series which contain the specified comics (accepts a comma-separated list of ids).",
+          "type": "List",
+          "structure": {
+            "name": "comicsId",
+            "type": "Number",
+            "info": "Id of the comics"
+          },
+          "info": "Return only series which contain the specified comics (accepts an array of ids).",
           "required": false
         },
         {
           "name": "events",
-          "type": "String",
-          "info": "Return only series which have comics that take place during the specified events (accepts a comma-separated list of ids).",
+          "type": "List",
+          "structure": {
+            "name": "eventId",
+            "type": "Number",
+            "info": "Id of the event"
+          },
+          "info": "Return only series which have comics that take place during the specified events (accepts an array of ids).",
           "required": false
         },
         {
           "name": "stories",
-          "type": "String",
-          "info": "Return only series which contain the specified stories (accepts a comma-separated list of ids).",
+          "type": "List",
+          "structure": {
+            "name": "storyId",
+            "type": "Number",
+            "info": "Id of the stories"
+          },
+          "info": "Return only series which contain the specified stories (accepts an array of ids).",
           "required": false
         },
         {
           "name": "seriesType",
-          "type": "String",
+          "type": "Select",
+          "options": [
+            "collection",
+            "one shot",
+            "limited",
+            "ongoing"
+          ],
           "info": "Filter the series by publication frequency type. Values: collection, one shot, limited, ongoing",
           "required": false
         },
         {
           "name": "contains",
-          "type": "String",
+          "type": "Select",
+          "options": [
+            "comic",
+            "digital comic",
+            "hardcover",
+            "magazine",
+            "trade paperback",
+            "digest",
+            "graphic novel",
+            "infinite comic"
+          ],
           "info": "Return only series containing one or more comics with the specified format. Values: comic, digital comic, hardcover, magazine, trade paperback, digest, graphic novel, infinite comic).",
           "required": false
         },
         {
           "name": "orderBy",
-          "type": "String",
+          "type": "Select",
+          "options": [
+            "title",
+            "startYear",
+            "modified",
+            "-title",
+            "-startYear",
+            "-modified"
+          ],
           "info": "Order the result set by a field or fields. Add a \"-\" to the value sort in descending order. Multiple values are given priority in the order in which they are passed. Values: title, startYear, modified",
           "required": false
         },
@@ -2704,7 +3450,6 @@
         }
       ]
     },
-    ,
     {
       "name": "getSingleSeries",
       "description": "Fetches signle series by its id",
@@ -2738,7 +3483,7 @@
           "info": "Success"
         }
       ]
-    }
+    },
     {
       "name": "getCharactersBySeries",
       "description": "Fetches lists of characters which appear in specific series, with optional filters.",
@@ -2775,31 +3520,52 @@
         },
         {
           "name": "modifiedSince",
-          "type": "String",
+          "type": "DatePicker",
           "info": "Return only characters which have been modified since the specified date.",
           "required": false
         },
         {
           "name": "comics",
-          "type": "String",
-          "info": "Return only characters which appear in the specified comics (accepts a comma-separated list of ids).",
+          "type": "List",
+          "info": "Return only characters which appear in the specified comics (accepts an array of ids).",
+          "structure": {
+            "name": "comicsId",
+            "type": "Number",
+            "info": "Id of the comics"
+          },
           "required": false
         },
         {
           "name": "events",
-          "type": "String",
-          "info": "Return only characters which appear comics that took place in the specified events (accepts a comma-separated list of ids).",
+          "type": "List",
+          "structure": {
+            "name": "eventId",
+            "type": "Number",
+            "info": "Id of the event"
+          },
+          "info": "Return only characters which appear comics that took place in the specified events (accepts an array of ids).",
           "required": false
         },
         {
           "name": "stories",
-          "type": "String",
-          "info": "Return only characters which appear the specified stories (accepts a comma-separated list of ids).",
+          "type": "List",
+          "structure": {
+            "name": "storyId",
+            "type": "Number",
+            "info": "Id of the stories"
+          },
+          "info": "Return only characters which appear the specified stories (accepts an array of ids).",
           "required": false
         },
         {
           "name": "orderBy",
-          "type": "String",
+          "type": "Select",
+          "options": [
+            "name",
+            "modified",
+            "-name",
+            "-modified"
+          ],
           "info": "Order the result set by a field or fields. Add a \"-\" to the value sort in descending order. Multiple values are given priority in the order in which they are passed. Values: name, modified",
           "required": false
         },
@@ -2851,13 +3617,27 @@
         },
         {
           "name": "format",
-          "type": "String",
+          "type": "Select",
+          "options": [
+            "comic",
+            "digital comic",
+            "hardcover",
+            "magazine",
+            "trade paperback",
+            "digest",
+            "graphic novel",
+            "infinite comic"
+          ],
           "info": "Filter by the issue format (e.g. comic, digital comic, hardcover, magazine, trade paperback, digest, graphic novel, infinite comic).",
           "required": false
         },
         {
           "name": "formatType",
-          "type": "String",
+          "type": "Select",
+          "options": [
+            "comic",
+            "collection"
+          ],
           "info": "Filter by the issue format type (comic or collection).",
           "required": false
         },
@@ -2869,15 +3649,26 @@
         },
         {
           "name": "dateDescriptor",
-          "type": "String",
+          "type": "Select",
+          "options": [
+            "lastWeek",
+            "thisWeek",
+            "nextWeek",
+            "thisMonth"
+          ],
           "info": "Return comics within a predefined date range. Values: lastWeek, thisWeek, nextWeek, thisMonth",
           "required": false
         },
         {
           "name": "dateRange",
-          "type": "String",
-          "info": "Return comics within a predefined date range. Dates must be specified as date1,date2 (e.g. 2013-01-01,2013-01-02). Dates are preferably formatted as YYYY-MM-DD but may be sent as any common date format.",
-          "required": false
+          "type": "List",
+          "info": "Return comics within a predefined date range. Dates must be specified as array.  Dates are preferably formatted as YYYY-MM-DD but may be sent as any common date format.",
+          "required": false,
+          "structure": {
+            "name": "date",
+            "type": "DatePicker",
+            "info": "Date"
+          }
         },
         {
           "name": "title",
@@ -2947,32 +3738,52 @@
         },
         {
           "name": "modifiedSince",
-          "type": "String",
+          "type": "DatePicker",
           "info": "Return only comics which have been modified since the specified date.",
           "required": false
         },
         {
           "name": "creators",
-          "type": "String",
-          "info": "Return only comics which feature work by the specified creators (accepts a comma-separated list of ids).",
+          "type": "List",
+          "structure": {
+            "name": "creatorId",
+            "type": "Number",
+            "info": "Id of the creator"
+          },
+          "info": "Return only comics which feature work by the specified creators (accepts an array of ids).",
           "required": false
         },
         {
           "name": "characters",
-          "type": "String",
-          "info": "Return only comics which feature the specified characters (accepts a comma-separated list of ids).",
+          "type": "List",
+          "structure": {
+            "name": "characterId",
+            "type": "Number",
+            "info": "Id of the character"
+          },
+          "info": "Return only comics which feature the specified characters (accepts an array of ids).",
           "required": false
         },
         {
           "name": "events",
-          "type": "String",
-          "info": "Return only comics which take place in the specified events (accepts a comma-separated list of ids).",
+          "type": "List",
+          "structure": {
+            "name": "eventId",
+            "type": "Number",
+            "info": "Id of the event"
+          },
+          "info": "Return only comics which take place in the specified events (accepts an array of ids).",
           "required": false
         },
         {
           "name": "stories",
-          "type": "String",
-          "info": "Return only comics which contain the specified stories (accepts a comma-separated list of ids).",
+          "type": "List",
+          "structure": {
+            "name": "storyId",
+            "type": "Number",
+            "info": "Id of the stories"
+          },
+          "info": "Return only comics which contain the specified stories (accepts an array of ids).",
           "required": false
         },
         {
@@ -2989,7 +3800,19 @@
         },
         {
           "name": "orderBy",
-          "type": "String",
+          "type": "Select",
+          "options": [
+            "focDate",
+            "onsaleDate",
+            "title",
+            "issueNumber",
+            "modified",
+            "-focDate",
+            "-onsaleDate",
+            "-title",
+            "-issueNumber",
+            "-modified"
+          ],
           "info": "Order the result set by a field or fields. Add a \"-\" to the value sort in descending order. Multiple values are given priority in the order in which they are passed. Values: focDate, onsaleDate, title, issueNumber, modified",
           "required": false
         },
@@ -3089,31 +3912,58 @@
         },
         {
           "name": "modifiedSince",
-          "type": "String",
+          "type": "DatePicker",
           "info": "Return only creators which have been modified since the specified date.",
           "required": false
         },
         {
           "name": "events",
-          "type": "String",
-          "info": "Return only creators who worked on comics that took place in the specified events (accepts a comma-separated list of ids).",
+          "type": "List",
+          "structure": {
+            "name": "eventId",
+            "type": "Number",
+            "info": "Id of the event"
+          },
+          "info": "Return only creators who worked on comics that took place in the specified events (accepts an array of ids).",
           "required": false
         },
         {
           "name": "comics",
-          "type": "String",
-          "info": "Return only creators who worked on in the specified comics (accepts a comma-separated list of ids).",
+          "type": "List",
+          "structure": {
+            "name": "comicsId",
+            "type": "Number",
+            "info": "Id of the comics"
+          },
+          "info": "Return only creators who worked on in the specified comics (accepts an array of ids).",
           "required": false
         },
         {
           "name": "stories",
-          "type": "String",
-          "info": "Return only creators who worked on in the specified stories (accepts a comma-separated list of ids).",
+          "type": "List",
+          "structure": {
+            "name": "storyId",
+            "type": "Number",
+            "info": "Id of the stories"
+          },
+          "info": "Return only creators who worked on in the specified stories (accepts an array of ids).",
           "required": false
         },
         {
           "name": "orderBy",
-          "type": "String",
+          "type": "Select",
+          "options": [
+            "lastName",
+            "firstName",
+            "middleName",
+            "suffic",
+            "modified",
+            "-lastName",
+            "-firstName",
+            "-middleName",
+            "-suffix",
+            "-modified"
+          ],
           "info": "Order the result set by a field or fields. Add a \"-\" to the value sort in descending order. Multiple values are given priority in the order in which they are passed. Values: lastName, firstName, middleName, suffix, modified",
           "required": false
         },
@@ -3177,37 +4027,60 @@
         },
         {
           "name": "modifiedSince",
-          "type": "String",
+          "type": "DatePicker",
           "info": "Return only events which have been modified since the specified date.",
           "required": false
         },
         {
           "name": "creators",
-          "type": "String",
-          "info": "Return only events which feature work by the specified creators (accepts a comma-separated list of ids).",
+          "type": "List",
+          "structure": {
+            "name": "creators",
+            "type": "Number",
+            "info": "Id of the creators"
+          },
+          "info": "Return only comics which feature work by the specified creators (accepts an array of ids).",
           "required": false
         },
         {
           "name": "characters",
           "type": "String",
-          "info": "Return only events which feature the specified characters (accepts a comma-separated list of ids).",
+          "info": "Return only events which feature the specified characters (accepts an array of ids).",
           "required": false
         },
         {
           "name": "comics",
-          "type": "String",
-          "info": "Return only events which take place in the specified comics (accepts a comma-separated list of ids).",
+          "type": "List",
+          "structure": {
+            "name": "comicsId",
+            "type": "Number",
+            "info": "Id of the comics"
+          },
+          "info": "Return only events which take place in the specified comics (accepts an array of ids).",
           "required": false
         },
         {
           "name": "stories",
-          "type": "String",
-          "info": "Return only events which contain the specified stories (accepts a comma-separated list of ids).",
+          "type": "List",
+          "structure": {
+            "name": "storyId",
+            "type": "Number",
+            "info": "Id of the stories"
+          },
+          "info": "Return only events which contain the specified stories (accepts an array of ids).",
           "required": false
         },
         {
           "name": "orderBy",
-          "type": "String",
+          "type": "Select",
+          "options": [
+            "name",
+            "startDate",
+            "modified",
+            "-name",
+            "-startDate",
+            "-modified"
+          ],
           "info": "Order the result set by a field or fields. Add a \"-\" to the value sort in descending order. Multiple values are given priority in the order in which they are passed. Values: name, startDate modified",
           "required": false
         },
@@ -3259,37 +4132,58 @@
         },
         {
           "name": "modifiedSince",
-          "type": "String",
+          "type": "DatePicker",
           "info": "Return only stories which have been modified since the specified date.",
           "required": false
         },
         {
           "name": "creators",
-          "type": "String",
-          "info": "Return only stories which feature work by the specified creators (accepts a comma-separated list of ids).",
+          "type": "List",
+          "structure": {
+            "name": "creatorId",
+            "type": "Number",
+            "info": "Id of the creator"
+          },
+          "info": "Return only stories which feature work by the specified creators (accepts an array of ids).",
           "required": false
         },
         {
           "name": "comics",
-          "type": "String",
-          "info": "Return only stories contained in the specified (accepts a comma-separated list of ids).",
+          "type": "List",
+          "structure": {
+            "name": "comicsId",
+            "type": "Number",
+            "info": "Id of the comics"
+          },
+          "info": "Return only stories contained in the specified (accepts an array of ids).",
           "required": false
         },
         {
           "name": "characters",
           "type": "String",
-          "info": "Return only stories which feature work by the specified creators (accepts a comma-separated list of ids).",
+          "info": "Return only stories which feature work by the specified creators (accepts an array of ids).",
           "required": false
         },
         {
           "name": "events",
-          "type": "String",
-          "info": "Return only stories which take place during the specified events (accepts a comma-separated list of ids).",
+          "type": "List",
+          "structure": {
+            "name": "eventId",
+            "type": "Number",
+            "info": "Id of the event"
+          },
+          "info": "Return only stories which take place during the specified events (accepts an array of ids).",
           "required": false
         },
         {
           "name": "orderBy",
-          "type": "String",
+          "type": "Select",
+          "options": [
+            "id",
+            "modified",
+            "-id",
+            "-modified"
+          ],
           "info": "Order the result set by a field or fields. Add a \"-\" to the value sort in descending order. Multiple values are given priority in the order in which they are passed. Values: id, modified",
           "required": false
         },
@@ -3335,43 +4229,69 @@
         },
         {
           "name": "modifiedSince",
-          "type": "String",
+          "type": "DatePicker",
           "info": "Return only stories which have been modified since the specified date.",
           "required": false
         },
         {
           "name": "creators",
-          "type": "String",
-          "info": "Return only stories which feature work by the specified creators (accepts a comma-separated list of ids).",
+          "type": "List",
+          "structure": {
+            "name": "creatorId",
+            "type": "Number",
+            "info": "Id of the creator"
+          },
+          "info": "Return only stories which feature work by the specified creators (accepts an array of ids).",
           "required": false
         },
         {
           "name": "comics",
-          "type": "String",
-          "info": "Return only stories contained in the specified (accepts a comma-separated list of ids).",
+          "type": "List",
+          "structure": {
+            "name": "comicsId",
+            "type": "Number",
+            "info": "Id of the comics"
+          },
+          "info": "Return only stories contained in the specified (accepts an array of ids).",
           "required": false
         },
         {
           "name": "series",
-          "type": "String",
-          "info": "Return only stories contained the specified series (accepts a comma-separated list of ids).",
+          "type": "List",
+          "structure": {
+            "name": "seriesId",
+            "type": "Number",
+            "info": "Id of the series"
+          },
+          "info": "Return only stories contained the specified series (accepts an array of ids).",
           "required": false
         },
         {
           "name": "characters",
           "type": "String",
-          "info": "Return only stories which feature work by the specified creators (accepts a comma-separated list of ids).",
+          "info": "Return only stories which feature work by the specified creators (accepts an array of ids).",
           "required": false
         },
         {
           "name": "events",
-          "type": "String",
-          "info": "Return only stories which take place during the specified events (accepts a comma-separated list of ids).",
+          "type": "List",
+          "structure": {
+            "name": "eventId",
+            "type": "Number",
+            "info": "Id of the event"
+          },
+          "info": "Return only stories which take place during the specified events (accepts an array of ids).",
           "required": false
         },
         {
           "name": "orderBy",
-          "type": "String",
+          "type": "Select",
+          "options": [
+            "id",
+            "modified",
+            "-id",
+            "-modified"
+          ],
           "info": "Order the result set by a field or fields. Add a \"-\" to the value sort in descending order. Multiple values are given priority in the order in which they are passed. Values: id, modified",
           "required": false
         },
@@ -3469,31 +4389,52 @@
         },
         {
           "name": "modifiedSince",
-          "type": "String",
+          "type": "DatePicker",
           "info": "Return only characters which have been modified since the specified date.",
           "required": false
         },
         {
           "name": "comics",
-          "type": "String",
-          "info": "Return only characters which appear in the specified comics (accepts a comma-separated list of ids).",
+          "type": "List",
+          "info": "Return only characters which appear in the specified comics (accepts an array of ids).",
+          "structure": {
+            "name": "comicsId",
+            "type": "Number",
+            "info": "Id of the comics"
+          },
           "required": false
         },
         {
           "name": "events",
-          "type": "String",
-          "info": "Return only characters which appear comics that took place in the specified events (accepts a comma-separated list of ids).",
+          "type": "List",
+          "structure": {
+            "name": "eventId",
+            "type": "Number",
+            "info": "Id of the event"
+          },
+          "info": "Return only characters which appear comics that took place in the specified events (accepts an array of ids).",
           "required": false
         },
         {
           "name": "series",
-          "type": "String",
-          "info": "Return only characters which appear the specified series (accepts a comma-separated list of ids).",
+          "type": "List",
+          "structure": {
+            "name": "seriesId",
+            "type": "Number",
+            "info": "Id of the series"
+          },
+          "info": "Return only characters which appear the specified series (accepts an array of ids).",
           "required": false
         },
         {
           "name": "orderBy",
-          "type": "String",
+          "type": "Select",
+          "options": [
+            "name",
+            "modified",
+            "-name",
+            "-modified"
+          ],
           "info": "Order the result set by a field or fields. Add a \"-\" to the value sort in descending order. Multiple values are given priority in the order in which they are passed. Values: name, modified",
           "required": false
         },
@@ -3545,13 +4486,27 @@
         },
         {
           "name": "format",
-          "type": "String",
+          "type": "Select",
+          "options": [
+            "comic",
+            "digital comic",
+            "hardcover",
+            "magazine",
+            "trade paperback",
+            "digest",
+            "graphic novel",
+            "infinite comic"
+          ],
           "info": "Filter by the issue format (e.g. comic, digital comic, hardcover, magazine, trade paperback, digest, graphic novel, infinite comic).",
           "required": false
         },
         {
           "name": "formatType",
-          "type": "String",
+          "type": "Select",
+          "options": [
+            "comic",
+            "collection"
+          ],
           "info": "Filter by the issue format type (comic or collection).",
           "required": false
         },
@@ -3563,15 +4518,26 @@
         },
         {
           "name": "dateDescriptor",
-          "type": "String",
+          "type": "Select",
+          "options": [
+            "lastWeek",
+            "thisWeek",
+            "nextWeek",
+            "thisMonth"
+          ],
           "info": "Return comics within a predefined date range. Values: lastWeek, thisWeek, nextWeek, thisMonth",
           "required": false
         },
         {
           "name": "dateRange",
-          "type": "String",
-          "info": "Return comics within a predefined date range. Dates must be specified as date1,date2 (e.g. 2013-01-01,2013-01-02). Dates are preferably formatted as YYYY-MM-DD but may be sent as any common date format.",
-          "required": false
+          "type": "List",
+          "info": "Return comics within a predefined date range. Dates must be specified as array.  Dates are preferably formatted as YYYY-MM-DD but may be sent as any common date format.",
+          "required": false,
+          "structure": {
+            "name": "date",
+            "type": "DatePicker",
+            "info": "Date"
+          }
         },
         {
           "name": "title",
@@ -3641,32 +4607,52 @@
         },
         {
           "name": "modifiedSince",
-          "type": "String",
+          "type": "DatePicker",
           "info": "Return only comics which have been modified since the specified date.",
           "required": false
         },
         {
           "name": "creators",
-          "type": "String",
-          "info": "Return only comics which feature work by the specified creators (accepts a comma-separated list of ids).",
+          "type": "List",
+          "structure": {
+            "name": "creatorId",
+            "type": "Number",
+            "info": "Id of the creator"
+          },
+          "info": "Return only comics which feature work by the specified creators (accepts an array of ids).",
           "required": false
         },
         {
           "name": "characters",
-          "type": "String",
-          "info": "Return only comics which feature the specified characters (accepts a comma-separated list of ids).",
+          "type": "List",
+          "structure": {
+            "name": "characterId",
+            "type": "Number",
+            "info": "Id of the character"
+          },
+          "info": "Return only comics which feature the specified characters (accepts an array of ids).",
           "required": false
         },
         {
           "name": "events",
-          "type": "String",
-          "info": "Return only comics which take place in the specified events (accepts a comma-separated list of ids).",
+          "type": "List",
+          "structure": {
+            "name": "eventId",
+            "type": "Number",
+            "info": "Id of the event"
+          },
+          "info": "Return only comics which take place in the specified events (accepts an array of ids).",
           "required": false
         },
         {
           "name": "series",
-          "type": "String",
-          "info": "Return only characters which appear the specified series (accepts a comma-separated list of ids).",
+          "type": "List",
+          "structure": {
+            "name": "seriesId",
+            "type": "Number",
+            "info": "Id of the series"
+          },
+          "info": "Return only characters which appear the specified series (accepts an array of ids).",
           "required": false
         },
         {
@@ -3683,7 +4669,19 @@
         },
         {
           "name": "orderBy",
-          "type": "String",
+          "type": "Select",
+          "options": [
+            "focDate",
+            "onsaleDate",
+            "title",
+            "issueNumber",
+            "modified",
+            "-focDate",
+            "-onsaleDate",
+            "-title",
+            "-issueNumber",
+            "-modified"
+          ],
           "info": "Order the result set by a field or fields. Add a \"-\" to the value sort in descending order. Multiple values are given priority in the order in which they are passed. Values: focDate, onsaleDate, title, issueNumber, modified",
           "required": false
         },
@@ -3783,31 +4781,58 @@
         },
         {
           "name": "modifiedSince",
-          "type": "String",
+          "type": "DatePicker",
           "info": "Return only creators which have been modified since the specified date.",
           "required": false
         },
         {
           "name": "events",
-          "type": "String",
-          "info": "Return only creators who worked on comics that took place in the specified events (accepts a comma-separated list of ids).",
+          "type": "List",
+          "structure": {
+            "name": "eventId",
+            "type": "Number",
+            "info": "Id of the event"
+          },
+          "info": "Return only creators who worked on comics that took place in the specified events (accepts an array of ids).",
           "required": false
         },
         {
           "name": "comics",
-          "type": "String",
-          "info": "Return only creators who worked on in the specified comics (accepts a comma-separated list of ids).",
+          "type": "List",
+          "structure": {
+            "name": "comicsId",
+            "type": "Number",
+            "info": "Id of the comics"
+          },
+          "info": "Return only creators who worked on in the specified comics (accepts an array of ids).",
           "required": false
         },
         {
           "name": "series",
-          "type": "String",
-          "info": "Return only creators who worked on the specified series (accepts a comma-separated list of ids).",
+          "type": "List",
+          "structure": {
+            "name": "seriesId",
+            "type": "Number",
+            "info": "Id of the series"
+          },
+          "info": "Return only creators who worked on the specified series (accepts an array of ids).",
           "required": false
         },
         {
           "name": "orderBy",
-          "type": "String",
+          "type": "Select",
+          "options": [
+            "lastName",
+            "firstName",
+            "middleName",
+            "suffic",
+            "modified",
+            "-lastName",
+            "-firstName",
+            "-middleName",
+            "-suffix",
+            "-modified"
+          ],
           "info": "Order the result set by a field or fields. Add a \"-\" to the value sort in descending order. Multiple values are given priority in the order in which they are passed. Values: lastName, firstName, middleName, suffix, modified",
           "required": false
         },
@@ -3871,37 +4896,60 @@
         },
         {
           "name": "modifiedSince",
-          "type": "String",
+          "type": "DatePicker",
           "info": "Return only events which have been modified since the specified date.",
           "required": false
         },
         {
           "name": "creators",
-          "type": "String",
-          "info": "Return only events which feature work by the specified creators (accepts a comma-separated list of ids).",
+          "type": "List",
+          "structure": {
+            "name": "creators",
+            "type": "Number",
+            "info": "Id of the creators"
+          },
+          "info": "Return only comics which feature work by the specified creators (accepts an array of ids).",
           "required": false
         },
         {
           "name": "characters",
           "type": "String",
-          "info": "Return only events which feature the specified characters (accepts a comma-separated list of ids).",
+          "info": "Return only events which feature the specified characters (accepts an array of ids).",
           "required": false
         },
         {
           "name": "comics",
-          "type": "String",
-          "info": "Return only events which take place in the specified comics (accepts a comma-separated list of ids).",
+          "type": "List",
+          "structure": {
+            "name": "comicsId",
+            "type": "Number",
+            "info": "Id of the comics"
+          },
+          "info": "Return only events which take place in the specified comics (accepts an array of ids).",
           "required": false
         },
         {
           "name": "series",
-          "type": "String",
-          "info": "Return only events which are part of the specified series (accepts a comma-separated list of ids).",
+          "type": "List",
+          "structure": {
+            "name": "seriesId",
+            "type": "Number",
+            "info": "Id of the series"
+          },
+          "info": "Return only events which are part of the specified series (accepts an array of ids).",
           "required": false
         },
         {
           "name": "orderBy",
-          "type": "String",
+          "type": "Select",
+          "options": [
+            "name",
+            "startDate",
+            "modified",
+            "-name",
+            "-startDate",
+            "-modified"
+          ],
           "info": "Order the result set by a field or fields. Add a \"-\" to the value sort in descending order. Multiple values are given priority in the order in which they are passed. Values: name, startDate modified",
           "required": false
         },
@@ -3971,49 +5019,86 @@
         },
         {
           "name": "modifiedSince",
-          "type": "String",
+          "type": "DatePicker",
           "info": "Return only series which have been modified since the specified date.",
           "required": false
         },
         {
           "name": "creators",
-          "type": "String",
-          "info": "Return only series which feature work by the specified creators (accepts a comma-separated list of ids).",
+          "structure": {
+            "name": "creatorId",
+            "type": "Number",
+            "info": "Id of the creator"
+          },
+          "info": "Return only series which feature work by the specified creators (accepts an array of ids).",
           "required": false
         },
         {
           "name": "comics",
-          "type": "String",
-          "info": "Return only series which contain the specified comics (accepts a comma-separated list of ids).",
+          "type": "List",
+          "structure": {
+            "name": "comicsId",
+            "type": "Number",
+            "info": "Id of the comics"
+          },
+          "info": "Return only series which contain the specified comics (accepts an array of ids).",
           "required": false
         },
         {
           "name": "characters",
           "type": "String",
-          "info": "Return only series which feature the specified characters (accepts a comma-separated list of ids).",
+          "info": "Return only series which feature the specified characters (accepts an array of ids).",
           "required": false
         },
         {
           "name": "creators",
-          "type": "String",
-          "info": "Return only series which feature work by the specified creators (accepts a comma-separated list of ids).",
+          "structure": {
+            "name": "creatorId",
+            "type": "Number",
+            "info": "Id of the creator"
+          },
+          "info": "Return only series which feature work by the specified creators (accepts an array of ids).",
           "required": false
         },
         {
           "name": "seriesType",
-          "type": "String",
+          "type": "Select",
+          "options": [
+            "collection",
+            "one shot",
+            "limited",
+            "ongoing"
+          ],
           "info": "Filter the series by publication frequency type. Values: collection, one shot, limited, ongoing",
           "required": false
         },
         {
           "name": "contains",
-          "type": "String",
+          "type": "Select",
+          "options": [
+            "comic",
+            "digital comic",
+            "hardcover",
+            "magazine",
+            "trade paperback",
+            "digest",
+            "graphic novel",
+            "infinite comic"
+          ],
           "info": "Return only series containing one or more comics with the specified format. Values: comic, digital comic, hardcover, magazine, trade paperback, digest, graphic novel, infinite comic).",
           "required": false
         },
         {
           "name": "orderBy",
-          "type": "String",
+          "type": "Select",
+          "options": [
+            "title",
+            "startYear",
+            "modified",
+            "-title",
+            "-startYear",
+            "-modified"
+          ],
           "info": "Order the result set by a field or fields. Add a \"-\" to the value sort in descending order. Multiple values are given priority in the order in which they are passed. Values: title, startYear, modified",
           "required": false
         },

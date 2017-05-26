@@ -45,13 +45,13 @@ $app->post('/api/Marvel/getCreatorsBySeries', function ($request, $response, $ar
         $body['modifiedSince'] = $post_data['args']['modifiedSince'];
     }
     if (isset($post_data['args']['events']) && strlen($post_data['args']['events']) > 0) {
-        $body['events'] = $post_data['args']['events'];
+        $body['events'] = implode(',', $post_data['args']['events']);
     }
     if (isset($post_data['args']['comics']) && strlen($post_data['args']['comics']) > 0) {
-        $body['comics'] = $post_data['args']['comics'];
+        $body['comics'] = implode(',', $post_data['args']['comics']);
     }
     if (isset($post_data['args']['stories']) && strlen($post_data['args']['stories']) > 0) {
-        $body['stories'] = $post_data['args']['stories'];
+        $body['stories'] = implode(',', $post_data['args']['stories']);
     }
     if (isset($post_data['args']['orderBy']) && strlen($post_data['args']['orderBy']) > 0) {
         $body['orderBy'] = $post_data['args']['orderBy'];
