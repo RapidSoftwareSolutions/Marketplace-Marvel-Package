@@ -2510,7 +2510,7 @@
           "name": "eventId",
           "type": "Number",
           "info": "ID of the event",
-          "required": false
+          "required": true
         }
       ],
       "callbacks": [
@@ -3470,7 +3470,7 @@
           "name": "seriesId",
           "type": "Number",
           "info": "Id of the series",
-          "required": false
+          "required": true
         }
       ],
       "callbacks": [
@@ -4339,7 +4339,7 @@
           "name": "storyId",
           "type": "Number",
           "info": "Id of the story",
-          "required": false
+          "required": true
         }
       ],
       "callbacks": [
