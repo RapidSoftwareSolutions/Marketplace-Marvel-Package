@@ -579,10 +579,11 @@
         },
         {
           "name": "creators",
+          "type": "List",
           "structure": {
-            "name": "creatorId",
+            "name": "creators",
             "type": "Number",
-            "info": "Id of the creator"
+            "info": "Id of the creators"
           },
           "info": "Return only series which feature work by the specified creators (accepts an array of ids).",
           "required": false
@@ -3090,10 +3091,11 @@
         },
         {
           "name": "creators",
+          "type": "List",
           "structure": {
-            "name": "creatorId",
+            "name": "creators",
             "type": "Number",
-            "info": "Id of the creator"
+            "info": "Id of the creators"
           },
           "info": "Return only series which feature work by the specified creators (accepts an array of ids).",
           "required": false
@@ -3343,10 +3345,11 @@
         },
         {
           "name": "creators",
+          "type": "List",
           "structure": {
-            "name": "creatorId",
+            "name": "creators",
             "type": "Number",
-            "info": "Id of the creator"
+            "info": "Id of the creators"
           },
           "info": "Return only series which feature work by the specified creators (accepts an array of ids).",
           "required": false
@@ -4904,7 +4907,7 @@
           "name": "creators",
           "type": "List",
           "structure": {
-            "name": "creators",
+            "name": "creatorId",
             "type": "Number",
             "info": "Id of the creators"
           },
@@ -5025,10 +5028,11 @@
         },
         {
           "name": "creators",
+          "type": "List",
           "structure": {
             "name": "creatorId",
             "type": "Number",
-            "info": "Id of the creator"
+            "info": "Id of the creators"
           },
           "info": "Return only series which feature work by the specified creators (accepts an array of ids).",
           "required": false
@@ -5052,10 +5056,11 @@
         },
         {
           "name": "creators",
+          "type": "List",
           "structure": {
             "name": "creatorId",
             "type": "Number",
-            "info": "Id of the creator"
+            "info": "Id of the creators"
           },
           "info": "Return only series which feature work by the specified creators (accepts an array of ids).",
           "required": false
